@@ -3,12 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Play } from 'lucide-react';
 import Image from 'next/image';
+import { useAuthModal } from '../context/AuthModalContext';
 
 export default function Hero() {
+    const { toggle: toggleLoginModal } = useAuthModal();
     const subheadings = [
         "Institutional grade speed.",
         "Real-time market analytics."
     ];
+
+    const handleClick = () => {
+        toggleLoginModal();
+    };
 
     // Common typography class to ensure identical sizing
     const sharedTypographyClass = "text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-[1.1]";
@@ -75,7 +81,7 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="mt-12 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6"
                 >
-                    <button className="group relative px-5 py-3 bg-[#3D6BFF] text-white rounded-xl font-bold text-lg overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(61,107,255,0.5)] active:scale-95">
+                    <button onClick={handleClick} className="cursor-pointer group relative px-5 py-3 bg-[#3D6BFF] text-white rounded-xl font-bold text-lg overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(61,107,255,0.5)] active:scale-95">
                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                         <span className="relative flex items-center">
                             Open Account <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
