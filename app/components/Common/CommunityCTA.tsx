@@ -7,9 +7,16 @@ import {
     Users,
     Globe,
 } from "lucide-react";
+import { useAuthModal } from "@/app/context/AuthModalContext";
 
 
 export default function CommunityCTA() {
+
+    const { toggle: toggleLoginModal } = useAuthModal();
+
+    const handleUser = () => {
+        toggleLoginModal();
+    }
 
     return (
         <section className="relative py-24 px-6 bg-[#0B0E14] overflow-hidden min-h-[600px]">
@@ -44,7 +51,8 @@ export default function CommunityCTA() {
                         <motion.button
                             whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(61, 107, 255, 0.4)" }}
                             whileTap={{ scale: 0.95 }}
-                            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-white text-[#0B0E14] rounded-2xl font-black text-sm uppercase tracking-widest transition-all overflow-hidden"
+                            onClick={handleUser}
+                            className="cursor-pointer group relative inline-flex items-center gap-3 px-10 py-5 bg-white text-[#0B0E14] rounded-2xl font-black text-sm uppercase tracking-widest transition-all overflow-hidden"
                         >
                             <span className="relative z-10">Trade Now</span>
                             <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />

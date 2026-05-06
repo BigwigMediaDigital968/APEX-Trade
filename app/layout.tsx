@@ -3,6 +3,7 @@ import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import SocialAndFooter from "./components/SocialAndFooter";
+import { AuthModalProvider } from "./context/AuthModalContext";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -39,9 +40,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0B0E14] text-white font-sans`}>
-        <Navbar />
-        {children}
-        <SocialAndFooter />
+        <AuthModalProvider>
+
+          <Navbar />
+          {children}
+          <SocialAndFooter />
+        </AuthModalProvider>
 
       </body>
     </html>

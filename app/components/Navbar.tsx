@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight, Activity, ShieldCheck, Sparkles, BookOpen, AlertTriangle, Layers, Zap, Package, TrendingUp, BarChart3 } from "lucide-react";
+import { useAuthModal } from "../context/AuthModalContext";
+import Link from "next/link";
 
 // Updated navLinks with support for sub-items
 const navLinks = [
@@ -66,10 +68,41 @@ const navLinks = [
       }
     ]
   },
+  {
+    label: "Products",
+    href: "#",
+    items: [
+      {
+        label: "CFD Instruments",
+        desc: "Trade contracts for difference across global assets",
+        icon: <TrendingUp size={18} />,
+        href: "/cfd-instrument"
+      },
+      {
+        label: "Stocks",
+        desc: "Invest and trade shares from leading companies",
+        icon: <BarChart3 size={18} />,
+        href: "/stocks"
+      },
+      {
+        label: "Commodities",
+        desc: "Access gold, oil, and other key commodities",
+        icon: <Package size={18} />,
+        href: "/commodity"
+      },
+      {
+        label: "Indices",
+        desc: "Trade major global market indices",
+        icon: <Activity size={18} />,
+        href: "/indexes"
+      }
+    ]
+  },
   { label: "Contact", href: "/contact-us" },
 ];
 
 export default function Navbar() {
+  const { toggle: toggleLoginModal } = useAuthModal();
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<(number | null)>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -89,7 +122,7 @@ export default function Navbar() {
     >
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-[10px] no-underline group">
+        <Link href="/" className="flex items-center gap-[10px] no-underline group">
           <div className="w-[40px] h-[40px] rounded-[12px] bg-gradient-to-br from-[#3D6BFF] to-[#5E84FF] flex items-center justify-center shadow-[0_4px_20px_rgba(61,107,255,0.4)] transition-transform group-hover:scale-105">
             <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
               <path d="M3 14L7 9L11 12L17 5" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -99,7 +132,7 @@ export default function Navbar() {
           <span className="font-display font-extrabold text-[1.3rem] text-white tracking-tight">
             Apex<span className="text-[#3D6BFF]">Trade</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-2">
@@ -168,13 +201,12 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <a
-            href="#"
-            className="group flex items-center gap-2 bg-gradient-to-r from-[#3D6BFF] to-[#5E84FF] text-white font-bold text-[0.9rem] px-6 py-2.5 rounded-full shadow-[0_4px_15px_rgba(61,107,255,0.3)] hover:shadow-[0_8px_25px_rgba(61,107,255,0.5)] hover:-translate-y-0.5 transition-all no-underline"
+          <button
+            onClick={() => toggleLoginModal()}
+            className="group flex items-center cursor-pointer gap-2 bg-gradient-to-r from-[#3D6BFF] to-[#5E84FF] text-white font-bold text-[0.9rem] px-6 py-2.5 rounded-full shadow-[0_4px_15px_rgba(61,107,255,0.3)] hover:shadow-[0_8px_25px_rgba(61,107,255,0.5)] hover:-translate-y-0.5 transition-all no-underline"
           >
-            Get Started
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </a>
+            Log In/Sign Up
+          </button>
         </div>
 
         {/* Mobile menu button */}
@@ -201,29 +233,29 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-[#0B0E14]/98 backdrop-blur-[20px] border-t border-white/5 overflow-hidden"
           >
-            <div className="p-6 flex flex-col gap-4">
+            <div className="p-6 flex flex-col gap-4 max-h-dvh" style={{ overflowY: "auto" }}>
               {navLinks.map((link) => (
                 <div key={link.label} className="flex flex-col gap-2">
-                  <a
+                  <Link
                     href={link.href}
                     className="font-sans text-lg font-bold text-white no-underline py-2"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                   {link.items && (
                     <div className="pl-4 flex flex-col gap-3 border-l border-white/10 mb-4">
                       {link.items.map(sub => (
-                        <a key={sub.label} href={sub.href} className="text-white/60 text-sm no-underline py-1">
+                        <Link key={sub.label} href={sub.href} className="text-white/60 text-sm no-underline py-1">
                           {sub.label}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   )}
                 </div>
               ))}
-              <a href="#" className="bg-[#3D6BFF] text-white py-4 rounded-2xl font-bold text-center no-underline mt-4">
+              <button onClick={() => { toggleLoginModal(); setMobileMenuOpen(false); }} className="bg-[#3D6BFF] text-white py-4 rounded-2xl font-bold text-center no-underline mt-4">
                 Get Started
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

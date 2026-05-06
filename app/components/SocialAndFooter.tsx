@@ -7,6 +7,7 @@ import { FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import FloatingWhatsApp from "./FloatingWhatsApp";
 import { ChevronDown, ArrowRight, Activity, Sparkles, BookOpen, AlertTriangle, Layers, Zap, Package, TrendingUp, BarChart3 } from "lucide-react";
+import Link from "next/link";
 
 const socials = [
   {
@@ -55,14 +56,25 @@ const footerLinks = [
       { label: "Dabba Trading", href: "/dabba-trading" },
     ],
   },
-
   {
-    title: "Legal",
+    title: "Products",
     links: [
-      { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Terms & Conditions", href: "/terms-and-conditions" },
+      { label: "Equity Trading", href: "/equity-trading" },
+      { label: "Futures & Options", href: "/futures-and-options" },
+      { label: "Commodity Trading", href: "/commodity-trading" },
+      { label: "Intraday Trading", href: "/intraday-trading" },
+      { label: "Margin Trading", href: "/margin-trading" },
+      { label: "Dabba Trading", href: "/dabba-trading" },
     ],
   },
+
+  // {
+  //   title: "Legal",
+  //   links: [
+  //     { label: "Privacy Policy", href: "/privacy-policy" },
+  //     { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  //   ],
+  // },
 ];
 
 export default function SocialAndFooter() {
@@ -135,14 +147,14 @@ export default function SocialAndFooter() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
             {/* Brand Column */}
             <div className="lg:col-span-2">
-              <a href="#" className="flex items-center gap-3 no-underline mb-6 group">
+              <Link href="/" className="flex items-center gap-3 no-underline mb-6 group">
                 <div className="w-10 h-10 rounded-[12px] bg-gradient-to-br from-[var(--color-accent-blue)] to-[#5E84FF] flex items-center justify-center shadow-[0_0_20px_rgba(61,107,255,0.3)] group-hover:shadow-[0_0_30px_rgba(61,107,255,0.5)] transition-all">
                   <Landmark size={20} className="text-white" />
                 </div>
                 <span className="font-display font-extrabold text-[1.4rem] text-white tracking-tight">
                   Apex<span className="text-[var(--color-accent-blue)]">Trade</span>
                 </span>
-              </a>
+              </Link>
               <p className="font-sans text-[var(--color-text-secondary)] text-[1rem] leading-[1.8] max-w-[320px] mb-8">
                 Empowering your trading through advanced neural networks and institutional-grade automation.
               </p>
@@ -168,12 +180,12 @@ export default function SocialAndFooter() {
                 <ul className="space-y-4 p-0 list-none">
                   {col.links.map((item) => (
                     <li key={item.href}>
-                      <a
-                        href="#"
+                      <Link
+                        href={item.href}
                         className="font-sans text-[var(--color-text-secondary)] text-[0.95rem] no-underline transition-all duration-300 hover:text-white hover:translate-x-1 inline-block"
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -194,15 +206,15 @@ export default function SocialAndFooter() {
               </div>
 
               <div className="flex items-center gap-8">
-                {["System Status", "Privacy", "Terms"].map((link) => (
-                  <a
-                    key={link}
-                    href="#"
+                {[{ label: "Privacy Policy", href: "/privacy-policy" },
+                { label: "Terms & Conditions", href: "/terms-and-conditions" },].map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
                     className="font-sans text-[var(--color-text-muted)] text-[0.85rem] no-underline hover:text-white transition-colors flex items-center gap-2 group"
                   >
-                    {link === "System Status" && <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-green)] shadow-[0_0_8px_var(--color-accent-green)]" />}
-                    {link}
-                  </a>
+                    {link.label}
+                  </Link>
                 ))}
               </div>
             </div>
