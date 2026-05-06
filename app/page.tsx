@@ -24,7 +24,7 @@ export default function Home() {
       <TestimonialsSection />
       <FAQSection />
       <ContactSection />
-      {/* <NewsSection /> */}
+      <NewsSection />
     </main>
   );
 }

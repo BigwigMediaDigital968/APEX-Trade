@@ -215,9 +215,6 @@ export default function FAQSection() {
           <a href="#contact" className="btn-primary no-underline">
             Still have questions?
           </a>
-          <a href="#" className="btn-secondary no-underline">
-            View Documentation
-          </a>
         </div>
       </div>
     </section>

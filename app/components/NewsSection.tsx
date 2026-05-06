@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Calendar, User, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const blogPosts = [
     {
@@ -15,7 +16,7 @@ const blogPosts = [
         desc: "Explore how machine learning is reshaping audience targeting and personalized content delivery in 2024.",
     },
     {
-        image: "https://images.unsplash.com/photo-1611974717483-5828ff74895a?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073",
         category: "Trading",
         categoryColor: "var(--color-accent-blue)",
         date: "April 10, 2024",
@@ -115,16 +116,16 @@ export default function NewsSection() {
                                 {/* Meta Tags */}
                                 <div className="flex items-center space-x-4 mb-5">
                                     <div className="flex items-center text-[var(--color-text-muted)] text-xs">
-                                        <Calendar size={14} className="mr-1.5 text-[#FF6B2C]" />
+                                        <Calendar size={14} className="mr-1.5 text-accent-blue" />
                                         {post.date}
                                     </div>
                                     <div className="flex items-center text-[var(--color-text-muted)] text-xs">
-                                        <User size={14} className="mr-1.5 text-[#FF6B2C]" />
+                                        <User size={14} className="mr-1.5 text-accent-blue" />
                                         By {post.author}
                                     </div>
                                 </div>
 
-                                <h3 className="font-display text-xl font-bold text-[var(--color-text-primary)] mb-4 leading-tight group-hover:text-[var(--color-accent-blue-light)] transition-colors duration-300">
+                                <h3 className="font-display text-xl font-bold text-[var(--color-text-primary)] mb-4 leading-tight group-hover:text-accent-blue transition-colors duration-300">
                                     {post.title}
                                 </h3>
 
@@ -133,12 +134,12 @@ export default function NewsSection() {
                                 </p>
 
                                 {/* Read Article Action - Matching image_aa0e59.jpg */}
-                                <div className="flex items-center text-white font-bold text-xs uppercase tracking-widest mt-auto cursor-pointer group/link">
+                                <Link href={`/blogs/${post.title.split(" ").join("-")}`} className="flex items-center text-white font-bold text-xs uppercase tracking-widest mt-auto cursor-pointer group/link">
                                     <span className="mr-3">Read Article</span>
                                     <div className="w-8 h-8 rounded-full bg-white/10 border border-white/5 flex items-center justify-center transition-all duration-300 group-hover/link:bg-[var(--color-accent-blue)] group-hover/link:border-[var(--color-accent-blue)] group-hover/link:translate-x-1">
                                         <ArrowUpRight size={14} />
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                         </motion.div>
                     ))}

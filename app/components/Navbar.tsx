@@ -98,6 +98,8 @@ const navLinks = [
       }
     ]
   },
+  { label: "Blogs", href: "/blogs" },
+
   { label: "Contact", href: "/contact-us" },
 ];
 

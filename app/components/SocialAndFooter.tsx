@@ -41,6 +41,7 @@ const footerLinks = [
     title: "About",
     links: [
       { label: "Why ApexTrade", href: "/about" },
+      { label: "News & blogs", href: "/blogs" },
       { label: "Contact Us", href: "/contact-us" },
     ],
   },
