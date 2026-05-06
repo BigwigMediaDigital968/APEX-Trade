@@ -52,10 +52,10 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                     <X size={24} />
                 </button>
 
-                <div className={`relative flex w-full h-full transition-all duration-700 ease-in-out ${isLogin ? 'flex-row' : 'flex-row-reverse'}`}>
+                <div className={`relative sm:flex w-full h-full transition-all duration-700 ease-in-out ${isLogin ? 'flex-row' : 'flex-row-reverse'}`}>
 
                     {/* ── FORM SIDE ── */}
-                    <div className="w-full md:w-1/2 h-full p-8 md:p-12 flex flex-col justify-center bg-[#16191E] z-50">
+                    <div className="w-full sm:w-1/2 h-full p-8 md:p-12 flex flex-col justify-center bg-[#16191E] z-50">
                         <AnimatePresence mode="wait">
 
                             {/* ─── LOGIN ─── */}
@@ -201,10 +201,56 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                                 </motion.div>
                             )}
                         </AnimatePresence>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mt-4 p-8 bg-[#040812] border border-white/5 rounded-2xl text-center relative overflow-hidden group transition-colors hover:border-[#3D6BFF]/30"
+                        >
+                            {/* Dynamic Background Glow */}
+                            <div className="absolute inset-0 bg-[#3D6BFF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                            <div className="relative z-10 flex flex-col items-center">
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={isLogin ? 'login-text' : 'signup-text'}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        transition={{ duration: 0.2, ease: "easeOut" }}
+                                        className="flex flex-col items-center"
+                                    >
+                                        <p className="text-slate-500 text-[14px] uppercase font-black tracking-[0.3em] mb-1">
+                                            {isLogin ? "NEW TO Apex Trade?" : 'Already a member?'}
+                                        </p>
+                                        <p className="text-white/70 text-sm leading-relaxed max-w-xs mx-auto">
+                                            {isLogin ? "Start your tarding journey" : "Login to your trading account"}
+
+                                        </p>
+
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            onClick={toggleAuth}
+                                            className="relative px-10 py-2 mt-3 border-2 border-white/30 hover:border-white text-white rounded-xl overflow-hidden group/btn hover:border-accent-blue transition-all duration-300"
+                                        >
+                                            <span className="relative z-10 text-white text-[11px] uppercase font-bold tracking-[0.2em]">
+                                                {isLogin ? 'Create Account' : 'LOGIN '}
+                                            </span>
+
+                                        </motion.button>
+                                    </motion.div>
+                                </AnimatePresence>
+                            </div>
+
+                            {/* Decorative Corner Accents (Matching image_7939bb style) */}
+                            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/10 rounded-tl" />
+                            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/10 rounded-br" />
+                        </motion.div>
+
                     </div>
 
                     {/* ── CTA PANEL (unchanged) ── */}
-                    <div className="hidden md:flex w-1/2 h-auto relative overflow-hidden bg-[#3D6BFF]">
+                    <div className="hidden sm:flex w-1/2 h-auto relative overflow-hidden bg-[#3D6BFF]">
                         <div className="absolute inset-0 bg-gradient-to-br from-[#3D6BFF] via-[#3D6BFF] to-[#16191E]/20" />
                         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent)]" />
 
@@ -256,17 +302,7 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                     </div>
 
                     {/* Mobile Toggle */}
-                    <div className="md:hidden p-6 bg-[#0B0E14] border-t border-white/5 text-center">
-                        <p className="text-text-muted text-[10px] uppercase font-bold tracking-widest mb-4">
-                            {isLogin ? "Don't have an account?" : 'Already a member?'}
-                        </p>
-                        <button
-                            onClick={toggleAuth}
-                            className="text-accent-blue font-black uppercase tracking-[0.2em] text-xs underline underline-offset-8"
-                        >
-                            {isLogin ? 'Join the Protocol' : 'Sign in to Terminal'}
-                        </button>
-                    </div>
+
 
                 </div>
             </motion.div>
