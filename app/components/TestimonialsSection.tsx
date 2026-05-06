@@ -113,7 +113,7 @@ export default function TestimonialsSection() {
   const prev = () => setIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
 
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden bg-bg-main">
+    <section id="testimonials" className="py-10 md:py-18 relative overflow-hidden bg-bg-main">
       {/* Background Glows */}
       <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-accent-blue/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-accent-green/5 blur-[120px] pointer-events-none" />
@@ -139,9 +139,10 @@ export default function TestimonialsSection() {
         </motion.div>
 
         {/* Multi-Card Carousel */}
-        <div className="relative" ref={containerRef}>
-          <div className="overflow-hidden py-10 px-2">
+        <div className="relative">
+          <div className="overflow-hidden py-10 px-2" >
             <motion.div
+              ref={containerRef}
               className="flex"
               animate={{ x: -index * cardWidth }}
               transition={{ type: "spring", stiffness: 200, damping: 25 }}
@@ -149,10 +150,10 @@ export default function TestimonialsSection() {
               {testimonials.map((t, i) => (
                 <div
                   key={i}
-                  className="shrink-0 px-3"
+                  className="shrink-0"
                   style={{ width: `${100 / visibleCards}%` }}
                 >
-                  <div className="h-full relative group">
+                  <div className="h-full relative group px-3">
                     {/* Glassmorphic Card */}
                     <div className="h-full bg-bg-card/40 backdrop-blur-xl border border-border-main rounded-[28px] p-8 transition-all duration-500 group-hover:border-accent-blue/40 group-hover:bg-bg-card-hover/60 group-hover:-translate-y-2">
 

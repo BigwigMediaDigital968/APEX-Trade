@@ -1,5 +1,7 @@
 "use client";
 
+import { useAuthModal } from "../context/AuthModalContext";
+
 const checks = [
   "AI-generated signals with 84%+ verified win rate.",
   "Execute across Forex, Crypto, Stocks & Indices.",
@@ -8,6 +10,11 @@ const checks = [
 ];
 
 export default function StatsShowcaseSection() {
+  const { toggle: authToggle } = useAuthModal();
+
+  const handlClick = () => {
+    authToggle();
+  }
   return (
     <section className="py-24 px-6 relative overflow-hidden bg-[linear-gradient(180deg,transparent_0%,rgba(0,255,163,0.03)_50%,transparent_100%)]">
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
@@ -29,7 +36,7 @@ export default function StatsShowcaseSection() {
             <div key={i} className="flex items-start gap-3.5 mb-4">
               <div className="w-[22px] h-[22px] rounded-full bg-[#3D6BFF]/15 border border-[#3D6BFF]/30 flex items-center justify-center shrink-0 mt-[1px]">
                 <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-                  <path d="M2.5 5.5L4.5 7.5L8.5 3.5" stroke="#3D6BFF" strokeWidth="1.8" strokeLinecap="round"/>
+                  <path d="M2.5 5.5L4.5 7.5L8.5 3.5" stroke="#3D6BFF" strokeWidth="1.8" strokeLinecap="round" />
                 </svg>
               </div>
               <span className="font-sans text-[#C8CDD6] text-[0.92rem] leading-[1.5]">
@@ -38,12 +45,12 @@ export default function StatsShowcaseSection() {
             </div>
           ))}
 
-          <a href="#" className="btn-primary mt-8 no-underline inline-flex">
+          <button onClick={handlClick} className="btn-primary mt-8 no-underline inline-flex">
             Get Started
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
-          </a>
+          </button>
         </div>
 
         {/* Right: dashboard cards */}
@@ -59,16 +66,16 @@ export default function StatsShowcaseSection() {
             <div className="flex justify-center mb-5">
               <div className="relative w-[100px] h-[100px]">
                 <svg width="100" height="100" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(142,150,165,0.1)" strokeWidth="12"/>
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(142,150,165,0.1)" strokeWidth="12" />
                   <circle cx="50" cy="50" r="38" fill="none" stroke="#3D6BFF" strokeWidth="12"
                     strokeDasharray="170 70" strokeLinecap="round"
-                    className="origin-center -rotate-90"/>
+                    className="origin-center -rotate-90" />
                   <circle cx="50" cy="50" r="38" fill="none" stroke="#00FFA3" strokeWidth="12"
                     strokeDasharray="55 185" strokeDashoffset="-170" strokeLinecap="round"
-                    className="origin-center -rotate-90"/>
+                    className="origin-center -rotate-90" />
                   <circle cx="50" cy="50" r="38" fill="none" stroke="#FF4B6A" strokeWidth="12"
                     strokeDasharray="15 225" strokeDashoffset="-225" strokeLinecap="round"
-                    className="origin-center -rotate-90"/>
+                    className="origin-center -rotate-90" />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className="font-sans text-text-muted text-[0.6rem]">Total Activity</span>
@@ -108,7 +115,7 @@ export default function StatsShowcaseSection() {
               </div>
               <div className="flex items-center gap-1 bg-accent-green/10 border border-accent-green/20 rounded-full px-2.5 py-[3px]">
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                  <path d="M2 8L8 2M8 2H4M8 2V6" stroke="#00FFA3" strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M2 8L8 2M8 2H4M8 2V6" stroke="#00FFA3" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
                 <span className="text-accent-green text-[0.72rem] font-semibold">14%</span>
               </div>
@@ -118,12 +125,12 @@ export default function StatsShowcaseSection() {
             <svg width="100%" height="40" viewBox="0 0 200 40" className="my-2.5">
               <defs>
                 <linearGradient id="sparkGrad" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" stopColor="#00FFA3" stopOpacity="0.3"/>
-                  <stop offset="100%" stopColor="#00FFA3" stopOpacity="0"/>
+                  <stop offset="0%" stopColor="#00FFA3" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#00FFA3" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              <path d="M0 30 L30 25 L60 28 L90 15 L120 18 L150 8 L180 5 L200 2" fill="none" stroke="#00FFA3" strokeWidth="1.5"/>
-              <path d="M0 30 L30 25 L60 28 L90 15 L120 18 L150 8 L180 5 L200 2 L200 40 L0 40Z" fill="url(#sparkGrad)"/>
+              <path d="M0 30 L30 25 L60 28 L90 15 L120 18 L150 8 L180 5 L200 2" fill="none" stroke="#00FFA3" strokeWidth="1.5" />
+              <path d="M0 30 L30 25 L60 28 L90 15 L120 18 L150 8 L180 5 L200 2 L200 40 L0 40Z" fill="url(#sparkGrad)" />
             </svg>
           </div>
 
@@ -133,7 +140,7 @@ export default function StatsShowcaseSection() {
               <div className="flex items-center gap-2.5">
                 <div className="w-[34px] h-[34px] rounded-[10px] bg-accent-green/10 flex items-center justify-center">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2 12L5 8L8 10L13 4" stroke="#00FFA3" strokeWidth="1.8" strokeLinecap="round"/>
+                    <path d="M2 12L5 8L8 10L13 4" stroke="#00FFA3" strokeWidth="1.8" strokeLinecap="round" />
                   </svg>
                 </div>
                 <div>
@@ -147,7 +154,7 @@ export default function StatsShowcaseSection() {
               <div className="flex items-center gap-2.5">
                 <div className="w-[34px] h-[34px] rounded-[10px] bg-[#FF4B6A]/10 flex items-center justify-center">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2 4L5 8L8 6L13 12" stroke="#FF4B6A" strokeWidth="1.8" strokeLinecap="round"/>
+                    <path d="M2 4L5 8L8 6L13 12" stroke="#FF4B6A" strokeWidth="1.8" strokeLinecap="round" />
                   </svg>
                 </div>
                 <div>

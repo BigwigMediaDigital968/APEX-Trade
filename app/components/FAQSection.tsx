@@ -85,7 +85,7 @@ export default function FAQSection() {
   const currentFaqs = faqs[activeTab] || [];
 
   return (
-    <section id="faq" className="py-24 px-6 relative">
+    <section id="faq" className="py-8 md:py-18 px-6 relative">
       <div className="max-w-[1100px] mx-auto">
         {/* Header */}
         <div className="text-center mb-14">
@@ -119,48 +119,95 @@ export default function FAQSection() {
         </div>
 
         {/* FAQ grid */}
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(480px,1fr))] gap-3">
-          {currentFaqs.map((faq, i) => (
-            <div
-              key={i}
-              className={`faq-item rounded-[14px] overflow-hidden border transition-all duration-200 ${openIndex === i ? "border-accent-blue/30 bg-accent-blue/5" : "border-border-main"
-                }`}
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className={`w-full border-none cursor-pointer p-5 flex items-center justify-between gap-4 text-left transition-colors duration-200 ${openIndex === i ? "bg-accent-blue/10" : "bg-[#131929]/80 hover:bg-[#131929]"
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="space-y-3">
+            {currentFaqs.slice(0, Math.ceil(currentFaqs.length / 2)).map((faq, i) => (
+              <div
+                key={i}
+                className={`faq-item rounded-[14px] overflow-hidden border transition-all duration-200 ${openIndex === i ? "border-accent-blue/30 bg-accent-blue/5" : "border-border-main"
                   }`}
               >
-                <span className="font-sans font-medium text-white text-[0.92rem]">
-                  {faq.q}
-                </span>
-                <div
-                  className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 border ${openIndex === i
-                      ? "bg-accent-blue/15 border-accent-blue/30"
-                      : "bg-border-main/50 border-border-main"
+                <button
+                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                  className={`w-full border-none cursor-pointer p-5 flex items-center justify-between gap-4 text-left transition-colors duration-200 ${openIndex === i ? "bg-accent-blue/10" : "bg-[#131929]/80 hover:bg-[#131929]"
                     }`}
                 >
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                    className={`transition-transform duration-300 ${openIndex === i ? "rotate-45" : "rotate-0"
+                  <span className="font-sans font-medium text-white text-[0.92rem]">
+                    {faq.q}
+                  </span>
+                  <div
+                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 border ${openIndex === i
+                      ? "bg-accent-blue/15 border-accent-blue/30"
+                      : "bg-border-main/50 border-border-main"
                       }`}
                   >
-                    <path d="M6 2V10M2 6H10" stroke={openIndex === i ? "#3D6BFF" : "#8E96A5"} strokeWidth="1.8" strokeLinecap="round" />
-                  </svg>
-                </div>
-              </button>
-              {openIndex === i && (
-                <div className="px-6 pb-5 pt-1 bg-transparent">
-                  <p className="font-sans text-text-secondary text-[0.88rem] leading-[1.75]">
-                    {faq.a}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      className={`transition-transform duration-300 ${openIndex === i ? "rotate-45" : "rotate-0"
+                        }`}
+                    >
+                      <path d="M6 2V10M2 6H10" stroke={openIndex === i ? "#3D6BFF" : "#8E96A5"} strokeWidth="1.8" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                </button>
+                {openIndex === i && (
+                  <div className="px-6 pb-5 pt-1 bg-transparent">
+                    <p className="font-sans text-text-secondary text-[0.88rem] leading-[1.75]">
+                      {faq.a}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="space-y-3">
+            {currentFaqs.slice(Math.ceil(currentFaqs.length / 2)).map((faq, i) => (
+              <div
+                key={-(i + 1)}
+                className={`faq-item rounded-[14px] overflow-hidden border transition-all duration-200 ${openIndex === -(i + 1) ? "border-accent-blue/30 bg-accent-blue/5" : "border-border-main"
+                  }`}
+              >
+                <button
+                  onClick={() => setOpenIndex(openIndex === -(i + 1) ? null : -(i + 1))}
+                  className={`w-full border-none cursor-pointer p-5 flex items-center justify-between gap-4 text-left transition-colors duration-200 ${openIndex === i ? "bg-accent-blue/10" : "bg-[#131929]/80 hover:bg-[#131929]"
+                    }`}
+                >
+                  <span className="font-sans font-medium text-white text-[0.92rem]">
+                    {faq.q}
+                  </span>
+                  <div
+                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 border ${openIndex === i
+                      ? "bg-accent-blue/15 border-accent-blue/30"
+                      : "bg-border-main/50 border-border-main"
+                      }`}
+                  >
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      className={`transition-transform duration-300 ${openIndex === -(i + 1) ? "rotate-45" : "rotate-0"
+                        }`}
+                    >
+                      <path d="M6 2V10M2 6H10" stroke={openIndex === -(i + 1) ? "#3D6BFF" : "#8E96A5"} strokeWidth="1.8" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                </button>
+                {openIndex === -(i + 1) && (
+                  <div className="px-6 pb-5 pt-1 bg-transparent">
+                    <p className="font-sans text-text-secondary text-[0.88rem] leading-[1.75]">
+                      {faq.a}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+
+          </div>
+
         </div>
 
         {/* Bottom CTA */}
