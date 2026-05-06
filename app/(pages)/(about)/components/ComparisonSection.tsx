@@ -80,14 +80,25 @@ export default function ComparisonSection() {
                         </motion.div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 relative">
-                        {/* Left side - Ordinary */}
+                    {/* Mobile VS badge */}
+
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-4 relative">
+
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pt-4 z-30 flex lg:hidden justify-center">
+                            <div className="w-14 h-14 rounded-2xl bg-[#0B0E14] border-2 border-white/10 flex items-center justify-center">
+                                <div className="text-white font-black text-xl tracking-tighter italic">VS</div>
+                            </div>
+                        </div>
+
+                        {/* ── Left side - Ordinary ── */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="bg-[#16191E]/40 border border-white/5 rounded-[40px] p-10 md:p-14 backdrop-blur-md relative group hover:border-white/10 transition-colors"
+                            className="bg-[#16191E]/40 border border-white/5 rounded-[40px] p-5 py-10 sm:p-10 md:p-14 backdrop-blur-md relative group hover:border-white/10 transition-colors"
                         >
+                            {/* Header */}
                             <div className="flex items-center gap-4 mb-10">
                                 <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/40">
                                     <ShieldAlert size={24} />
@@ -98,37 +109,71 @@ export default function ComparisonSection() {
                                 </div>
                             </div>
 
-                            <div className="space-y-8">
-                                <div className="flex justify-between items-end border-b border-white/5 pb-6">
-                                    <span className="text-white/40 text-sm font-medium">Platform Fees</span>
-                                    <span className="text-white text-2xl font-semibold italic opacity-60 line-through">High Premium</span>
+                            {/* ── Calculation rows ── */}
+                            <div className="space-y-0 mb-2">
+                                {/* Row 1 — Gross Profit */}
+                                <div className="flex justify-between items-center py-4 border-b border-white/5">
+                                    <span className="text-white/40 text-sm font-medium">Gross Profit</span>
+                                    <span className="text-white/70 text-base font-bold">Rs 28,000</span>
                                 </div>
-                                <div className="flex justify-between items-end border-b border-white/5 pb-6">
-                                    <span className="text-white/40 text-sm font-medium">Profit Retention</span>
-                                    <div className="text-right">
-                                        <span className="text-red-500/80 text-3xl font-bold block mb-1">Rs 8,000</span>
-                                        <span className="text-white/20 text-[10px] font-bold uppercase tracking-tighter">After Brokerage</span>
+
+                                {/* Row 2 — Brokerage */}
+                                <div className="flex justify-between items-center py-4 border-b border-white/5">
+                                    <span className="text-white/40 text-sm font-medium">Brokerage &amp; Taxes</span>
+                                    <div className="flex items-center gap-2">
+                                        <TrendingDown size={14} className="text-red-400/80" />
+                                        <span className="text-red-400/80 text-base font-bold">− Rs 20,000</span>
                                     </div>
                                 </div>
-                                <div className="pt-4">
-                                    <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden">
-                                        <div className="w-[30%] h-full bg-red-500/40" />
+
+                                {/* Row 3 — Platform fee */}
+                                <div className="flex justify-between items-center py-4 border-b border-white/5">
+                                    <span className="text-white/40 text-sm font-medium">Platform Fee</span>
+                                    <div className="flex items-center gap-2">
+                                        <TrendingDown size={14} className="text-red-400/80" />
+                                        <span className="text-red-400/50 text-base font-bold italic line-through">High Premium</span>
                                     </div>
-                                    <p className="mt-3 text-[10px] text-white/30 uppercase font-bold tracking-widest">Efficiency Rating: 28%</p>
+                                </div>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="w-full h-px bg-white/5 my-5" />
+
+                            {/* Net result */}
+                            <div className="flex justify-between items-end mb-6">
+                                <div>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 block mb-1">Net Take-Home</span>
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-white/20">of Rs 28,000 earned</span>
+                                </div>
+                                <div className="text-right">
+                                    <span className="text-red-400 text-4xl font-black block leading-none">Rs 8,000</span>
+                                    <span className="text-white/20 text-[10px] font-bold uppercase tracking-tighter mt-1 block">72% lost to fees</span>
+                                </div>
+                            </div>
+
+                            {/* Efficiency bar */}
+                            <div className="pt-2">
+                                <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+                                    <div className="w-[28%] h-full bg-red-500/40 rounded-full" />
+                                </div>
+                                <div className="flex justify-between mt-3">
+                                    <p className="text-[10px] text-white/30 uppercase font-bold tracking-widest">Efficiency: 28%</p>
+                                    <p className="text-[10px] text-red-400/40 uppercase font-bold tracking-widest">You lose 72%</p>
                                 </div>
                             </div>
                         </motion.div>
 
-                        {/* Right side - ApexTrade */}
+                        {/* ── Right side - ApexTrade ── */}
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="bg-[#3D6BFF]/5 border border-[#3D6BFF]/30 rounded-[40px] p-10 md:p-14 backdrop-blur-md relative overflow-hidden group"
+                            className="bg-[#3D6BFF]/5 border border-[#3D6BFF]/30 rounded-[40px] p-5 py-10 sm:p-10 md:p-14 backdrop-blur-md relative overflow-hidden group"
                         >
                             {/* Subtle animated light sweep */}
                             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
+                            {/* Header */}
                             <div className="flex items-center gap-4 mb-10 relative z-10">
                                 <div className="w-12 h-12 rounded-xl bg-[#3D6BFF] flex items-center justify-center text-white shadow-[0_0_20px_rgba(61,107,255,0.4)]">
                                     <Zap size={24} className="fill-current" />
@@ -139,36 +184,83 @@ export default function ComparisonSection() {
                                 </div>
                             </div>
 
-                            <div className="space-y-8 relative z-10">
-                                <div className="flex justify-between items-end border-b border-[#3D6BFF]/20 pb-6">
-                                    <span className="text-white/60 text-sm font-medium">Platform Fees</span>
-                                    <span className="text-[#00FFA3] text-2xl font-bold">ZERO</span>
+                            {/* ── Calculation rows ── */}
+                            <div className="space-y-0 mb-2 relative z-10">
+                                {/* Row 1 — Gross Profit */}
+                                <div className="flex justify-between items-center py-4 border-b border-[#3D6BFF]/15">
+                                    <span className="text-white/60 text-sm font-medium">Gross Profit</span>
+                                    <span className="text-white/70 text-base font-bold">Rs 28,000</span>
                                 </div>
-                                <div className="flex justify-between items-end border-b border-[#3D6BFF]/20 pb-6">
-                                    <span className="text-white/60 text-sm font-medium">Profit Retention</span>
-                                    <div className="text-right">
-                                        <span className="text-white text-3xl font-black block mb-1">Rs 28,000</span>
-                                        <span className="text-[#00FFA3] text-[10px] font-bold uppercase tracking-tighter">100% Payout</span>
+
+                                {/* Row 2 — Brokerage */}
+                                <div className="flex justify-between items-center py-4 border-b border-[#3D6BFF]/15">
+                                    <span className="text-white/60 text-sm font-medium">Brokerage &amp; Taxes</span>
+                                    <div className="flex items-center gap-2">
+                                        <Check size={14} className="text-[#00FFA3]" />
+                                        <span className="text-[#00FFA3] text-base font-bold">Rs 0</span>
                                     </div>
                                 </div>
-                                <div className="pt-4">
-                                    <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden">
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: '100%' }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 1.5, ease: "circOut" }}
-                                            className="h-full bg-gradient-to-r from-[#3D6BFF] to-[#00FFA3]"
-                                        />
+
+                                {/* Row 3 — Platform fee */}
+                                <div className="flex justify-between items-center py-4 border-b border-[#3D6BFF]/15">
+                                    <span className="text-white/60 text-sm font-medium">Platform Fee</span>
+                                    <div className="flex items-center gap-2">
+                                        <Check size={14} className="text-[#00FFA3]" />
+                                        <span className="text-[#00FFA3] text-base font-bold">ZERO</span>
                                     </div>
-                                    <div className="flex justify-between mt-3">
-                                        <p className="text-[10px] text-[#3D6BFF] uppercase font-bold tracking-widest">Efficiency Rating: 100%</p>
-                                        <p className="text-[10px] text-[#00FFA3] uppercase font-bold tracking-widest">Ultra-Low Margin</p>
-                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="w-full h-px bg-[#3D6BFF]/20 my-5 relative z-10" />
+
+                            {/* Net result */}
+                            <div className="flex justify-between items-end mb-6 relative z-10">
+                                <div>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#3D6BFF] block mb-1">Net Take-Home</span>
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#00FFA3]">100% Payout</span>
+                                </div>
+                                <div className="text-right">
+                                    <span className="text-white text-4xl font-black block leading-none">Rs 28,000</span>
+                                    <span className="text-[#00FFA3] text-[10px] font-bold uppercase tracking-tighter mt-1 block">Full amount kept</span>
+                                </div>
+                            </div>
+
+                            {/* Efficiency bar */}
+                            <div className="pt-2 relative z-10">
+                                <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        whileInView={{ width: "100%" }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 1.5, ease: "circOut" }}
+                                        className="h-full bg-gradient-to-r from-[#3D6BFF] to-[#00FFA3] rounded-full"
+                                    />
+                                </div>
+                                <div className="flex justify-between mt-3">
+                                    <p className="text-[10px] text-[#3D6BFF] uppercase font-bold tracking-widest">Efficiency: 100%</p>
+                                    <p className="text-[10px] text-[#00FFA3] uppercase font-bold tracking-widest">Ultra-Low Margin</p>
                                 </div>
                             </div>
                         </motion.div>
                     </div>
+
+                    {/* ── Savings callout bar ── */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        className="mt-6 flex flex-wrap items-center justify-between gap-4 px-8 py-5 rounded-2xl bg-[#00FFA3]/5 border border-[#00FFA3]/15"
+                    >
+                        <span className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">
+                            Your savings with ApexTrade
+                        </span>
+                        <span className="text-2xl font-black text-[#00FFA3]">
+                            + Rs 20,000{" "}
+                            <span className="text-[11px] font-bold tracking-wider text-[#00FFA3]/50">per trade</span>
+                        </span>
+                    </motion.div>
                 </div>
 
                 {/* High-Tech Table Layout */}
