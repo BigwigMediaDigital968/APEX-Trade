@@ -204,7 +204,7 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="mt-4 p-8 bg-[#040812] border border-white/5 rounded-2xl text-center relative overflow-hidden group transition-colors hover:border-[#3D6BFF]/30"
+                            className="mt-4 p-8 bg-[#040812] border block sm:hidden border-white/5 rounded-2xl text-center relative overflow-hidden group transition-colors hover:border-[#3D6BFF]/30"
                         >
                             {/* Dynamic Background Glow */}
                             <div className="absolute inset-0 bg-[#3D6BFF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
