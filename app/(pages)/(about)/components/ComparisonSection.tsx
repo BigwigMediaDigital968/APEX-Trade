@@ -18,7 +18,7 @@ export default function ComparisonSection() {
     const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
     return (
-        <section className="py-24 md:py-32 px-6 bg-[#0B0E14] relative overflow-hidden">
+        <section className="py-24 md:py-32 px-4 sm:px-6 bg-[#0B0E14] relative overflow-hidden">
             {/* Advanced Background effects */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_rgba(61,107,255,0.05),transparent_70%)]" />
@@ -85,7 +85,7 @@ export default function ComparisonSection() {
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-4 relative">
 
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pt-4 z-30 flex lg:hidden justify-center">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 -mt-6 flex lg:hidden justify-center">
                             <div className="w-14 h-14 rounded-2xl bg-[#0B0E14] border-2 border-white/10 flex items-center justify-center">
                                 <div className="text-white font-black text-xl tracking-tighter italic">VS</div>
                             </div>
@@ -292,10 +292,10 @@ export default function ComparisonSection() {
                             <table className="w-full text-left border-collapse">
                                 <thead>
                                     <tr className="bg-white/[0.01]">
-                                        <th className="px-10 py-8 text-white/40 text-[0.65rem] uppercase tracking-[0.2em] font-black">Contract</th>
-                                        <th className="px-10 py-8 text-white/40 text-[0.65rem] uppercase tracking-[0.2em] font-black">Retail Req.</th>
-                                        <th className="px-10 py-8 text-[#3D6BFF] text-[0.65rem] uppercase tracking-[0.2em] font-black">ApexTrade Req.</th>
-                                        <th className="px-10 py-8 text-right text-white/40 text-[0.65rem] uppercase tracking-[0.2em] font-black">Capital Saved</th>
+                                        <th className="px-4 sm:px-10 py-8 text-white/40 text-[0.65rem] uppercase tracking-[0.2em] font-black">Contract</th>
+                                        <th className="px-4 sm:px-10 py-8 text-white/40 text-[0.65rem] uppercase tracking-[0.2em] font-black">Retail Req.</th>
+                                        <th className="px-4 sm:px-10 py-8 text-[#3D6BFF] text-[0.65rem] uppercase tracking-[0.2em] font-black">ApexTrade Req.</th>
+                                        <th className="px-4 sm:px-10 py-8 text-right text-white/40 text-[0.65rem] uppercase tracking-[0.2em] font-black">Capital Saved</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -308,21 +308,21 @@ export default function ComparisonSection() {
                                             transition={{ delay: index * 0.05 }}
                                             className="border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors group/row"
                                         >
-                                            <td className="px-10 py-6">
+                                            <td className="px-4 sm:px-10 py-6">
                                                 <span className="text-white font-bold text-sm group-hover/row:text-[#3D6BFF] transition-colors">
                                                     {row.script}
                                                 </span>
                                             </td>
-                                            <td className="px-10 py-6">
+                                            <td className="px-4 sm:px-10 py-6">
                                                 <span className="text-white/40 text-sm font-medium">{row.ordinary}</span>
                                             </td>
-                                            <td className="px-10 py-6">
+                                            <td className="px-4 sm:px-10 py-6">
                                                 <div className="flex items-center gap-3">
                                                     <div className="w-2 h-2 rounded-full bg-[#00FFA3] shadow-[0_0_8px_#00FFA3]" />
                                                     <span className="text-white font-black text-sm">{row.ApexTrade}</span>
                                                 </div>
                                             </td>
-                                            <td className="px-10 py-6 text-right">
+                                            <td className="px-4 sm:px-10 py-6 text-right">
                                                 <span className="inline-block px-3 py-1 rounded-lg bg-[#00FFA3]/10 border border-[#00FFA3]/20 text-[#00FFA3] text-xs font-bold">
                                                     {row.saving}
                                                 </span>
