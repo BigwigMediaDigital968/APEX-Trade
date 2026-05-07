@@ -149,12 +149,10 @@ export default function SocialAndFooter() {
             {/* Brand Column */}
             <div className="lg:col-span-2">
               <Link href="/" className="flex items-center gap-3 no-underline mb-6 group">
-                <div className="w-10 h-10 rounded-[12px] bg-gradient-to-br from-[var(--color-accent-blue)] to-[#5E84FF] flex items-center justify-center shadow-[0_0_20px_rgba(61,107,255,0.3)] group-hover:shadow-[0_0_30px_rgba(61,107,255,0.5)] transition-all">
-                  <Landmark size={20} className="text-white" />
-                </div>
-                <span className="font-display font-extrabold text-[1.4rem] text-white tracking-tight">
-                  Apex<span className="text-[var(--color-accent-blue)]">Trade</span>
-                </span>
+                <div className="h-[60px] overflow-hidden">
+            <img src="/logo-apex-site.png" alt="ApexTrade Logo"  className="object-center w-full h-full" />
+
+          </div>
               </Link>
               <p className="font-sans text-[var(--color-text-secondary)] text-[1rem] leading-[1.8] max-w-[320px] mb-8">
                 Empowering your trading through advanced neural networks and institutional-grade automation.

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight, Activity, ShieldCheck, Sparkles, BookOpen, AlertTriangle, Layers, Zap, Package, TrendingUp, BarChart3 } from "lucide-react";
 import { useAuthModal } from "../context/AuthModalContext";
 import Link from "next/link";
+import Image from "next/image";
 
 // Updated navLinks with support for sub-items
 const navLinks = [
@@ -126,15 +127,10 @@ export default function Navbar() {
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-[10px] no-underline group">
-          <div className="w-[40px] h-[40px] rounded-[12px] bg-gradient-to-br from-[#3D6BFF] to-[#5E84FF] flex items-center justify-center shadow-[0_4px_20px_rgba(61,107,255,0.4)] transition-transform group-hover:scale-105">
-            <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-              <path d="M3 14L7 9L11 12L17 5" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="17" cy="5" r="2" fill="#00FFA3" />
-            </svg>
+          <div className="h-[40px] overflow-hidden">
+            <img src="/logo-apex-site.png" alt="ApexTrade Logo"  className="object-center w-full h-full" />
+
           </div>
-          <span className="font-display font-extrabold text-[1.3rem] text-white tracking-tight">
-            Apex<span className="text-[#3D6BFF]">Trade</span>
-          </span>
         </Link>
 
         {/* Desktop Links */}
