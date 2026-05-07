@@ -47,7 +47,7 @@ export default function HeroSection({
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
-                            className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#5E84FF] text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-8 backdrop-blur-xl"
+                            className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#5E84FF] text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-4 md:mb-8 backdrop-blur-xl"
                         >
                             <div className="w-1.5 h-1.5 rounded-full bg-[#3D6BFF] shadow-[0_0_10px_#3D6BFF]" />
                             <span>{tag}</span>
@@ -59,7 +59,7 @@ export default function HeroSection({
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                        className="font-display text-[clamp(2.8rem,8vw,5rem)] font-extrabold text-white leading-[1.02] tracking-tight mb-8"
+                        className="font-display text-[clamp(2.8rem,8vw,5rem)] font-extrabold text-white leading-[1.02] tracking-tight mb-4 md:mb-8"
                     >
                         {title}
                     </motion.h1>
@@ -93,7 +93,7 @@ export default function HeroSection({
             <motion.div
                 animate={{ opacity: [0.2, 0.5, 0.2], y: [0, 8, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+                className="absolute bottom-2 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
             >
                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Scroll</span>
                 <div className="w-[1.5px] h-8 bg-gradient-to-b from-[#3D6BFF] to-transparent rounded-full shadow-[0_0_10px_#3D6BFF]" />
