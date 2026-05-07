@@ -6,52 +6,52 @@ const steps = [
   {
     number: "01",
     title: "Create Your Account",
-    desc: "Sign up in under 2 minutes. Complete KYC verification and connect your preferred broker or exchange.",
-    color: "#3D6BFF",
+    desc: "Create your trading account in just 5 minutes with a quick and easy signup process.",
+    color: "#00FFA3",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <circle cx="14" cy="10" r="5" stroke="#3D6BFF" strokeWidth="1.8" fill="rgba(61,107,255,0.1)" />
+        <circle cx="14" cy="10" r="5" stroke="#00FFA3" strokeWidth="1.8" fill="rgba(0,255,163,0.1)" />
         <path d="M5 23C5 19.134 9.02944 16 14 16C18.9706 16 23 19.134 23 23"
-          stroke="#3D6BFF" strokeWidth="1.8" strokeLinecap="round" />
+          stroke="#00FFA3" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
     ),
   },
   {
     number: "02",
-    title: "Choose Your Strategy",
-    desc: "Pick from our library of battle-tested strategies or build your own with our intuitive no-code strategy builder.",
-    color: "#00FFA3",
+    title: "Add Funds",
+    desc: "Deposit funds securely in under 2 minutes and get ready to start trading instantly.",
+    color: "#3D6BFF",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <rect x="4" y="4" width="9" height="9" rx="2" stroke="#00FFA3" strokeWidth="1.8" fill="rgba(0,255,163,0.1)" />
-        <rect x="15" y="4" width="9" height="9" rx="2" stroke="#00FFA3" strokeWidth="1.8" fill="rgba(0,255,163,0.1)" />
-        <rect x="4" y="15" width="9" height="9" rx="2" stroke="#00FFA3" strokeWidth="1.8" fill="rgba(0,255,163,0.1)" />
-        <path d="M15 19.5H24M19.5 15V24" stroke="#00FFA3" strokeWidth="1.8" strokeLinecap="round" />
+        <rect x="4" y="4" width="9" height="9" rx="2" stroke="#3D6BFF" strokeWidth="1.8" fill="rgba(61,107,255,0.1)" />
+        <rect x="15" y="4" width="9" height="9" rx="2" stroke="#3D6BFF" strokeWidth="1.8" fill="rgba(61,107,255,0.1)" />
+        <rect x="4" y="15" width="9" height="9" rx="2" stroke="#3D6BFF" strokeWidth="1.8" fill="rgba(61,107,255,0.1)" />
+        <path d="M15 19.5H24M19.5 15V24" stroke="#3D6BFF" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
     ),
   },
   {
     number: "03",
-    title: "Set Risk Parameters",
-    desc: "Define your max drawdown, position size, and stop-loss rules. Our system will never exceed your limits.",
-    color: "#6B8FFF",
+    title: "Withdraw Profits",
+    desc: "Enjoy the fastest withdrawals within 30 minutes with our quick and reliable payout system.",
+    color: "#00FFA3",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M14 4L24 9V19L14 24L4 19V9L14 4Z" stroke="#6B8FFF" strokeWidth="1.8" fill="rgba(107,143,255,0.1)" />
-        <path d="M10 14L12.5 16.5L18 11" stroke="#6B8FFF" strokeWidth="2" strokeLinecap="round" />
+        <path d="M14 4L24 9V19L14 24L4 19V9L14 4Z" stroke="#00FFA3" strokeWidth="1.8" fill="rgba(0,255,163,0.1)" />
+        <path d="M10 14L12.5 16.5L18 11" stroke="#00FFA3" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
   },
   {
     number: "04",
-    title: "Watch Profits Grow",
-    desc: "ApexTrade executes your strategy 24/7. Monitor performance in real-time and withdraw anytime.",
-    color: "#00FFA3",
+    title: "Enjoy Your Profits",
+    desc: "Trade confidently and watch your profits grow with high leverage and seamless execution.",
+    color: "#3D6BFF",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M4 20L10 13L15 16L22 7" stroke="#00FFA3" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="22" cy="7" r="3" fill="rgba(0,255,163,0.2)" stroke="#00FFA3" strokeWidth="1.5" />
-        <path d="M4 24H24" stroke="rgba(142,150,165,0.3)" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M4 20L10 13L15 16L22 7" stroke="#3D6BFF" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="22" cy="7" r="3" fill="rgba(61,107,255,0.2)" stroke="#3D6BFF" strokeWidth="1.5" />
+        <path d="M4 24H24" stroke="rgba(61,107,255,0.3)" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -81,7 +81,7 @@ export default function HowItWorksSection() {
             <span className="text-gradient-blue">4 Simple Steps</span>
           </h2>
           <p className="font-sans text-text-secondary text-[1rem] max-w-[480px] mx-auto">
-            No trading experience needed. Our guided setup has you live trading in under 10 minutes.
+            No hassle, no delays — start trading and access your funds anytime with our ultra-fast system.
           </p>
         </div>
 
@@ -92,6 +92,15 @@ export default function HowItWorksSection() {
 
           {steps.map((step, i) => (
             <div key={i} className="px-6 text-center relative z-1">
+
+              {/* Glow effect only for the third step (index 2) */}
+            {i === 2 && (
+              <div 
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[140px] rounded-full blur-[40px] opacity-40 -z-10"
+                style={{ background: step.color }}
+              />
+            )}
+
               {/* Step number circle */}
               <div
                 className="w-[72px] h-[72px] rounded-full bg-[#131929] flex items-center justify-center mx-auto mb-7 relative"
@@ -122,7 +131,7 @@ export default function HowItWorksSection() {
         {/* CTA */}
         <div className="text-center mt-16">
           <button onClick={handlClick} className="btn-primary text-[1rem] no-underline">
-            Start Your Journey
+            Start Trading Now 
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>

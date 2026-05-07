@@ -2,82 +2,73 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { IoRocket, IoRocketOutline } from "react-icons/io5";
+import { MdElectricBolt } from "react-icons/md";
+import { BsGraphUpArrow } from "react-icons/bs";
+import { FaMoneyBillTrendUp } from "react-icons/fa6";
+import { FaRegClock } from "react-icons/fa";
+import { HiOutlineLightningBolt } from "react-icons/hi";
+import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
 
 const features = [
   {
     icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <path d="M13 3L15.5 10H23L17 14.5L19.5 21.5L13 17.5L6.5 21.5L9 14.5L3 10H10.5L13 3Z"
-          stroke="var(--color-accent-blue)" strokeWidth="1.8" strokeLinejoin="round" fill="rgba(61,107,255,0.1)" />
-      </svg>
+      <HiOutlineLightningBolt className="w-full h-full"/>
+
     ),
     color: "var(--color-accent-blue)",
-    borderColor: "var(--color-border-blue)",
-    title: "AI Signal Engine",
-    desc: "Our proprietary ML models scan 200+ indicators across global markets to surface high-probability trade setups before they move.",
+    title: "High Leverage Intraday",
+    valueProp: "500X Margin in Intraday (MCX & NSE Futures)",
+    desc: "Maximize your trading power with ultra-high leverage for intraday positions in MCX and NSE Futures.",
   },
   {
     icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <rect x="3" y="14" width="4" height="9" rx="1" fill="rgba(0,255,163,0.15)" stroke="var(--color-accent-green)" strokeWidth="1.5" />
-        <rect x="11" y="9" width="4" height="14" rx="1" fill="rgba(0,255,163,0.15)" stroke="var(--color-accent-green)" strokeWidth="1.5" />
-        <rect x="19" y="4" width="4" height="19" rx="1" fill="rgba(0,255,163,0.15)" stroke="var(--color-accent-green)" strokeWidth="1.5" />
-      </svg>
+      <IoRocketOutline className="w-full h-full" />
     ),
     color: "var(--color-accent-green)",
-    borderColor: "var(--color-border-green)",
-    title: "Automated Execution",
-    desc: "Set your strategy, define your risk, and let ApexTrade execute trades at millisecond speed — even while you sleep.",
+    title: "Smart Holding Leverage",
+    valueProp: "60X Margin for Holding (MCX & NSE Futures)",
+    desc: "Carry your positions with optimized leverage designed for better control and flexibility.",
   },
   {
     icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <circle cx="13" cy="13" r="9" stroke="var(--color-accent-blue-light)" strokeWidth="1.8" fill="rgba(61,107,255,0.08)" />
-        <path d="M9 13L11.5 15.5L17 10" stroke="var(--color-accent-blue-light)" strokeWidth="2" strokeLinecap="round" />
-      </svg>
+      <BsGraphUpArrow className="w-full h-full" />
     ),
     color: "var(--color-accent-blue-light)",
-    borderColor: "var(--color-border-blue)",
-    title: "Risk Management",
-    desc: "Intelligent stop-loss, position sizing, and drawdown controls automatically protect your capital on every single trade.",
+    title: "Options Trading Power",
+    valueProp: "Up to 7X Intraday & 4X Holding",
+    desc: "Trade options with enhanced leverage for both intraday and positional strategies.",
   },
   {
     icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <path d="M4 18L9 12L14 15L20 7" stroke="var(--color-accent-green)" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="20" cy="7" r="3" fill="rgba(0,255,163,0.2)" stroke="var(--color-accent-green)" strokeWidth="1.5" />
-      </svg>
+      <LiaMoneyBillWaveAltSolid className="w-full h-full" />
+
+
     ),
     color: "var(--color-accent-green)",
-    borderColor: "var(--color-border-green)",
-    title: "Real-Time Analytics",
-    desc: "Live P&L dashboards, win-rate tracking, and strategy performance metrics updated in real time across all your positions.",
+    title: "Low Brokerage",
+    valueProp: "Cost-Efficient Trading",
+    desc: "Benefit from minimal brokerage charges to maximize your net profits on every trade.",
   },
   {
     icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <rect x="3" y="3" width="9" height="9" rx="2" stroke="var(--color-accent-blue)" strokeWidth="1.8" fill="rgba(61,107,255,0.1)" />
-        <rect x="14" y="3" width="9" height="9" rx="2" stroke="var(--color-accent-blue)" strokeWidth="1.8" fill="rgba(61,107,255,0.1)" />
-        <rect x="3" y="14" width="9" height="9" rx="2" stroke="var(--color-accent-blue)" strokeWidth="1.8" fill="rgba(61,107,255,0.1)" />
-        <rect x="14" y="14" width="9" height="9" rx="2" stroke="var(--color-accent-blue)" strokeWidth="1.8" fill="rgba(61,107,255,0.1)" />
-      </svg>
+            <HiOutlineLightningBolt className="w-full h-full"/>
+
     ),
     color: "var(--color-accent-blue)",
-    borderColor: "var(--color-border-blue)",
-    title: "Multi-Asset Coverage",
-    desc: "Trade Forex, Crypto, Stocks, Commodities, and Indices from a single unified platform with one account.",
+    title: "Fastest Payout",
+    valueProp: "Quick & Secure Withdrawals",
+    desc: "Experience lightning-fast payout processing with complete reliability and transparency.",
   },
   {
     icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <path d="M13 3L23 8V18L13 23L3 18V8L13 3Z" stroke="var(--color-accent-green)" strokeWidth="1.8" fill="rgba(0,255,163,0.08)" />
-        <path d="M13 10V16M10 13H16" stroke="var(--color-accent-green)" strokeWidth="2" strokeLinecap="round" />
-      </svg>
+      <FaRegClock className="w-full h-full" />
+
     ),
     color: "var(--color-accent-green)",
-    borderColor: "var(--color-border-green)",
-    title: "Strategy Marketplace",
-    desc: "Browse, subscribe to, and copy proven strategies from top-performing traders with verified track records.",
+    title: "24/7 Support",
+    valueProp: "Always Here for You",
+    desc: "Get round-the-clock assistance from our dedicated support team whenever you need help.",
   },
 ];
 
@@ -141,47 +132,59 @@ export default function FeaturesSection() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {features.map((feature, i) => (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              whileHover={{
-                y: -8,
-                transition: { duration: 0.3, ease: "easeOut" }
-              }}
-              className="group relative h-full"
-            >
-              {/* Premium Card Glow Effect */}
-              <div className="absolute -inset-[1px] bg-gradient-to-b from-[var(--color-border-main)] to-transparent rounded-[24px] transition-all duration-500 group-hover:from-[var(--color-accent-blue)]/40 group-hover:to-[var(--color-accent-green)]/10 group-hover:opacity-100" />
+             <motion.div
+      key={i}
+      variants={itemVariants}
+      whileHover={{
+        y: -8,
+        transition: { duration: 0.3, ease: "easeOut" }
+      }}
+      className="group relative h-full"
+    >
+      {/* Premium Card Glow Effect */}
+      <div className="absolute -inset-[1px] bg-gradient-to-b from-[var(--color-border-main)] to-transparent rounded-[24px] transition-all duration-500 group-hover:from-[var(--color-accent-blue)]/40 group-hover:to-[var(--color-accent-green)]/10 group-hover:opacity-100" />
 
-              <div className="relative h-full bg-[var(--color-bg-card)]/80 backdrop-blur-md border border-[var(--color-border-main)] rounded-[24px] p-8 overflow-hidden transition-all duration-500 group-hover:bg-[var(--color-bg-card-hover)] group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
+      <div className="relative h-full bg-[var(--color-bg-card)]/80 backdrop-blur-md border border-[var(--color-border-main)] rounded-[24px] p-8 overflow-hidden transition-all duration-500 group-hover:bg-[var(--color-bg-card-hover)] group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
 
-                {/* Animated Background Pulse on Hover */}
-                <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-32 h-32 bg-[var(--color-accent-blue)]/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        {/* Animated Background Pulse on Hover */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-32 h-32 bg-[var(--color-accent-blue)]/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-                {/* Icon Container */}
-                <div
-                  className="w-[58px] h-[58px] rounded-[16px] flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg]"
-                  style={{
-                    background: `${feature.color}15`, // Adding hex opacity
-                    border: `1px solid ${feature.color}30`,
-                    boxShadow: `0 8px 20px -10px ${feature.color}40`
-                  }}
-                >
-                  {feature.icon}
-                </div>
+        {/* Icon Container */}
+        <div
+          className="w-8 h-8 rounded-[16px] flex items-center justify-center mb-10 transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg]"
+          style={{
+            background: `${feature.color}15`,
+            border: `1px solid ${feature.color}30`,
+            boxShadow: `0 8px 20px -10px ${feature.color}40`,
+            color: feature.color,
+          }}
+        >
+          {feature.icon}
+        </div>
 
-                <h3 className="font-display text-xl font-bold text-[var(--color-text-primary)] mb-3 tracking-tight group-hover:text-[var(--color-accent-blue-light)] transition-colors duration-300">
-                  {feature.title}
-                </h3>
+        {/* Main Title */}
+        <h3 className="font-display text-xl font-bold text-[var(--color-text-primary)] mb-4 tracking-tight group-hover:text-[var(--color-accent-blue-light)] transition-colors duration-300">
+          {feature.title}
+        </h3>
 
-                <p className="font-sans text-[var(--color-text-secondary)] text-[0.95rem] leading-relaxed group-hover:text-[var(--color-text-primary)]/80 transition-colors duration-300">
-                  {feature.desc}
-                </p>
+        {/* NEW: Specific Value Proposition Line (Extra Line) */}
+        <div className="mb-2">
+          <p className="text-[var(--color-accent-blue)] font-black text-base capitalize tracking-wider leading-tight">
+            {feature.valueProp}
+          </p>
+          {/* Subtle separator line that grows on hover */}
+          <div className="h-[1px] w-8 bg-white/10 mt-2 transition-all duration-500 group-hover:w-16 group-hover:bg-[var(--color-accent-blue)]/30" />
+        </div>
 
-                {/* Bottom Border Accent */}
-                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] transition-all duration-500 group-hover:w-full" />
-              </div>
-            </motion.div>
+        {/* Detailed Description */}
+        <p className="font-sans text-[var(--color-text-secondary)] text-[0.9rem] leading-relaxed group-hover:text-[var(--color-text-primary)]/80 transition-colors duration-300">
+          {feature.desc}
+        </p>
+
+        {/* Bottom Border Accent */}
+        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] transition-all duration-500 group-hover:w-full" />
+      </div>
+    </motion.div>
           ))}
         </motion.div>
       </div>

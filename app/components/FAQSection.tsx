@@ -1,86 +1,109 @@
 "use client";
 import { useState } from "react";
 
-const tabs = ["General", "Investing", "Partnership", "Payouts"];
-
-const faqs: Record<string, { q: string; a: string }[]> = {
-  General: [
-    {
-      q: "What is ApexTrade?",
-      a: "ApexTrade is an AI-powered trading platform that automates your trading strategies. We provide real-time signals, automated execution, and professional-grade analytics — all in one platform.",
-    },
-    {
-      q: "Do I need trading experience to use ApexTrade?",
-      a: "No experience required. Our platform is designed for all levels. Beginners can use our pre-built strategies, while professionals can build and deploy custom algorithms.",
-    },
-    {
-      q: "Is my money safe on ApexTrade?",
-      a: "Your funds remain in your own brokerage account — we never hold your capital. We connect to your account via read-only or trade-only API keys with strict permission controls.",
-    },
-    {
-      q: "Which brokers and exchanges are supported?",
-      a: "We support 50+ brokers and exchanges including Interactive Brokers, TD Ameritrade, Binance, Coinbase Pro, eToro, and many more. Full list available in your dashboard.",
-    },
-  ],
-  Investing: [
+// const tabs = ["General", "Investing", "Partnership", "Payouts"];
+const tabs = ["Basic", "Trading", "Withdrawals"];
+const faqs: Record<string, { q: string; a: any }[]> = {
+  Basic:  [
     {
       q: "How much capital do I need to start?",
-      a: "You can start with as little as $500. However, we recommend a minimum of $5,000 for optimal strategy performance and meaningful risk diversification.",
+      a: (
+        <>
+          You can start trading with a minimum deposit based on your chosen segment.
+          Our platform is designed to support both beginners and experienced traders
+          with flexible capital options.
+        </>
+      ),
     },
     {
-      q: "Can I automate my trades?",
-      a: "Yes, full automation is our core feature. Set your strategy, risk parameters, and ApexTrade will execute trades 24/7 without manual intervention.",
+      q: "Is this suitable for beginners?",
+      a: (
+        <>
+          Yes, our platform is designed for both beginners and experienced traders
+          with simple onboarding and easy-to-use tools.
+        </>
+      ),
     },
     {
-      q: "What strategies can I use for trading?",
-      a: "We offer trend-following, mean-reversion, momentum, breakout, and arbitrage strategies. You can also build custom strategies using our no-code builder or Python API.",
+      q: "Is my fund safe?",
+      a: (
+        <>
+          We use secure systems and reliable processes to ensure your funds
+          and transactions are protected at all times.
+        </>
+      ),
     },
     {
-      q: "How can I monitor my trading?",
-      a: "Your real-time dashboard shows live P&L, open positions, win rate, drawdown, and detailed trade history. Mobile app available for monitoring on the go.",
-    },
-    {
-      q: "Do you offer risk management tools?",
-      a: "Yes. We offer stop-loss automation, position sizing rules, max drawdown limits, daily loss limits, and portfolio correlation checks — all customizable.",
-    },
-    {
-      q: "Is leverage available on your platform?",
-      a: "Leverage depends on your broker and jurisdiction. ApexTrade supports leveraged trading where your broker permits, with built-in safeguards to prevent over-leveraging.",
-    },
-  ],
-  Partnership: [
-    {
-      q: "Do you have a referral program?",
-      a: "Yes! Refer a friend and earn 20% recurring commission on their subscription for life. No cap on earnings. Access your referral dashboard in your account settings.",
-    },
-    {
-      q: "Can I white-label ApexTrade for my clients?",
-      a: "Institutional plan subscribers get white-label options. Contact our enterprise team to discuss custom branding, custom domains, and dedicated infrastructure.",
-    },
-    {
-      q: "How do I become a strategy provider?",
-      a: "Apply through our Strategy Marketplace. Once approved and your strategy has a 90-day verified track record, you can publish and earn 30% of subscription revenue from followers.",
+      q: "Do you provide customer support?",
+      a: (
+        <>
+          Yes, our support team is available 24/7 to assist you anytime.
+        </>
+      ),
     },
   ],
-  Payouts: [
+  Trading: [
     {
-      q: "Can I withdraw my investment at any time?",
-      a: "Since your funds stay in your broker account, you can withdraw anytime following your broker's withdrawal process. ApexTrade doesn't restrict access to your capital.",
+      q: "What leverage do you provide?",
+      a: (
+        <>
+          We offer:
+          <br />• 500X margin in intraday (MCX & NSE Futures)
+          <br />• 60X margin in holding (MCX & NSE Futures)
+          <br />• Options trading with 7X intraday & 4X holding
+          <br />
+          Leverage may vary based on market conditions.
+        </>
+      ),
     },
     {
-      q: "How does subscription billing work?",
-      a: "Subscriptions are charged monthly or annually. We accept all major credit cards, PayPal, and crypto. Cancel anytime with no cancellation fees.",
+      q: "What can I trade on your platform?",
+      a: (
+        <>
+          You can trade:
+          <br />• MCX (Commodities)
+          <br />• NSE Futures
+          <br />• Options Trading
+          <br />
+          All from a single account.
+        </>
+      ),
     },
     {
-      q: "Do you provide investment advice?",
-      a: "ApexTrade provides tools and signals — not investment advice. Past performance of strategies does not guarantee future results. Always trade within your risk tolerance.",
+      q: "Do you charge high brokerage?",
+      a: (
+        <>
+          No, we offer low brokerage charges to ensure maximum profitability
+          for our traders.
+        </>
+      ),
+    },
+  ],
+   Withdrawals: [
+    {
+      q: "How fast can I add funds?",
+      a: (
+        <>
+          Deposits are processed instantly, and you can start trading within 2 minutes
+          after adding funds.
+        </>
+      ),
+    },
+    {
+      q: "How fast are withdrawals processed?",
+      a: (
+        <>
+          We provide one of the fastest payout systems, with withdrawals processed
+          within 30 minutes in most cases.
+        </>
+      ),
     },
   ],
 };
 
 export default function FAQSection() {
-  const [activeTab, setActiveTab] = useState("Investing");
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [activeTab, setActiveTab] = useState("Basic");
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const currentFaqs = faqs[activeTab] || [];
 
@@ -106,7 +129,7 @@ export default function FAQSection() {
           {tabs.map((tab) => (
             <button
               key={tab}
-              onClick={() => { setActiveTab(tab); setOpenIndex(0); }}
+              onClick={() => { setActiveTab(tab); setOpenIndex(null); }}
               className={`relative bg-transparent border-none cursor-pointer font-sans text-[0.92rem] px-5 py-2.5 rounded-[10px] transition-all duration-200 ${activeTab === tab ? "font-semibold text-white" : "font-normal text-text-secondary hover:text-white"
                 }`}
             >
@@ -155,7 +178,7 @@ export default function FAQSection() {
                 </button>
                 {openIndex === i && (
                   <div className="px-6 pb-5 pt-1 bg-transparent">
-                    <p className="font-sans text-text-secondary text-[0.88rem] leading-[1.75]">
+                    <p className="font-sans text-text-secondary text-[0.88rem] leading-[1.75] space-y-2">
                       {faq.a}
                     </p>
                   </div>
@@ -213,7 +236,7 @@ export default function FAQSection() {
         {/* Bottom CTA */}
         <div className="text-center mt-14 flex gap-4 justify-center flex-wrap">
           <a href="#contact" className="btn-primary no-underline">
-            Still have questions?
+            Contact Support 24/7
           </a>
         </div>
       </div>

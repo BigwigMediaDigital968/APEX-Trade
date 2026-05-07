@@ -5,6 +5,9 @@ import { ChevronRight, Play } from 'lucide-react';
 import Image from 'next/image';
 import { useAuthModal } from '../context/AuthModalContext';
 
+const content = "🚀 500X Intraday Margin | 📊 60X Holding | ⚡ Options 7X/4X | 💰 Low Brokerage | ⚡ Fastest Payout | 🕐 24/7 Support";
+
+
 export default function Hero() {
     const { toggle: toggleLoginModal } = useAuthModal();
     const subheadings = [
@@ -17,7 +20,7 @@ export default function Hero() {
     };
 
     // Common typography class to ensure identical sizing
-    const sharedTypographyClass = "text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-[1.1]";
+    const sharedTypographyClass = "text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-[1.1]";
 
     return (
         <div className="relative w-full h-screen overflow-hidden bg-[#0B0E14] font-sans selection:bg-[#3D6BFF]/30">
@@ -74,22 +77,115 @@ export default function Hero() {
                     </motion.div>
                 </div>
 
+                <div className="hidden flex-col space-y-2 max-w-2xl mx-auto">
+                    {/* Heading */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className={`text-base md:text-xl sm:text-2xl mt-4  font-medium leading-relaxed text-white`}
+                    >
+                        <div className=''>
+                            <p>🚀 500X Intraday Margin | 📊 60X Holding | ⚡ Options 7X/4X  <br /> 💰 Low Brokerage | ⚡ Fastest Payout | 🕐 24/7 Support</p>
+                        </div>
+
+                    </motion.div>
+                </div>
+                <div className="hidden flex-col space-y-2 max-w-2xl mx-auto w-full px-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="mt-4 overflow-hidden relative"
+                    >
+                        {/* Glassy Container with Fixed Height */}
+                        <div className="relative bg-white/5 rounded-xl py-3 px-2 flex items-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+
+                            {/* Edge Fades for smooth entry/exit */}
+                            <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-black/20 to-transparent z-10 pointer-events-none" />
+                            <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-black/20 to-transparent z-10 pointer-events-none" />
+
+                            {/* Marquee Animation */}
+                            <motion.div
+                                className="flex whitespace-nowrap"
+                                animate={{ x: [0, -1000] }} // Adjust -1000 based on content length
+                                transition={{
+                                    x: {
+                                        repeat: Infinity,
+                                        repeatType: "loop",
+                                        duration: 20, // Lower = faster scrolling
+                                        ease: "linear",
+                                    },
+                                }}
+                            >
+                                {/* Duplicating content to ensure seamless loop */}
+                                <p className="text-base md:text-xl sm:text-2xl font-medium leading-relaxed text-white inline-block">
+                                    {content} &nbsp;&nbsp; | &nbsp;&nbsp; {content} &nbsp;&nbsp; | &nbsp;&nbsp;
+                                </p>
+                                <p className="text-base md:text-xl sm:text-2xl font-medium leading-relaxed text-white inline-block">
+                                    {content} &nbsp;&nbsp; | &nbsp;&nbsp; {content} &nbsp;&nbsp; | &nbsp;&nbsp;
+                                </p>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                </div>
+                <div className="flex flex-col space-y-2 max-w-2xl mx-auto w-full">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="mt-4"
+                    >
+                        {/* Mask Image creates the 'dissolving' effect at the edges.
+          The middle (20% to 80%) is fully opaque, while the ends fade to transparent.
+        */}
+                        <div
+                            className="relative overflow-hidden py-2"
+                            style={{
+                                maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
+                                WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)'
+                            }}
+                        >
+                            <motion.div
+                                className="flex whitespace-nowrap"
+                                animate={{ x: [0, -1000] }}
+                                transition={{
+                                    x: {
+                                        repeat: Infinity,
+                                        repeatType: "loop",
+                                        duration: 25,
+                                        ease: "linear",
+                                    },
+                                }}
+                            >
+                                {/* Using a span for a cleaner inline flow */}
+                                <span className="text-base md:text-xl sm:text-2xl font-medium leading-relaxed text-white">
+                                    {content} &nbsp;&nbsp;&nbsp;&nbsp; {content} &nbsp;&nbsp;&nbsp;&nbsp;
+                                </span>
+                                <span className="text-base md:text-xl sm:text-2xl font-medium leading-relaxed text-white">
+                                    {content} &nbsp;&nbsp;&nbsp;&nbsp; {content} &nbsp;&nbsp;&nbsp;&nbsp;
+                                </span>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                </div>
+
                 {/* CTA Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="mt-12 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6"
+                    className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6"
                 >
-                    <button onClick={handleClick} className="cursor-pointer group relative px-5 py-3 bg-[#3D6BFF] text-white rounded-xl font-bold text-lg overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(61,107,255,0.5)] active:scale-95">
+                    <button onClick={handleClick} className="cursor-pointer group relative px-4 py-2 sm:px-5 sm:py-3 bg-[#3D6BFF] text-white rounded-xl font-bold text-base sm:text-lg overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(61,107,255,0.5)] active:scale-95">
                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                         <span className="relative flex items-center">
-                            Open Account <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            Open Account <ChevronRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                         </span>
                     </button>
 
-                    <button className="group flex items-center px-5 py-3 text-white font-bold text-lg border-2 border-white/10 rounded-xl hover:bg-white/5 hover:border-white/20 transition-all active:scale-95">
-                        <Play className="mr-3 w-5 h-5 fill-white" />
+                    <button className="group flex items-center px-4 py-2 sm:px-5 sm:py-3 text-white font-bold text-base sm:text-lg border-2 border-white/10 rounded-xl hover:bg-white/5 hover:border-white/20 transition-all active:scale-95">
+                        <Play className="mr-3 w-4 h-4 md:w-5 md:h-5 fill-white" />
                         Learn More
                     </button>
                 </motion.div>
@@ -99,23 +195,23 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1, duration: 1 }}
-                    className="mt-12 mb-10 grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/5 pt-10 w-full"
+                    className="mt-4 sm:mt-8 mb-8 md:mt-12 md:mb-10 grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/5 pt-4 sm:pt-10 w-full"
                 >
                     <div>
                         <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">24H Volume</p>
-                        <p className="text-white font-mono text-2xl font-bold">$12.4B</p>
+                        <p className="text-white font-mono text-xl md:text-2xl font-bold">$12.4B</p>
                     </div>
                     <div>
                         <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Active Assets</p>
-                        <p className="text-white font-mono text-2xl font-bold">500+</p>
+                        <p className="text-white font-mono text-xl md:text-2xl font-bold">500+</p>
                     </div>
                     <div className="hidden md:block">
                         <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Global Nodes</p>
-                        <p className="text-white font-mono text-2xl font-bold">14,209</p>
+                        <p className="text-white font-mono text-xl md:text-2xl font-bold">14,209</p>
                     </div>
                     <div className="hidden md:block">
                         <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Network Speed</p>
-                        <p className="text-[#00FFA3] font-mono text-2xl font-bold">0.8ms</p>
+                        <p className="text-[#00FFA3] font-mono text-xl md:text-2xl font-bold">0.8ms</p>
                     </div>
                 </motion.div>
             </main>

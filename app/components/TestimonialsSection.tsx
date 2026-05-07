@@ -131,7 +131,7 @@ export default function TestimonialsSection() {
             <span>Success Stories</span>
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-extrabold text-text-primary tracking-tight mb-4">
-            Trusted by <span className="text-transparent bg-clip-text bg-linear-to-r from-accent-blue to-accent-green">4,700+ Active Traders</span>
+            Trusted by <span className="text-transparent bg-clip-text bg-linear-to-r from-accent-blue to-accent-green">10k+ clients</span>
           </h2>
           <p className="font-sans text-text-secondary text-lg max-w-2xl mx-auto">
             Experience institutional-grade growth. See why top traders are switching to NeonTrade.

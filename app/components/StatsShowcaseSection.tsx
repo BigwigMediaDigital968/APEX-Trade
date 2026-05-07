@@ -3,10 +3,11 @@
 import { useAuthModal } from "../context/AuthModalContext";
 
 const checks = [
-  "AI-generated signals with 84%+ verified win rate.",
-  "Execute across Forex, Crypto, Stocks & Indices.",
-  "24/7 automated trading — zero downtime, zero emotion.",
-  "Institutional risk controls on every single trade.",
+  "500X leverage for high-return intraday trading",
+  "60X margin for positional holding trades",
+  "Options trading with up to 7X leverage",
+  "Instant & secure payout system",
+  "24/7 dedicated support team",
 ];
 
 export default function StatsShowcaseSection() {
@@ -46,7 +47,7 @@ export default function StatsShowcaseSection() {
           ))}
 
           <button onClick={handlClick} className="btn-primary mt-8 no-underline inline-flex">
-            Get Started
+            Start Trading Now
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
@@ -106,8 +107,12 @@ export default function StatsShowcaseSection() {
             </button>
           </div>
 
+          
           {/* Performance card */}
-          <div className="animate-float glass bg-[#0B0E14]/90 absolute top-[60px] right-0 w-[240px] rounded-[20px] p-5 z-[3] [animation-delay:-2s]">
+          <div className="animate-float glass absolute backdrop-blur-md bg-[#0B0E14]/90 z-[4] top-0 right-0 w-[260px] rounded-[20px] p-6 py-4 z-[1] [animation-delay:-1s]">
+            ⚡ Live Payout Enabled
+          </div>
+          <div className="animate-float glass bg-[#0B0E14]/90 absolute top-[80px] right-0 w-[240px] rounded-[20px] p-5 z-[3] [animation-delay:-2s]">
             <div className="flex justify-between items-start mb-1.5">
               <div>
                 <div className="font-sans text-text-secondary text-[0.7rem]">1-30 July, 2024</div>
