@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ShieldCheck, Landmark } from "lucide-react";
-import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import FloatingWhatsApp from "./FloatingWhatsApp";
 import { ChevronDown, ArrowRight, Activity, Sparkles, BookOpen, AlertTriangle, Layers, Zap, Package, TrendingUp, BarChart3 } from "lucide-react";
@@ -19,21 +19,13 @@ const socials = [
     icon: <FaInstagram size={28} className="text-white" />,
   },
   {
-    name: "Twitter (X)",
+    name: "WhatsApp",
     handle: "@ApexTrade",
     href: "#",
-    color: "#ffffff",
-    gradient: "linear-gradient(135deg, #1a1a1a, #333)",
-    icon: <FaXTwitter size={28} className="text-white" />,
-  },
-  {
-    name: "YouTube",
-    handle: "ApexTrade",
-    href: "#",
-    color: "#FF0000",
-    gradient: "linear-gradient(135deg, #FF0000, #CC0000)",
-    icon: <FaYoutube size={28} className="text-white" />,
-  },
+    color: "#25D366",
+    gradient: "linear-gradient(135deg, #25D366, #128C7E)",
+    icon: <FaWhatsapp size={28} className="text-white" />,
+  },,
 ];
 
 const footerLinks = [
@@ -100,7 +92,7 @@ export default function SocialAndFooter() {
 
             {/* Social Icons Container */}
             <div className="flex items-center gap-12 md:gap-16 flex-wrap justify-center flex-1">
-              {socials.map((social) => (
+              {socials.map((social:any) => (
                 <motion.a
                   key={social.name}
                   href={social.href}
