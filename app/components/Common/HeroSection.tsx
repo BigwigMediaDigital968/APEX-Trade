@@ -8,6 +8,7 @@ interface HeroSectionProps {
     tag?: string;
     description?: string;
     backgroundImage?: string;
+    subDescription?: string;
 }
 
 export default function HeroSection({
@@ -15,6 +16,8 @@ export default function HeroSection({
     tag = "Welcome to ApexTrade",
     description,
     backgroundImage = "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2000",
+    subDescription,
+
 }: HeroSectionProps) {
     return (
         <section
@@ -67,11 +70,22 @@ export default function HeroSection({
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                            className="font-sans text-[#8E96A5] text-lg md:text-xl leading-relaxed max-w-[700px] mx-auto"
+                            className="font-sans text-[#8E96A5] text-lg md:text-xl leading-relaxed  mx-auto"
                         >
                             {description}
                         </motion.p>
                     )}
+                    {subDescription && (
+                        <motion.p
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                            className="font-sans text-[#8E96A5] text-base md:text-lg leading-relaxed mx-auto"
+                        >
+                            {subDescription}
+                        </motion.p>
+                    )}
+
                 </div>
             </div>
 
@@ -79,10 +93,10 @@ export default function HeroSection({
             <motion.div
                 animate={{ opacity: [0.2, 0.5, 0.2], y: [0, 8, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
             >
                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Scroll</span>
-                <div className="w-[1.5px] h-10 bg-gradient-to-b from-[#3D6BFF] to-transparent rounded-full shadow-[0_0_10px_#3D6BFF]" />
+                <div className="w-[1.5px] h-8 bg-gradient-to-b from-[#3D6BFF] to-transparent rounded-full shadow-[0_0_10px_#3D6BFF]" />
             </motion.div>
         </section>
     );

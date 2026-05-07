@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Check, ArrowRightLeft, Zap, ShieldAlert, BarChart3, TrendingDown } from "lucide-react";
+import { Check, ArrowRightLeft, Zap, ShieldAlert, BarChart3, TrendingDown, Wallet, ReceiptText, Users, Headphones, ShieldCheck, ChevronRight } from "lucide-react";
 
 const comparisonData = [
     { script: "Gold", ordinary: "Rs 5,50,000", ApexTrade: "Rs 13,000", saving: "97.6%" },
@@ -11,6 +11,33 @@ const comparisonData = [
     { script: "Silver", ordinary: "Rs 3,00,000", ApexTrade: "Rs 4,500", saving: "98.5%" },
     { script: "Bank Nifty", ordinary: "Rs 90,000", ApexTrade: "Rs 1,500", saving: "98.3%" },
     { script: "Nifty", ordinary: "Rs 1,20,000", ApexTrade: "Rs 2,500", saving: "97.9%" },
+];
+
+const cardData = [
+    {
+        icon: <Zap className="w-8 h-8 text-yellow-400" />,
+        title: "High Margin Power",
+        description: "Trade with 500X intraday and 60X holding margin in MCX & NSE Futures.",
+        color: "yellow",
+        shadow: "shadow-yellow-500/20",
+        border: "group-hover:border-yellow-400/50"
+    },
+    {
+        icon: <Wallet className="w-8 h-8 text-blue-400" />,
+        title: "Instant Payout System",
+        description: "Withdraw your profits with our fastest payout system (within 30 minutes).",
+        color: "blue",
+        shadow: "shadow-blue-500/20",
+        border: "group-hover:border-blue-400/50"
+    },
+    {
+        icon: <ReceiptText className="w-8 h-8 text-emerald-400" />,
+        title: "Low Brokerage",
+        description: "Keep more of your profits with our cost-efficient brokerage structure.",
+        color: "emerald",
+        shadow: "shadow-emerald-500/20",
+        border: "group-hover:border-emerald-400/50"
+    }
 ];
 
 export default function ComparisonSection() {
@@ -50,9 +77,9 @@ export default function ComparisonSection() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="font-display text-[clamp(2.5rem,6vw,4rem)] font-extrabold text-white tracking-tight leading-[1.05] mb-8"
+                        className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-extrabold text-white tracking-tight leading-[1.2] mb-8"
                     >
-                        The Advantage is <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3D6BFF] to-[#00FFA3]">Quantifiable.</span>
+                        Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3D6BFF] to-[#00FFA3]"> High-Leverage Trading </span> <br /> & Fast Payouts
                     </motion.h2>
 
                     <motion.p
@@ -60,11 +87,89 @@ export default function ComparisonSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="font-sans text-[#8E96A5] text-lg max-w-[700px] mx-auto leading-relaxed"
+                        className="font-sans text-[#8E96A5] text-lg max-w-[800px] mx-auto leading-relaxed"
                     >
-                        Compare our institutional-grade infrastructure against standard retail platforms. We've engineered a system where your capital goes further.
-                    </motion.p>
+                        Trade smarter with 500X intraday margin, 60X holding leverage, and one of the fastest withdrawal systems (within 30 minutes).            </motion.p>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="font-sans text-[#8E96A5] text-base max-w-[700px] mx-auto leading-relaxed"
+                    >
+                        Our platform is designed to maximize your trading potential while keeping things simple and efficient.                    </motion.p>
                 </div>
+
+
+                <div>
+                    <div className="px-6 mb-20 flex items-center justify-center font-sans">
+                        <div className="max-w-6xl w-full">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                {cardData.map((card, index) => (
+                                    <div
+                                        key={index}
+                                        className={`group cursor-pointer relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 
+                transition-all duration-500 ease-out 
+                hover:-translate-y-3 hover:scale-[1.05] 
+                hover:bg-white/[0.07] ${card.shadow} hover:shadow-2xl
+                ${card.border}`}
+                                    >
+                                        {/* Internal Gloss/Reflection Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none" />
+
+                                        {/* Intensified Shine Sweep Animation */}
+                                        <div className="absolute -inset-full top-0 block h-full w-1/2 -skew-x-12 z-5 bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shine" />
+
+                                        <div className="relative z-10 flex flex-col h-full">
+                                            {/* Icon Container with specific glow */}
+                                            <div className={`mb-4 inline-flex w-fit p-4 rounded-2xl 
+                  transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                                                {card.icon}
+                                            </div>
+
+                                            <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-white transition-colors">
+                                                {card.title}
+                                            </h3>
+
+                                            <p className="text-gray-400 leading-relaxed text-base group-hover:text-gray-300 transition-colors">
+                                                {card.description}
+                                            </p>
+
+                                            {/* Animated Bottom Glow */}
+                                            <div className="mt-auto pt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                                <div className={`h-1 w-12 rounded-full bg-current ${card.color === 'yellow' ? 'text-yellow-400' :
+                                                    card.color === 'blue' ? 'text-blue-400' : 'text-emerald-400'
+                                                    } blur-[2px]`} />
+                                            </div>
+                                        </div>
+
+                                        {/* Card Corner Light Catch */}
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 blur-3xl rounded-full -mr-10 -mt-10 group-hover:bg-white/10 transition-colors" />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <style dangerouslySetInnerHTML={{
+                            __html: `
+        @keyframes shine {
+          0% { left: -100%; }
+          20% { left: -100%; }
+          100% { left: 150%; }
+        }
+        .animate-shine {
+          animation: shine 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+      `}} />
+                    </div>
+                </div>
+
+                <div className="max-w-3xl mx-auto mb-24">
+                    <TrustLine />
+                </div>
+
+
 
                 {/* Modern Split Comparison Card */}
                 <div className="relative mb-32">
@@ -197,7 +302,7 @@ export default function ComparisonSection() {
                                     <span className="text-white/60 text-sm font-medium">Brokerage &amp; Taxes</span>
                                     <div className="flex items-center gap-2">
                                         <Check size={14} className="text-[#00FFA3]" />
-                                        <span className="text-[#00FFA3] text-base font-bold">Rs 0</span>
+                                        <span className="text-[#00FFA3] text-base font-bold">Low brokerage</span>
                                     </div>
                                 </div>
 
@@ -342,6 +447,81 @@ export default function ComparisonSection() {
                     </div>
                 </motion.div>
             </div>
-        </section>
+        </section >
+    );
+}
+
+
+export function TrustLine() {
+    const trustItems = [
+        {
+            icon: <Users className="w-4 h-4 text-blue-400" />,
+            text: "Trusted by 10,000+ traders",
+        },
+        {
+            icon: <Headphones className="w-4 h-4 text-emerald-400" />,
+            text: "24/7 Support",
+            isLive: true
+        },
+        {
+            icon: <ShieldCheck className="w-4 h-4 text-purple-400" />,
+            text: " Secure Trading Environment",
+        },
+    ];
+
+    return (
+        <>
+            {/* Redesigned Trust Bar Component */}
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="relative group"
+            >
+                {/* Outer Glow Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-emerald-500/20 to-purple-500/20 rounded-full blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+
+                {/* Main Bar Container */}
+                <div className="relative flex flex-wrap items-center justify-center gap-x-8 gap-y-4 px-8 py-4 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl">
+
+                    {trustItems.map((item, idx) => (
+                        <React.Fragment key={idx}>
+                            <div className="flex items-center gap-3">
+                                <div className="relative">
+                                    <div className="p-2 bg-white/5 rounded-lg border border-white/5 group-hover:border-white/20 transition-colors">
+                                        {item.icon}
+                                    </div>
+                                    {item.isLive && (
+                                        <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                                        </span>
+                                    )}
+                                </div>
+
+                                <div className="flex flex-col">
+                                    {/* {item.label && (
+                    <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold leading-none mb-1">
+                      {item.label}
+                    </span>
+                  )} */}
+                                    <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">
+                                        {item.text}
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Divider (Hidden on mobile) */}
+                            {idx < trustItems.length - 1 && (
+                                <div className="hidden md:block h-8 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+                            )}
+                        </React.Fragment>
+                    ))}
+                </div>
+            </motion.div>
+
+        </>
+
     );
 }
