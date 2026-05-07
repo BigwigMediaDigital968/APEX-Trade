@@ -103,13 +103,13 @@ export default function ComparisonSection() {
 
 
                 <div>
-                    <div className="px-6 mb-20 flex items-center justify-center font-sans">
+                    <div className="px-2 sm:px-6 mb-20 flex items-center justify-center font-sans">
                         <div className="max-w-6xl w-full">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
                                 {cardData.map((card, index) => (
                                     <div
                                         key={index}
-                                        className={`group cursor-pointer relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 
+                                        className={`group cursor-pointer relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 
                 transition-all duration-500 ease-out 
                 hover:-translate-y-3 hover:scale-[1.05] 
                 hover:bg-white/[0.07] ${card.shadow} hover:shadow-2xl
@@ -123,12 +123,12 @@ export default function ComparisonSection() {
 
                                         <div className="relative z-10 flex flex-col h-full">
                                             {/* Icon Container with specific glow */}
-                                            <div className={`mb-4 inline-flex w-fit p-4 rounded-2xl 
+                                            <div className={`mb-2 md:mb-4 inline-flex w-fit p-2 sm:p-4 rounded-2xl 
                   transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
                                                 {card.icon}
                                             </div>
 
-                                            <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-white transition-colors">
+                                            <h3 className="text-xl md:text-2xl font-bold text-white mb-2 sm:mb-4 tracking-tight group-hover:text-white transition-colors">
                                                 {card.title}
                                             </h3>
 
@@ -480,10 +480,10 @@ export function TrustLine() {
                 className="relative group"
             >
                 {/* Outer Glow Effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-emerald-500/20 to-purple-500/20 rounded-full blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-emerald-500/20 to-purple-500/20 rounded-[40px] sm:rounded-full blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
 
                 {/* Main Bar Container */}
-                <div className="relative flex flex-wrap items-center justify-center gap-x-8 gap-y-4 px-8 py-4 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl">
+                <div className="relative flex flex-wrap items-center md:justify-center gap-x-8 gap-y-4 px-8 py-6 sm:py-4 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[40px] sm:rounded-full shadow-2xl">
 
                     {trustItems.map((item, idx) => (
                         <React.Fragment key={idx}>
