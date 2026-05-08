@@ -60,14 +60,12 @@ const footerLinks = [
   {
     title: "Products",
     links: [
-      { label: "Equity Trading", href: "/equity-trading" },
-      { label: "Futures & Options", href: "/futures-and-options" },
-      { label: "Commodity Trading", href: "/commodity-trading" },
-      { label: "Intraday Trading", href: "/intraday-trading" },
-      { label: "Margin Trading", href: "/margin-trading" },
-      { label: "Dabba Trading", href: "/dabba-trading" },
+       { label: "Stocks", href: "/stocks" },
+  { label: "Commodities", href: "/commodity" },
+  { label: "Indices", href: "/indexes" }
     ],
   },
+  
 
   // {
   //   title: "Legal",
