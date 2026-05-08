@@ -79,12 +79,12 @@ const navLinks = [
     label: "Products",
     href: "#",
     items: [
-      {
-        label: "CFD Instruments",
-        desc: "Trade contracts for difference across global assets",
-        icon: <TrendingUp size={18} />,
-        href: "/cfd-instrument"
-      },
+      // {
+      //   label: "CFD Instruments",
+      //   desc: "Trade contracts for difference across global assets",
+      //   icon: <TrendingUp size={18} />,
+      //   href: "/cfd-instrument"
+      // },
       {
         label: "Stocks",
         desc: "Invest and trade shares from leading companies",
