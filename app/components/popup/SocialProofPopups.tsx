@@ -193,7 +193,7 @@ export default function SocialProofPopups() {
         <div className={`
             fixed z-[9990] pointer-events-none flex flex-col gap-3
             top-20 left-1/2 -translate-x-1/2 w-[calc(100vw)] items-center
-            sm:bottom-20 sm:top-auto sm:w-auto
+            sm:bottom-10 sm:top-auto sm:w-auto
         `}>
             <AnimatePresence mode="popLayout">
                 {events.map((event) => (

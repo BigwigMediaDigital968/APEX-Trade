@@ -19,7 +19,7 @@ export default function CommunityCTA() {
     }
 
     return (
-        <section className="relative py-24 px-6 bg-[#0B0E14] overflow-hidden min-h-[600px]">
+        <section className="relative py-5 sm:py-8 px-6 bg-[#0B0E14] overflow-hidden min-h-[600px]">
 
             <div className="max-w-[1100px] mx-auto relative z-10">
                 <motion.div
