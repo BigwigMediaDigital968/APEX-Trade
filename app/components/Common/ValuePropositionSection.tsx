@@ -30,6 +30,13 @@ export interface StatItem {
     icon?: React.ReactNode;
 }
 
+
+const stats = [
+  { label: "Low Brokerage" },
+  { label: "Fastest Payout" },
+  { label: "24/7 Support" },
+  { label: "60X Holding" }
+];
  
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -39,7 +46,7 @@ export default function ValuePropositionSection({
     image,
     imageAlt = "Value Proposition",
     items,
-    StatItems,
+    StatItems = stats,
     buttonText = "Start Trading Now"
 }: ValuePropositionSectionProps) {
 
@@ -64,9 +71,9 @@ export default function ValuePropositionSection({
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="mb-5"
+                                className="mb-4"
                             >
-                                <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+                                <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-4">
                                     {heading}
                                 </h2>
                                 <p className="text-[#8E96A5] text-lg leading-relaxed max-w-[600px]">

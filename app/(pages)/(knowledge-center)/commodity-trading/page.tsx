@@ -43,6 +43,12 @@ export default function Commodity() {
             color: "#00FFA3"
         }
     ];
+    const stats = [
+  { label: "Low Brokerage" },
+  { label: "Fastest Payout" },
+  { label: "24/7 Support" },
+  { label: "60X Holding" }
+];
 
     return (
         <>
@@ -66,6 +72,7 @@ export default function Commodity() {
                 items={valueItems}
                 image="/images/side-image.png"
                 buttonText="Start Commodity Trading"
+                StatItems={stats}
             />
             <div>
                 <TestimonialsSection />
