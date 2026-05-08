@@ -68,7 +68,7 @@ export default function ValuePropositionSection() {
 
                         {/* Left Side: Dynamic App & Card Visuals */}
                         <div className="relative order-2 lg:order-1">
-                            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                            <div className="hidden flex-col items-center justify-center gap-6">
 
                                 {/* Main Phone/Chart UI */}
                                 <motion.div
@@ -111,7 +111,6 @@ export default function ValuePropositionSection() {
                                     </div>
                                 </motion.div>
 
-                                {/* Side Cards Stack */}
                                 <div className="flex flex-col gap-6">
                                     {['US30', 'GOLD'].map((asset, idx) => (
                                         <motion.div
@@ -137,6 +136,9 @@ export default function ValuePropositionSection() {
                                         </motion.div>
                                     ))}
                                 </div>
+                            </div>
+                            <div>
+                                <img src="/images/service-side.png" alt="Value Proposition " />
                             </div>
                         </div>
 
