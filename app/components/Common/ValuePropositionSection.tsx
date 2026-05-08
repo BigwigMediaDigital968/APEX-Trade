@@ -138,7 +138,7 @@ export default function ValuePropositionSection() {
                                 </div>
                             </div>
                             <div>
-                                <img src="/images/service-side.png" alt="Value Proposition " />
+                                <img src="/images/side-image.png" alt="Value Proposition " />
                             </div>
                         </div>
 

@@ -144,7 +144,7 @@ const WithdrawalCard = ({
             </span>
 
             <p className="tracking-tight">
-                <span className="font-bold text-white tracking-wide">{event.name}</span>
+                <span className="font-bold text-accent-blue tracking-wide">{event.name}</span>
                 {" from "}
                 <span className="text-emerald-400 font-semibold italic">{event.location}</span>
                 {" just withdrew "}
