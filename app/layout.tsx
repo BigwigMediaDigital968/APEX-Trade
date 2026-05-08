@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import SocialAndFooter from "./components/SocialAndFooter";
 import { AuthModalProvider } from "./context/AuthModalContext";
+import SocialProofPopups from "./components/popup/SocialProofPopups";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -41,7 +42,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0B0E14] text-white font-sans`}>
         <AuthModalProvider>
-
+          <SocialProofPopups />
           <Navbar />
           {children}
           <SocialAndFooter />
