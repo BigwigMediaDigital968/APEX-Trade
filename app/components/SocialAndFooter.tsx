@@ -25,7 +25,7 @@ const socials = [
     color: "#25D366",
     gradient: "linear-gradient(135deg, #25D366, #128C7E)",
     icon: <FaWhatsapp size={28} className="text-white" />,
-  },,
+  }, ,
 ];
 
 const footerLinks = [
@@ -33,6 +33,14 @@ const footerLinks = [
     title: "About",
     links: [
       { label: "Why ApexTrade", href: "/about" },
+      {
+        label: "Become an Affiliate",
+        href: "/become-an-affiliate"
+      },
+      {
+        label: "Become an Broker",
+        href: "/#become-a-broker"
+      },
       { label: "News & blogs", href: "/blogs" },
       { label: "Contact Us", href: "/contact-us" },
     ],
@@ -92,7 +100,7 @@ export default function SocialAndFooter() {
 
             {/* Social Icons Container */}
             <div className="flex items-center gap-12 md:gap-16 flex-wrap justify-center flex-1">
-              {socials.map((social:any) => (
+              {socials.map((social: any) => (
                 <motion.a
                   key={social.name}
                   href={social.href}
@@ -142,9 +150,9 @@ export default function SocialAndFooter() {
             <div className="lg:col-span-2">
               <Link href="/" className="flex items-center gap-3 no-underline mb-6 group">
                 <div className="h-[60px] overflow-hidden">
-            <img src="/logo-apex-site.png" alt="ApexTrade Logo"  className="object-center w-full h-full" />
+                  <img src="/logo-apex-site.png" alt="ApexTrade Logo" className="object-center w-full h-full" />
 
-          </div>
+                </div>
               </Link>
               <p className="font-sans text-[var(--color-text-secondary)] text-[1rem] leading-[1.8] max-w-[320px] mb-8">
                 Empowering your trading through advanced neural networks and institutional-grade automation.

@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Loader2, Zap, Lock, TrendingUp } from "lucide-react";
 import HeroSection from "@/app/components/Common/HeroSection";
+import { motion, AnimatePresence } from 'framer-motion';
+import {  CheckCircle2, Share2, Wallet, Globe, Link as LinkIcon } from 'lucide-react';
 
 // ── Types ──────────────────────────────────────────────
 interface AffiliateForm {
@@ -70,30 +71,63 @@ export default function AffiliatePage() {
                 description="Have a trading-focused audience? Join the Apex Trade Affiliate Program. Submit your details to unlock competitive commissions, exclusive benefits, and start earning with a growing network."
             />
 
-            {/* ── Form Section ── */}
-            <section className="px-6 py-24 flex justify-center relative">
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                    {/* The Image */}
-                    <img
-                        src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2232&auto=format&fit=crop"
-                        className="w-full h-full object-cover  opacity-40 scale-105"
-                        alt="Technical Background"
-                    />
-                    {/* Radial Vignette to focus on the center card */}
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0B0E14_80%)]" />
-                    {/* Dark Overlays for legibility */}
-                </div>
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.15 }}
-                    className="w-full max-w-2xl bg-bg-secondary border border-border-main rounded-3xl p-10 md:p-12 relative overflow-hidden"
-                >
-                    {/* Corner glow */}
-                    <div className="pointer-events-none absolute top-0 left-0 w-48 h-48 bg-[radial-gradient(circle_at_0%_0%,rgba(61,107,255,0.1),transparent_70%)]" />
+<section className="min-h-screen bg-[#0a0c10] text-white py-20 px-6 flex items-center justify-center font-sans overflow-hidden relative">
+      {/* Background Accents */}
+      <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-purple-600/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-1/3 h-1/3 bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
 
-                    {/* Card header */}
-                    <div className="mb-8">
+      <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+        
+        {/* Left Side: Affiliate Content */}
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-accent-blue/10 border border-border-blue text-accent-blue text-xs font-bold uppercase tracking-widest mb-6">
+            <span>Join our network</span>
+          </div>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              Turn your reach into <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-green-400">
+                Passive Revenue
+              </span>
+            </h1>
+            <p className="text-gray-400 text-lg max-w-lg leading-relaxed">
+              Monetize your audience by promoting a platform they'll love. Our affiliate program offers high conversion rates and a dedicated dashboard to track your success.
+            </p>
+          </div>
+
+          {/* Affiliate Benefits */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            {[
+              { icon: <Wallet className="w-5 h-5" />, title: "Instant Payouts", desc: "Withdraw earnings monthly without hassle." },
+              { icon: <Zap className="w-5 h-5" />, title: "High Conversions", desc: "Optimized funnels for your traffic." },
+              { icon: <Share2 className="w-5 h-5" />, title: "Creative Assets", desc: "Access banners, links, and videos." },
+              { icon: <Globe className="w-5 h-5" />, title: "Global Reach", desc: "Promote to users across the world." },
+            ].map((item, i) => (
+              <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+                <div className="text-accent-blue mt-1">{item.icon}</div>
+                <div>
+                  <h4 className="font-bold text-white">{item.title}</h4>
+                  <p className="text-sm text-gray-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Side: Application Form */}
+        <div className="relative">
+          <div className="bg-[#11141b] border border-white/10 rounded-[32px] p-8 md:p-10 shadow-2xl relative overflow-hidden">
+            
+            <AnimatePresence mode="wait">
+              {!submitted ? (
+                 <motion.form
+                            key="affiliate-form"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            onSubmit={handleSubmit}
+                            className="space-y-5 font-sans"
+                        >
+                            <div className="mb-8">
                         <h2 className="font-display text-2xl font-black uppercase tracking-tight text-text-primary mb-1">
                             Submit Your Application
                         </h2>
@@ -101,47 +135,6 @@ export default function AffiliatePage() {
                             All fields marked * are required
                         </p>
                     </div>
-
-                    {/* Perks row */}
-                    <div className="grid grid-cols-3 gap-3 mb-8">
-                        {PERKS.map((p) => (
-                            <div
-                                key={p.label}
-                                className="flex items-center gap-2 bg-bg-main/50 border border-border-main rounded-xl px-3 py-3"
-                            >
-                                <span className="text-accent-blue flex-shrink-0">{p.icon}</span>
-                                <span className="text-[10px] font-bold uppercase tracking-wide text-text-secondary leading-tight">
-                                    {p.label}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* ── Form ── */}
-                    {submitted ? (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="text-center py-16 space-y-4"
-                        >
-                            <div className="w-16 h-16 rounded-2xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center mx-auto">
-                                <TrendingUp size={28} className="text-accent-blue" />
-                            </div>
-                            <h3 className="text-xl font-black uppercase tracking-tight text-text-primary">
-                                Application Received
-                            </h3>
-                            <p className="text-text-muted text-sm max-w-xs mx-auto leading-relaxed">
-                                Our team will review your profile and get back to you within 48 hours.
-                            </p>
-                        </motion.div>
-                    ) : (
-                        <motion.form
-                            key="affiliate-form"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            onSubmit={handleSubmit}
-                            className="space-y-5 font-sans"
-                        >
                             {/* Row 1 — Name + Email */}
                             <div className="grid md:grid-cols-2 gap-5">
                                 <input
@@ -214,9 +207,36 @@ export default function AffiliatePage() {
                                 &amp; Affiliate Terms
                             </p>
                         </motion.form>
-                    )}
+              ) : (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center py-20 text-center space-y-6"
+                >
+                  <div className="w-20 h-20 bg-purple-500/10 rounded-full flex items-center justify-center mb-2">
+                    <CheckCircle2 className="w-10 h-10 text-purple-500" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-3xl font-bold">Request Received</h3>
+                    <p className="text-gray-400 max-w-xs mx-auto">
+                      Your affiliate application has been submitted. Our team will review your profile and send an activation link to your email shortly.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="text-sm text-purple-400 font-semibold hover:text-purple-300 transition-colors"
+                  >
+                    Modify Application
+                  </button>
                 </motion.div>
-            </section>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+
+      </div>
+    </section>
         </main>
     );
 }

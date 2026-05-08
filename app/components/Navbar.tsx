@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ArrowRight, Activity, ShieldCheck, Sparkles, BookOpen, AlertTriangle, Layers, Zap, Package, TrendingUp, BarChart3 } from "lucide-react";
+import { ChevronDown, ArrowRight, Activity, ShieldCheck, Sparkles, BookOpen, AlertTriangle, Layers, Zap, Package, TrendingUp, BarChart3, Handshake } from "lucide-react";
 import { useAuthModal } from "../context/AuthModalContext";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,6 +16,12 @@ const navLinks = [
     href: "/about",
     items: [
       { label: "Why ApexTrade", desc: "Our technology advantage", icon: <BookOpen size={18} />, href: "/about" },
+      {
+        label: "Become an Affiliate",
+        desc: "Earn commissions by referring traders to our platform",
+        icon: <Handshake size={18} />,
+        href: "/become-an-affiliate"
+      },
       { label: "Privacy Policy", desc: "How we protect your data", icon: <ShieldCheck size={18} />, href: "/privacy-policy" },
       { label: "Terms & Conditions", desc: "How we protect your data", icon: <ShieldCheck size={18} />, href: "/terms-and-conditions" },
       // { label: "Our Story", desc: "Built for traders, by traders", icon: <Sparkles size={18} />, href: "/story" },
@@ -128,7 +134,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-[10px] no-underline group">
           <div className="h-[40px] overflow-hidden">
-            <img src="/logo-apex-site.png" alt="ApexTrade Logo"  className="object-center w-full h-full" />
+            <img src="/logo-apex-site.png" alt="ApexTrade Logo" className="object-center w-full h-full" />
 
           </div>
         </Link>
