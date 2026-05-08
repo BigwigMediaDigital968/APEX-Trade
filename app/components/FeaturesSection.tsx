@@ -36,7 +36,7 @@ const features = [
     ),
     color: "var(--color-accent-blue-light)",
     title: "Options Trading Power",
-    valueProp: "Up to 7X Intraday & 4X Holding",
+    valueProp: "Up to 10X Intraday & 4X Holding",
     desc: "Trade options with enhanced leverage for both intraday and positional strategies.",
   },
   {

@@ -184,10 +184,10 @@ export default function Hero() {
                         </span>
                     </button>
 
-                    <button className="group flex items-center px-5 py-3 text-white font-bold text-base sm:text-lg border-2 border-white/10 rounded-xl hover:bg-white/5 hover:border-white/20 transition-all active:scale-95">
+                    {/* <button className="group flex items-center px-5 py-3 text-white font-bold text-base sm:text-lg border-2 border-white/10 rounded-xl hover:bg-white/5 hover:border-white/20 transition-all active:scale-95">
                         <Play className="mr-3 w-4 h-4 md:w-5 md:h-5 fill-white" />
                         Learn More
-                    </button>
+                    </button> */}
                 </motion.div>
 
                 {/* Bottom Metrics */}

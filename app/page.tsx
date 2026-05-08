@@ -13,6 +13,7 @@ import Hero from "./components/Hero";
 import NewsSection from "./components/NewsSection";
 import BrokerSection from "./components/BrokerSection";
 import BecomeAffiliateSection from "./(pages)/(about)/become-an-affiliate/BecomeAffiliateSection";
+import ComparisonTable from "./components/ComparisonTable";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Hero />
       <TickerBar />
       <FeaturesSection />
+      <ComparisonTable />
       <BrokerSection/>
       <BecomeAffiliateSection/>
       <StatsShowcaseSection />
