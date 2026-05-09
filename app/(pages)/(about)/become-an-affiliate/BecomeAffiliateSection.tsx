@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Users, Sparkles, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import ClientCounter from '@/app/components/Counter/ClientCounter';
 
 /**
  * BecomeAffiliateSection Component
@@ -45,7 +46,7 @@ export default function BecomeAffiliateSection() {
                                 <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-4">
                                     <div className="flex items-center gap-2 text-gray-500 text-sm">
                                         <Users size={18} className="text-purple-500" />
-                                        <span>10k+ clients</span>
+                                        <span><ClientCounter /> clients</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-gray-500 text-sm">
                                         <TrendingUp size={18} className="text-blue-500" />
