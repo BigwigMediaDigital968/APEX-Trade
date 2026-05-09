@@ -44,8 +44,7 @@ export default function TickerBar() {
       //console.log(data)
       if (!data?.length) return;
 
-      const mapped: Ticker[] = data
-  .filter((t: any) => t.price && t.changePct != null).map((t: any) => ({
+      const mapped: Ticker[] = data.filter((t: any) => t.price && t.changePct != null).map((t: any) => ({
         symbol: t.label,
         price: formatPrice(t.price, t.type),
         change: `${t.changePct >= 0 ? "+" : ""}${t.changePct?.toFixed(2)}%`,
