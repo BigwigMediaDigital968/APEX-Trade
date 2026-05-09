@@ -61,7 +61,7 @@ export default function TickerBar() {
   };
 
   useEffect(() => {
-    //fetchTickers();
+    fetchTickers();
     const id = setInterval(fetchTickers, 15000);
     return () => clearInterval(id);
   }, []);
