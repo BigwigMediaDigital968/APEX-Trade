@@ -41,7 +41,7 @@ export default function TickerBar() {
       const res = await fetch("/api/ticker");
       if (!res.ok) return;
       const data = await res.json();
-      console.log(data)
+      //console.log(data)
       if (!data?.length) return;
 
       const mapped: Ticker[] = data.data
@@ -74,7 +74,7 @@ export default function TickerBar() {
       <div className="bg-bg-card/90 border-y border-border-main py-3 overflow-hidden">
         <div className="ticker-inner flex gap-12 animate-[ticker_35s_linear_infinite]">
           {loading && !(doubled?.length > 0)
-            ? Array.from({ length: 6 }).map((_, i) => (
+            ? Array.from({ length: 10 }).map((_, i) => (
                 <div
                   key={i}
                   className="flex items-center gap-2.5 whitespace-nowrap shrink-0 animate-pulse"
