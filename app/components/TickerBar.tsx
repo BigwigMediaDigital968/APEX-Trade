@@ -62,7 +62,7 @@ export default function TickerBar() {
 
   useEffect(() => {
     fetchTickers();
-    const id = setInterval(fetchTickers, 15000);
+    const id = setInterval(fetchTickers, 1000 * 5); // refresh every 5 seconds
     return () => clearInterval(id);
   }, []);
 
