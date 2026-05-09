@@ -44,7 +44,7 @@ export default function TickerBar() {
       //console.log(data)
       if (!data?.length) return;
 
-      const mapped: Ticker[] = data.data
+      const mapped: Ticker[] = data
   .filter((t: any) => t.price && t.changePct != null).map((t: any) => ({
         symbol: t.label,
         price: formatPrice(t.price, t.type),
@@ -62,7 +62,7 @@ export default function TickerBar() {
 
   useEffect(() => {
     fetchTickers();
-    const id = setInterval(fetchTickers, 1000 * 5); // refresh every 5 seconds
+    const id = setInterval(fetchTickers, 1000 * 10); // refresh every 10 seconds
     return () => clearInterval(id);
   }, []);
 

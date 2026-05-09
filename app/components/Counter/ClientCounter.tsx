@@ -9,7 +9,6 @@ const DAILY_RATE = 0.013; // 1.3% per day
 function getLiveCount(): number {
   const daysSinceStart =
     Math.floor((Date.now() - START_DATE.getTime()) / (1000 * 60 * 60 * 24));
-    //console.log(`Days since start: ${daysSinceStart}`);
   return Math.floor(BASE_COUNT * Math.pow(1 + DAILY_RATE, daysSinceStart));
 }
 
