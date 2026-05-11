@@ -106,7 +106,7 @@ const WithdrawalCard = ({
         exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
         whileHover={{ scale: 1.02 }}
         onClick={onDismiss}
-        className="relative w-fit max-w-[450px] cursor-pointer group overflow-hidden select-none backdrop-blur-2xl bg-white/[0.06] px-5 py-4"
+        className="relative w-fit max-w-[450px] cursor-pointer group overflow-hidden select-none backdrop-blur-2xl bg-white/10 px-5 py-4"
         style={{
             borderRadius: "20px",
             boxShadow: `
@@ -144,9 +144,9 @@ const WithdrawalCard = ({
             </span>
 
             <p className="tracking-tight">
-                <span className="font-bold text-accent-blue tracking-wide">{event.name}</span>
+                <span className="font-bold text-emerald-400  tracking-wide">{event.name}</span>
                 {" from "}
-                <span className="text-emerald-400 font-semibold italic">{event.location}</span>
+                <span className="text-accent-blue font-semibold italic">{event.location}</span>
                 {" just withdrew "}
                 <span className="font-black text-emerald-400">{event.amount}</span>
                 {" successfully."}
