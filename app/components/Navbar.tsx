@@ -133,9 +133,12 @@ export default function Navbar() {
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-[10px] no-underline group">
-          <div className="h-[25px] sm:h-[30px] md:h-[40px] overflow-hidden">
-            <img src="/logo-apex-site.png" alt="ApexTrade Logo" className="object-center w-full h-full" />
-
+          <div className="h-[25px] sm:h-[30px] md:h-[40px] w-auto">
+            <img
+              src="/logo-apex-site.png"
+              alt="ApexTrade Logo"
+              className="object-contain w-auto h-full"
+            />
           </div>
         </Link>
 

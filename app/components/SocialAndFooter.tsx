@@ -60,12 +60,12 @@ const footerLinks = [
   {
     title: "Products",
     links: [
-       { label: "Stocks", href: "/stocks" },
-  { label: "Commodities", href: "/commodity" },
-  { label: "Indices", href: "/indexes" }
+      { label: "Stocks", href: "/stocks" },
+      { label: "Commodities", href: "/commodity" },
+      { label: "Indices", href: "/indexes" }
     ],
   },
-  
+
 
   // {
   //   title: "Legal",
@@ -147,9 +147,12 @@ export default function SocialAndFooter() {
             {/* Brand Column */}
             <div className="lg:col-span-2">
               <Link href="/" className="flex items-center gap-3 no-underline mb-6 group">
-                <div className="h-[60px] overflow-hidden">
-                  <img src="/logo-apex-site.png" alt="ApexTrade Logo" className="object-center w-full h-full" />
-
+                <div className="h-[40px] sm:h-[60px] w-auto">
+                  <img
+                    src="/logo-apex-site.png"
+                    alt="ApexTrade Logo"
+                    className="object-contain w-auto h-full"
+                  />
                 </div>
               </Link>
               <p className="font-sans text-[var(--color-text-secondary)] text-[1rem] leading-[1.8] max-w-[320px] mb-8">
