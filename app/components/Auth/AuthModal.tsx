@@ -19,8 +19,8 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
         setLoading(true);
         setTimeout(() => setLoading(false), 1500);
 
-    //redirect to url for now too ig
-    window.location.href = 'https://instagram.com'; // ← replace with your actual URL
+        //redirect to url for now too ig
+        window.location.href = 'https://instagram.com'; // ← replace with your actual URL
 
     };
 
@@ -68,7 +68,7 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                                     <form onSubmit={handleLogin} className="space-y-5">
                                         <input
                                             type="text"
-                                            placeholder="Email Address Or Phone Number"
+                                            placeholder="Phone Number"
                                             required
                                             className={inputCls}
                                         />
@@ -106,8 +106,8 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
 
                             ) : (
                                 <SignupForm toggleForm={toggleForm
-                                }/>
-                                
+                                } />
+
                             )}
                         </AnimatePresence>
                         <motion.div
@@ -229,14 +229,16 @@ export function SignupForm({ toggleForm }: { toggleForm: () => void }) {
     const [resendTimer, setResendTimer] = useState(59);
 
     // field state
-    const [phone, setPhone]       = useState("");
-    const [email, setEmail]       = useState("");
-    const [otp, setOtp]           = useState(["", "", "", "", "", ""]);
-    const [name, setName]         = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    const [confirm, setConfirm]   = useState("");
+    const [confirm, setConfirm] = useState("");
     const [showPass, setShowPass] = useState(false);
     const [showConf, setShowConf] = useState(false);
+    const [referral, setReferral] = useState(false);
+    const [referralUrl, SetReferralUrl] = useState("")
     const [passError, setPassError] = useState("");
 
     const otpRefs = Array.from({ length: 6 }, () => useRef<HTMLInputElement>(null));
@@ -324,7 +326,7 @@ export function SignupForm({ toggleForm }: { toggleForm: () => void }) {
         e.preventDefault();
         setPassError("");
         if (password !== confirm) { setPassError("Passwords do not match."); return; }
-        if (password.length < 8)  { setPassError("Minimum 8 characters required."); return; }
+        if (password.length < 8) { setPassError("Minimum 8 characters required."); return; }
         setLoading(true);
         // TODO: call your create-account API
         setTimeout(() => {
@@ -338,11 +340,10 @@ export function SignupForm({ toggleForm }: { toggleForm: () => void }) {
         <div className="flex items-center gap-2 mb-2">
             {[1, 2, 3].map((s) => (
                 <div key={s} className="flex items-center gap-2">
-                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black transition-all duration-300 ${
-                        s < step  ? "bg-accent-green/20 border border-accent-green text-accent-green" :
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black transition-all duration-300 ${s < step ? "bg-accent-green/20 border border-accent-green text-accent-green" :
                         s === step ? "bg-accent-blue text-white" :
-                                    "bg-white/5 border border-border-main text-text-muted"
-                    }`}>
+                            "bg-white/5 border border-border-main text-text-muted"
+                        }`}>
                         {s < step ? "✓" : s}
                     </div>
                     {s < 3 && <div className={`w-8 h-px transition-all duration-300 ${s < step ? "bg-accent-green/40" : "bg-border-main"}`} />}
@@ -379,7 +380,7 @@ export function SignupForm({ toggleForm }: { toggleForm: () => void }) {
 
                         <StepDots />
 
-                        <form onSubmit={handleSendOtp} className="space-y-5">
+                        <form onSubmit={handleSendOtp} className="space-y-5 mt-4">
                             <input
                                 type="tel"
                                 required
@@ -388,14 +389,14 @@ export function SignupForm({ toggleForm }: { toggleForm: () => void }) {
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                             />
-                            <input
+                            {/* <input
                                 type="email"
                                 required
                                 placeholder="Email Address *"
                                 className={inputCls}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                            />
+                            /> */}
                             <button
                                 type="submit"
                                 disabled={loading}
@@ -460,12 +461,11 @@ export function SignupForm({ toggleForm }: { toggleForm: () => void }) {
 
                         {/* Resend */}
                         <p
-                            onClick={() => resendTimer <= 0 && handleSendOtp({ preventDefault: () => {} } as React.FormEvent)}
-                            className={`text-center text-[10px] font-bold uppercase tracking-[0.2em] transition-colors ${
-                                resendTimer > 0
-                                    ? "text-text-muted cursor-default"
-                                    : "text-accent-blue cursor-pointer hover:text-accent-blue-light"
-                            }`}
+                            onClick={() => resendTimer <= 0 && handleSendOtp({ preventDefault: () => { } } as React.FormEvent)}
+                            className={`text-center text-[10px] font-bold uppercase tracking-[0.2em] transition-colors ${resendTimer > 0
+                                ? "text-text-muted cursor-default"
+                                : "text-accent-blue cursor-pointer hover:text-accent-blue-light"
+                                }`}
                         >
                             {resendTimer > 0 ? `Resend Code in 0:${String(resendTimer).padStart(2, "0")}` : "Resend Code"}
                         </p>
@@ -538,6 +538,7 @@ export function SignupForm({ toggleForm }: { toggleForm: () => void }) {
                                 )}
                             </div>
 
+
                             {/* Confirm password */}
                             <div className="relative">
                                 <input
@@ -555,6 +556,32 @@ export function SignupForm({ toggleForm }: { toggleForm: () => void }) {
                                 >
                                     {showConf ? <EyeOff size={18} /> : <Eye size={18} />}
                                 </button>
+                            </div>
+                            <div className="relative">
+                                <div className="flex justify-between px-2 items-center text-[10px] font-black uppercase tracking-widest">
+                                    <label className="flex items-center gap-2 cursor-pointer text-text-muted hover:text-text-primary transition-colors">
+                                        <input
+                                            type="checkbox"
+                                            checked={referral}
+                                            onChange={() => setReferral(!referral)}
+                                            className="accent-accent-blue"
+                                        />
+                                        <span>Do you have a referral?</span>
+                                    </label>
+                                </div>
+
+                                {referral && (
+                                    <div className="relative mt-4">
+                                        <input
+                                            type="text"
+                                            required={referral}
+                                            placeholder="Referral URL"
+                                            className={`${inputCls} pr-12`}
+                                            value={referralUrl}
+                                            onChange={(e) => SetReferralUrl(e.target.value)}
+                                        />
+                                    </div>
+                                )}
                             </div>
 
                             {/* Inline error */}
@@ -603,7 +630,7 @@ export function SignupForm({ toggleForm }: { toggleForm: () => void }) {
                             </h2>
                             <p className="text-text-muted text-sm leading-relaxed max-w-xs mx-auto">
                                 Your account is ready. You can login using your{' '}
-                                <span className="text-text-primary font-bold">email or phone number</span>{' '}
+                                <span className="text-text-primary font-bold">phone number</span>{' '}
                                 and the password you just set.
                             </p>
                         </div>
