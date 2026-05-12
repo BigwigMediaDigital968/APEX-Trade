@@ -42,7 +42,7 @@ export default function Hero() {
             </div>
 
             {/* Main Content */}
-            <main className="relative z-10 flex flex-col items-center justify-end h-full px-6 text-center max-w-6xl mx-auto">
+            <main className="relative z-10 flex flex-col items-center justify-center md:justify-end h-full px-6 text-center max-w-6xl mx-auto">
 
                 {/* Trust Badge */}
                 <motion.div
