@@ -1,17 +1,15 @@
-
 // AuthModal.tsx
 "use client";
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, Lock, User, ArrowRight, ShieldCheck, Loader2, EyeOff, Eye, CheckCircle2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import axios from 'axios';
-import { error } from 'console';
 
 export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
 
-    const [step, setStep] = useState(1); // 1: phone+email, 2: otp, 3: name+pass, 4: success
+    const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
     const [resendTimer, setResendTimer] = useState(59);
 
@@ -25,15 +23,28 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     const [showPass, setShowPass] = useState(false);
     const [showConf, setShowConf] = useState(false);
     const [referral, setReferral] = useState(false);
-    const [referralUrl, SetReferralUrl] = useState("")
+    const [referralUrl, setReferralUrl] = useState("");
     const [passError, setPassError] = useState("");
-    const [resData, setResData] = useState(null); // add this with your other state
+
+    // referral auto-detection
+    const [referralMaster, setReferralMaster] = useState("");
+    const [referralBroker, setReferralBroker] = useState("");
+    const [autoReferral, setAutoReferral] = useState(false);
 
     const LOGIN_REDIRECT_URL = "https://web.tradeapp-ex.com/client/";
 
-    const handleLoginRedirect = () => {
-        window.location.href = LOGIN_REDIRECT_URL;
-    };
+    // ── Auto-detect referral from URL ──────────────────────────
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const master = urlParams.get("referral_master");
+        const broker = urlParams.get("referral_broker");
+
+        if (master && broker) {
+            setReferralMaster(master);
+            setReferralBroker(broker);
+            setAutoReferral(true);
+        }
+    }, []);
 
     const otpRefs = Array.from({ length: 6 }, () => useRef<HTMLInputElement>(null));
 
@@ -44,11 +55,9 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     const handleSendOtp = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        // TODO: call your send-OTP API with phone / email
         setTimeout(() => {
             setLoading(false);
             setStep(2);
-            // start resend countdown
             let t = 59;
             const id = setInterval(() => {
                 t -= 1;
@@ -84,7 +93,6 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     const handleVerifyOtp = () => {
         if (otp.join("").length < 6) return;
         setLoading(true);
-        // TODO: call your verify-OTP API
         setTimeout(() => {
             setLoading(false);
             setStep(3);
@@ -100,63 +108,74 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     ];
     const passScore = passChecks.filter(Boolean).length;
     const passLabel = ["", "Weak", "Fair", "Good", "Strong"][passScore];
-    const passColor = [
-        "",
-        "bg-red-500",
-        "bg-yellow-500",
-        "bg-blue-400",
-        "bg-accent-green",
-    ][passScore];
-    const passTextColor = [
-        "",
-        "text-red-400",
-        "text-yellow-400",
-        "text-blue-400",
-        "text-accent-green",
-    ][passScore];
+    const passColor = ["", "bg-red-500", "bg-yellow-500", "bg-blue-400", "bg-accent-green"][passScore];
+    const passTextColor = ["", "text-red-400", "text-yellow-400", "text-blue-400", "text-accent-green"][passScore];
 
     // ── Step 3 → create account ────────────────────────────────
-
     const handleCreateAccount = async (e: React.FormEvent) => {
         e.preventDefault();
         setPassError("");
         if (password !== confirm) { setPassError("Passwords do not match."); return; }
         if (password.length < 8) { setPassError("Minimum 8 characters required."); return; }
-        if (!referralUrl) {
-            setPassError("Referral url is required");
+
+        // Resolve referral params
+        let master = referralMaster;
+        let broker = referralBroker;
+
+        if (!autoReferral) {
+            // manual URL entered by user
+            if (referral && referralUrl) {
+                try {
+                    const urlParams = new URLSearchParams(referralUrl.split("?")[1]);
+                    master = urlParams.get("referral_master") ?? "";
+                    broker = urlParams.get("referral_broker") ?? "";
+                } catch {
+                    setPassError("Invalid referral URL.");
+                    return;
+                }
+            }
+            // if no referral checkbox, master/broker stay ""
         }
 
-        const urlParams = new URLSearchParams(referralUrl?.split("?")[1]);
-        const referral_master = urlParams.get("referral_master");
-        const referral_broker = urlParams.get("referral_broker");
-
-        const data = {
-            name,
-            mobile: phone,
-            email,
+        const payload = {
+            name: name.trim(),
+            mobile: phone.trim(),
+            email: email.trim(),
             password,
-            referral_master: referral_master ?? "",  // always send, default ""
-            referral_broker: referral_broker ?? "",  // always send, default ""
+            referral_master: master ?? "",
+            referral_broker: broker ?? "",
         };
 
         try {
             setLoading(true);
-            const res = await axios.post('https://web.tradeapp-ex.com/api/clientRegister', data);
+            const res = await axios.post(
+                'https://web.tradeapp-ex.com/api/clientRegister',
+                payload,
+                { headers: { 'Content-Type': 'multipart/form-data' } }
+            );
 
             const { status, message, data: resData } = res.data;
 
             if (status === 200 && message === "success") {
-                setResData(resData) // store login_id if needed
                 setStep(4);
-
-                setTimeout(handleLoginRedirect, 2000);
+                setTimeout(() => { window.location.href = LOGIN_REDIRECT_URL; }, 3000);
             } else if (status === 100) {
-                setPassError(message); // e.g. "Mobile number already registered"
+                setPassError(message);
             } else {
                 setPassError(resData?.error || message || "Something went wrong, try later!");
             }
-        } catch (error) {
-            setPassError("Something went wrong, try later!");
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                if (err.response) {
+                    setPassError(err.response.data?.message || "Server error. Please try again.");
+                } else if (err.request) {
+                    setPassError("Network error. Please check your connection.");
+                } else {
+                    setPassError("Something went wrong. Please try again.");
+                }
+            } else {
+                setPassError("An unexpected error occurred.");
+            }
         } finally {
             setLoading(false);
         }
@@ -189,24 +208,14 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
         >
             <AnimatePresence mode="wait">
 
-                {/* ───────────────────────────────────────────────
-                    STEP 1 — Phone + Email
-                ─────────────────────────────────────────────── */}
+                {/* STEP 1 — Phone */}
                 {step === 1 && (
-                    <motion.div
-                        key="step-1"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        className="space-y-6"
-                    >
+                    <motion.div key="step-1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
                         <div>
                             <h2 className="text-3xl font-black uppercase tracking-tighter text-white mb-2">New Account</h2>
                             <p className="text-text-muted text-xs uppercase tracking-widest font-bold">Create your trading account</p>
                         </div>
-
                         <StepDots />
-
                         <form onSubmit={handleSendOtp} className="space-y-5 mt-4">
                             <input
                                 type="tel"
@@ -216,19 +225,7 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                             />
-                            {/* <input
-                                type="email"
-                                required
-                                placeholder="Email Address *"
-                                className={inputCls}
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            /> */}
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="cursor-pointer w-full py-3 sm:py-4 px-6 bg-accent-blue hover:bg-accent-blue-light text-white rounded-2xl font-bold text-lg flex items-center justify-center transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-accent-blue/20"
-                            >
+                            <button type="submit" disabled={loading} className="cursor-pointer w-full py-3 sm:py-4 px-6 bg-accent-blue hover:bg-accent-blue-light text-white rounded-2xl font-bold text-lg flex items-center justify-center transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-accent-blue/20">
                                 {loading ? <Loader2 className="animate-spin" /> : 'Get OTP'}
                             </button>
                             <p className="text-[10px] text-center text-text-muted uppercase tracking-widest">
@@ -239,17 +236,9 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
                     </motion.div>
                 )}
 
-                {/* ───────────────────────────────────────────────
-                    STEP 2 — OTP Verification
-                ─────────────────────────────────────────────── */}
+                {/* STEP 2 — OTP */}
                 {step === 2 && (
-                    <motion.div
-                        key="step-2"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        className="space-y-8 py-4"
-                    >
+                    <motion.div key="step-2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8 py-4">
                         <div className="text-center">
                             <div className="w-16 h-16 bg-accent-blue/10 border border-accent-blue/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                                 <ShieldCheck size={32} className="text-accent-blue" />
@@ -259,17 +248,10 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
                                 Code sent to <span className="text-text-primary">{phone || email}</span>. Enter digits to confirm.
                             </p>
                         </div>
-
-                        {/* OTP boxes */}
                         <div className="flex gap-2 sm:gap-3 justify-center">
                             {otp.map((val, i) => (
                                 <input
-                                    key={i}
-                                    ref={otpRefs[i]}
-                                    type="text"
-                                    inputMode="numeric"
-                                    maxLength={1}
-                                    value={val}
+                                    key={i} ref={otpRefs[i]} type="text" inputMode="numeric" maxLength={1} value={val}
                                     onChange={(e) => handleOtpChange(i, e.target.value)}
                                     onKeyDown={(e) => handleOtpKeyDown(i, e)}
                                     onPaste={handleOtpPaste}
@@ -277,200 +259,142 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
                                 />
                             ))}
                         </div>
-
-                        <button
-                            onClick={handleVerifyOtp}
-                            disabled={loading || otp.join("").length < 6}
-                            className="cursor-pointer w-full py-3 sm:py-4 px-6 bg-accent-blue hover:bg-accent-blue-light text-white rounded-2xl font-bold text-lg flex items-center justify-center transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-accent-blue/20"
-                        >
+                        <button onClick={handleVerifyOtp} disabled={loading || otp.join("").length < 6} className="cursor-pointer w-full py-3 sm:py-4 px-6 bg-accent-blue hover:bg-accent-blue-light text-white rounded-2xl font-bold text-lg flex items-center justify-center transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-accent-blue/20">
                             {loading ? <Loader2 className="animate-spin" /> : 'Verify & Continue'}
                         </button>
-
-                        {/* Resend */}
                         <p
                             onClick={() => resendTimer <= 0 && handleSendOtp({ preventDefault: () => { } } as React.FormEvent)}
-                            className={`text-center text-[10px] font-bold uppercase tracking-[0.2em] transition-colors ${resendTimer > 0
-                                ? "text-text-muted cursor-default"
-                                : "text-accent-blue cursor-pointer hover:text-accent-blue-light"
-                                }`}
+                            className={`text-center text-[10px] font-bold uppercase tracking-[0.2em] transition-colors ${resendTimer > 0 ? "text-text-muted cursor-default" : "text-accent-blue cursor-pointer hover:text-accent-blue-light"}`}
                         >
                             {resendTimer > 0 ? `Resend Code in 0:${String(resendTimer).padStart(2, "0")}` : "Resend Code"}
                         </p>
                     </motion.div>
                 )}
 
-                {/* ───────────────────────────────────────────────
-                    STEP 3 — Name + Password
-                ─────────────────────────────────────────────── */}
+                {/* STEP 3 — Name + Password */}
                 {step === 3 && (
-                    <motion.div
-                        key="step-3"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        className="space-y-6"
-                    >
+                    <motion.div key="step-3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
                         <div>
                             <h2 className="text-3xl font-black uppercase tracking-tighter text-white mb-2">Set Up Profile</h2>
                             <p className="text-text-muted text-xs uppercase tracking-widest font-bold">Almost there — secure your account</p>
                         </div>
-
                         <StepDots />
-
                         <form onSubmit={handleCreateAccount} className="space-y-5">
-                            <input
-                                type="text"
-                                required
-                                placeholder="Full Name *"
-                                className={inputCls}
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            />
+                            <input type="text" required placeholder="Full Name *" className={inputCls} value={name} onChange={(e) => setName(e.target.value)} />
 
                             {/* Password */}
                             <div className="space-y-2">
                                 <div className="relative">
                                     <input
-                                        type={showPass ? "text" : "password"}
-                                        required
-                                        placeholder="Password *"
-                                        className={`${inputCls} pr-12`}
-                                        value={password}
+                                        type={showPass ? "text" : "password"} required placeholder="Password *"
+                                        className={`${inputCls} pr-12`} value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
-                                    <button
-                                        type="button"
-                                        onClick={() => setShowPass(!showPass)}
-                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary transition-colors"
-                                    >
+                                    <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary transition-colors">
                                         {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
                                     </button>
                                 </div>
-
-                                {/* Strength bar */}
                                 {password.length > 0 && (
                                     <div className="space-y-1.5 px-1">
                                         <div className="flex gap-1">
                                             {[1, 2, 3, 4].map((i) => (
-                                                <div
-                                                    key={i}
-                                                    className={`h-1 flex-1 rounded-full transition-all duration-300 ${i <= passScore ? passColor : "bg-border-main"}`}
-                                                />
+                                                <div key={i} className={`h-1 flex-1 rounded-full transition-all duration-300 ${i <= passScore ? passColor : "bg-border-main"}`} />
                                             ))}
                                         </div>
-                                        <p className={`text-[10px] font-bold uppercase tracking-widest ${passTextColor}`}>
-                                            {passLabel}
-                                        </p>
+                                        <p className={`text-[10px] font-bold uppercase tracking-widest ${passTextColor}`}>{passLabel}</p>
                                     </div>
                                 )}
                             </div>
-
 
                             {/* Confirm password */}
                             <div className="relative">
                                 <input
-                                    type={showConf ? "text" : "password"}
-                                    required
-                                    placeholder="Confirm Password *"
-                                    className={`${inputCls} pr-12 ${passError ? "border-red-500/50" : ""}`}
-                                    value={confirm}
+                                    type={showConf ? "text" : "password"} required placeholder="Confirm Password *"
+                                    className={`${inputCls} pr-12 ${passError ? "border-red-500/50" : ""}`} value={confirm}
                                     onChange={(e) => { setConfirm(e.target.value); setPassError(""); }}
                                 />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowConf(!showConf)}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary transition-colors"
-                                >
+                                <button type="button" onClick={() => setShowConf(!showConf)} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary transition-colors">
                                     {showConf ? <EyeOff size={18} /> : <Eye size={18} />}
                                 </button>
                             </div>
-                            <div className="relative">
-                                {referral && (
-                                    <div className="relative mt-4">
+
+                            {/* ── Referral section ── */}
+                            {autoReferral ? (
+                                // Auto-detected from page URL — show read-only badge
+                                <div className="flex items-center gap-3 px-4 py-3 bg-accent-green/10 border border-accent-green/25 rounded-2xl">
+                                    <CheckCircle2 size={20} className="text-accent-green shrink-0" />
+                                    <div>
+                                        <p className="text-sm font-medium capitalize tracking-widest text-accent-green">Referral Detected</p>
+                                        <p className="text-sm text-text-muted mt-0.5">
+                                            Master: {referralMaster} · Broker: {referralBroker}
+                                        </p>
+                                    </div>
+                                </div>
+                            ) : (
+                                // Manual referral URL input
+                                <div className="space-y-3">
+                                    <label className="flex items-center gap-2 cursor-pointer text-text-muted hover:text-text-primary transition-colors text-[10px] font-black uppercase tracking-widest px-2">
+                                        <input
+                                            type="checkbox"
+                                            checked={referral}
+                                            onChange={() => setReferral(!referral)}
+                                            className="accent-accent-blue"
+                                        />
+                                        <span>Do you have a referral?</span>
+                                    </label>
+                                    {referral && (
                                         <input
                                             type="text"
-                                            required={referral}
                                             placeholder="Referral URL"
-                                            className={`${inputCls} pr-12`}
+                                            className={inputCls}
                                             value={referralUrl}
-                                            onChange={(e) => SetReferralUrl(e.target.value)}
+                                            onChange={(e) => setReferralUrl(e.target.value)}
                                         />
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Inline error */}
-                            {passError && (
-                                <p className="text-[11px] font-bold text-red-400 uppercase tracking-wider px-1">
-                                    ⚠ {passError}
-                                </p>
+                                    )}
+                                </div>
                             )}
 
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="cursor-pointer w-full py-3 sm:py-4 px-6 bg-accent-blue hover:bg-accent-blue-light text-white rounded-2xl font-bold text-lg flex items-center justify-center transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-accent-blue/20"
-                            >
+                            {passError && (
+                                <p className="text-[11px] font-bold text-red-400 uppercase tracking-wider px-1">⚠ {passError}</p>
+                            )}
+
+                            <button type="submit" disabled={loading} className="cursor-pointer w-full py-3 sm:py-4 px-6 bg-accent-blue hover:bg-accent-blue-light text-white rounded-2xl font-bold text-lg flex items-center justify-center transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-accent-blue/20">
                                 {loading ? <Loader2 className="animate-spin" /> : 'Create Account'}
                             </button>
                         </form>
                     </motion.div>
                 )}
 
-                {/* ───────────────────────────────────────────────
-                    STEP 4 — Success popup
-                ─────────────────────────────────────────────── */}
+                {/* STEP 4 — Success */}
                 {step === 4 && (
-                    <motion.div
-                        key="step-4"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="py-6 space-y-8 text-center"
-                    >
-                        {/* Icon */}
+                    <motion.div key="step-4" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="py-6 space-y-8 text-center">
                         <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
+                            initial={{ scale: 0 }} animate={{ scale: 1 }}
                             transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
                             className="w-20 h-20 rounded-2xl bg-accent-green/10 border border-accent-green/25 flex items-center justify-center mx-auto"
                         >
                             <CheckCircle2 size={40} className="text-accent-green" />
                         </motion.div>
-
-                        {/* Message */}
                         <div className="space-y-3">
-                            <h2 className="text-2xl font-black uppercase tracking-tight text-white">
-                                Account Created!
-                            </h2>
+                            <h2 className="text-2xl font-black uppercase tracking-tight text-white">Account Created!</h2>
                             <p className="text-text-muted text-sm leading-relaxed max-w-xs mx-auto">
                                 Your account is ready. You can login using your{' '}
                                 <span className="text-text-primary font-bold">phone number</span>{' '}
                                 and the password you just set.
                             </p>
+                            <p className="text-[10px] text-text-muted uppercase tracking-widest">
+                                Redirecting to login in a few seconds...
+                            </p>
                         </div>
-
-                        {/* Divider */}
                         <div className="h-px bg-border-main" />
-
-                        {/* Go to login */}
                         <div className="space-y-3">
-                            <Link href={LOGIN_REDIRECT_URL}
-                                onClick={toggleForm}
+                            <Link
+                                href={LOGIN_REDIRECT_URL}
                                 className="cursor-pointer w-full py-3 sm:py-4 px-6 bg-accent-blue hover:bg-accent-blue-light text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-lg shadow-accent-blue/20"
                             >
                                 Go to Login <ArrowRight size={20} />
                             </Link>
-
-                            {/* External dashboard link */}
-                            {/* <Link
-                                href="https://app.yourdomain.com"   // ← replace with your actual URL
-                                className="cursor-pointer w-full py-3 sm:py-4 px-6 border border-border-main hover:border-accent-blue/40 text-text-muted hover:text-text-primary rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all"
-                            >
-                                Go to Dashboard <ArrowRight size={16} />
-                            </Link> */}
                         </div>
-
                         <p className="text-[10px] text-text-muted uppercase tracking-widest">
                             Welcome to the network, {name || "Trader"}.
                         </p>
