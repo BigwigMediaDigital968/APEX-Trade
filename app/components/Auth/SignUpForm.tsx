@@ -9,7 +9,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import { error } from 'console';
 
-export function SignUpForm({ toggleForm }: { toggleForm: () => void }) {
+export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
 
     const [step, setStep] = useState(1); // 1: phone+email, 2: otp, 3: name+pass, 4: success
     const [loading, setLoading] = useState(false);
@@ -463,7 +463,7 @@ export function SignUpForm({ toggleForm }: { toggleForm: () => void }) {
                                 onClick={toggleForm}
                                 className="cursor-pointer w-full py-3 sm:py-4 px-6 bg-accent-blue hover:bg-accent-blue-light text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-lg shadow-accent-blue/20"
                             >
-                                <ArrowRight size={20} /> Go to Login
+                                 Go to Login <ArrowRight size={20} />
                             </button>
 
                             {/* External dashboard link */}
