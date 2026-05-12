@@ -4,7 +4,7 @@
 
 import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, Lock, User, ArrowRight, ShieldCheck, Loader2, EyeOff, Eye, CheckCircle2 } from 'lucide-react';
+import { X, Mail, Lock, User, ArrowRight, ShieldCheck, Loader2, EyeOff, Eye, CheckCircle2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import axios from 'axios';
 import { error } from 'console';
@@ -28,6 +28,12 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     const [referralUrl, SetReferralUrl] = useState("")
     const [passError, setPassError] = useState("");
     const [resData, setResData] = useState(null); // add this with your other state
+
+    const LOGIN_REDIRECT_URL = "https://web.tradeapp-ex.com/client/";
+
+    const handleLoginRedirect = () => {
+        window.location.href = LOGIN_REDIRECT_URL;
+    };
 
     const otpRefs = Array.from({ length: 6 }, () => useRef<HTMLInputElement>(null));
 
@@ -142,6 +148,8 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
             if (status === 200 && message === "success") {
                 setResData(resData) // store login_id if needed
                 setStep(4);
+
+                setTimeout(handleLoginRedirect, 2000);
             } else if (status === 100) {
                 setPassError(message); // e.g. "Mobile number already registered"
             } else {
@@ -377,18 +385,6 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
                                 </button>
                             </div>
                             <div className="relative">
-                                <div className="flex justify-between px-2 items-center text-[10px] font-black uppercase tracking-widest">
-                                    <label className="flex items-center gap-2 cursor-pointer text-text-muted hover:text-text-primary transition-colors">
-                                        <input
-                                            type="checkbox"
-                                            checked={referral}
-                                            onChange={() => setReferral(!referral)}
-                                            className="accent-accent-blue"
-                                        />
-                                        <span>Do you have a referral?</span>
-                                    </label>
-                                </div>
-
                                 {referral && (
                                     <div className="relative mt-4">
                                         <input
@@ -459,12 +455,12 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
 
                         {/* Go to login */}
                         <div className="space-y-3">
-                            <button
+                            <Link href={LOGIN_REDIRECT_URL}
                                 onClick={toggleForm}
                                 className="cursor-pointer w-full py-3 sm:py-4 px-6 bg-accent-blue hover:bg-accent-blue-light text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-lg shadow-accent-blue/20"
                             >
-                                 Go to Login <ArrowRight size={20} />
-                            </button>
+                                Go to Login <ArrowRight size={20} />
+                            </Link>
 
                             {/* External dashboard link */}
                             {/* <Link
