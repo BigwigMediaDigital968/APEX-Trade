@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     description: "Your edge in the market starts here.",
     type: "website",
   },
-    icons: {
+  icons: {
     icon: "/favicon-32x32.png",
-    },
+  },
 };
 
 export default function RootLayout({
@@ -50,7 +50,6 @@ export default function RootLayout({
           {children}
           <SocialAndFooter />
         </AuthModalProvider>
-
       </body>
     </html>
   );

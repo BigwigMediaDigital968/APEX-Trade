@@ -1,8 +1,8 @@
 // AuthModal.tsx
 "use client";
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, Lock, User, ArrowRight, ShieldCheck, Loader2, EyeOff, Eye, CheckCircle2, ArrowLeft } from 'lucide-react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence, number } from 'framer-motion';
+import { X, Mail, Lock, User, ArrowRight, ShieldCheck, Loader2, EyeOff, Eye, CheckCircle2, ArrowLeft, ChevronDown, Search, Check } from 'lucide-react';
 import Link from 'next/link';
 import axios from 'axios';
 import {
@@ -19,6 +19,37 @@ declare global {
         confirmationResult?: ConfirmationResult;
     }
 }
+
+const countries = [
+    { code: '+1', name: 'USA', iso: 'US' },
+    { code: '+44', name: 'UK', iso: 'GB' },
+    { code: '+91', name: 'India', iso: 'IN' },
+    { code: '+971', name: 'UAE', iso: 'AE' },
+    { code: '+61', name: 'Australia', iso: 'AU' },
+    { code: '+49', name: 'Germany', iso: 'DE' },
+    { code: '+33', name: 'France', iso: 'FR' },
+    { code: '+81', name: 'Japan', iso: 'JP' },
+    { code: '+86', name: 'China', iso: 'CN' },
+    { code: '+7', name: 'Russia', iso: 'RU' },
+    { code: '+55', name: 'Brazil', iso: 'BR' },
+    { code: '+27', name: 'South Africa', iso: 'ZA' },
+    { code: '+65', name: 'Singapore', iso: 'SG' },
+    { code: '+1', name: 'Canada', iso: 'CA' },
+    { code: '+39', name: 'Italy', iso: 'IT' },
+    { code: '+34', name: 'Spain', iso: 'ES' },
+    { code: '+82', name: 'South Korea', iso: 'KR' },
+    { code: '+62', name: 'Indonesia', iso: 'ID' },
+    { code: '+60', name: 'Malaysia', iso: 'MY' },
+    { code: '+63', name: 'Philippines', iso: 'PH' },
+    { code: '+66', name: 'Thailand', iso: 'TH' },
+    { code: '+84', name: 'Vietnam', iso: 'VN' },
+    { code: '+92', name: 'Pakistan', iso: 'PK' },
+    { code: '+880', name: 'Bangladesh', iso: 'BD' },
+    { code: '+90', name: 'Turkey', iso: 'TR' },
+    { code: '+966', name: 'Saudi Arabia', iso: 'SA' },
+    { code: '+974', name: 'Qatar', iso: 'QA' },
+    { code: '+965', name: 'Kuwait', iso: 'KW' },
+].sort((a, b) => a.name.localeCompare(b.name));
 
 export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     const [step, setStep] = useState(1);
@@ -41,6 +72,11 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     const [referralMaster, setReferralMaster] = useState('');
     const [referralBroker, setReferralBroker] = useState('');
     const [autoReferral, setAutoReferral] = useState(false);
+
+    const [selectedCountry, setSelectedCountry] = useState(countries.find(c => c.iso === 'IN'));
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
 
     const LOGIN_REDIRECT_URL = 'https://web.tradeapp-ex.com/client/';
 
@@ -93,12 +129,16 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     const handleSendOtp = async (e?: React.FormEvent) => {
         e?.preventDefault();
         setPassError('');
+        const completeNo = `${selectedCountry?.code}${phone}`
 
         const phoneRegex = /^\+[1-9]\d{6,14}$/;
-        if (!phoneRegex.test(phone)) {
+        if (!phoneRegex.test(completeNo)) {
             setPassError('Enter phone with country code e.g. +919876543210');
             return;
         }
+
+        //console.log("phone", `completeNo`)
+        
 
         try {
             setLoading(true);
@@ -116,7 +156,7 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
 
 
             // 3. Now Send OTP
-            const confirmation = await signInWithPhoneNumber(auth, phone, appVerifier);
+            const confirmation = await signInWithPhoneNumber(auth, completeNo, appVerifier);
             //console.log(confirmation)
             window.confirmationResult = confirmation;
 
@@ -130,7 +170,7 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
             window.recaptchaVerifier = undefined;
             setPassError(
                 err?.code === 'auth/invalid-phone-number'
-                    ? 'Invalid phone number. Use format: +919876543210'
+                    ? 'Invalid phone number.'
                     : err?.code === 'auth/too-many-requests'
                         ? 'Too many attempts. Please try again later.'
                         : 'Failed to send OTP. Please try again.'
@@ -236,7 +276,7 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
 
         const payload = {
             name: name.trim(),
-            mobile: phone.trim(),
+            mobile: `${selectedCountry?.code}${phone}`.trim(),
             password,
             email: "",
             referral_master: master ?? '',
@@ -276,6 +316,32 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
         }
     };
 
+     // Filter countries based on search
+    const filteredCountries = useMemo(() => {
+        return countries.filter(c => 
+            c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+            c.code.includes(searchQuery)
+        );
+    }, [searchQuery]);
+
+    // Handle click outside to close dropdown
+    useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+        if (
+            dropdownRef.current &&
+            !dropdownRef.current.contains(event.target as Node)
+        ) {
+            setIsDropdownOpen(false);
+        }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+    };
+}, []);
+
     // ── Step indicator ─────────────────────────────────────────
     const StepDots = () => (
         <div className="flex items-center gap-2 mb-2">
@@ -294,6 +360,7 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     );
 
     return (
+        <>
         <motion.div
             key="signup-form"
             initial={{ opacity: 0, x: 20 }}
@@ -314,14 +381,81 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
                         </div>
                         <StepDots />
                         <form onSubmit={handleSendOtp} className="space-y-5 mt-4">
-                            <input
-                                type="tel"
-                                required
-                                placeholder="Phone with country code e.g. +91XXXXXXXXXX"
-                                className={inputCls}
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                            />
+                            <div className="relative flex gap-2">
+                                    {/* Country Selector */}
+                                    <div className="relative" ref={dropdownRef}>
+                                        <button
+                                            type="button"
+                                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                            className="h-full flex items-center gap-2 bg-bg-main/50 border border-white/10 rounded-2xl px-3 md:px-4 py-4 text-white hover:border-white/20 transition-all"
+                                        >
+                                            <span className="text-sm font-bold">{selectedCountry?.iso}</span>
+                                            <span className="text-sm text-gray-400">{selectedCountry?.code}</span>
+                                            <ChevronDown size={14} className={`text-gray-500 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                                        </button>
+
+                                        <AnimatePresence>
+                                            {isDropdownOpen && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, y: 10 }}
+                                                    className="absolute top-full left-0 mt-2 w-64 bg-[#1c2128] border border-white/10 rounded-2xl shadow-2xl z-[100] overflow-hidden"
+                                                >
+                                                    <div className="p-3 border-b border-white/5 bg-black/20">
+                                                        <div className="relative">
+                                                            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                                                            <input
+                                                                autoFocus
+                                                                type="text"
+                                                                placeholder="Search country..."
+                                                                className="w-full bg-black/30 border border-white/5 rounded-xl py-2 pl-9 pr-4 text-xs text-white outline-none focus:border-blue-500/50"
+                                                                value={searchQuery}
+                                                                onChange={(e) => setSearchQuery(e.target.value)}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="max-h-48 overflow-y-auto custom-scrollbar">
+                                                        {filteredCountries.map((c) => (
+                                                            <button
+                                                                key={`${c.iso}-${c.code}`}
+                                                                type="button"
+                                                                onClick={() => {
+                                                                    setSelectedCountry(c);
+                                                                    setIsDropdownOpen(false);
+                                                                    setSearchQuery('');
+                                                                }}
+                                                                className="w-full flex items-center justify-between px-4 py-2 text-left hover:bg-blue-600/10 transition-colors group"
+                                                            >
+                                                                <div className="flex items-center gap-3">
+                                                                    <span className="text-xs font-bold text-gray-500 group-hover:text-blue-400">{c.iso}</span>
+                                                                    <span className="text-sm text-gray-300 group-hover:text-white">{c.name}</span>
+                                                                </div>
+                                                                <div className="flex items-center gap-2">
+                                                                    <span className="text-xs text-blue-500 font-mono">{c.code}</span>
+                                                                    {selectedCountry?.iso === c.iso && <Check size={14} className="text-blue-500" />}
+                                                                </div>
+                                                            </button>
+                                                        ))}
+                                                        {filteredCountries.length === 0 && (
+                                                            <div className="p-4 text-center text-xs text-gray-500 italic">No results found</div>
+                                                        )}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+
+                                    {/* Phone Number Input */}
+                                    <input
+                                        type="tel"
+                                        required
+                                        placeholder="Phone Number"
+                                        className={inputCls}
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))} // only allow numbers
+                                    />
+                                </div>
                             {passError && (
                                 <p className="text-[11px] font-bold text-red-400 uppercase tracking-wider px-1">⚠ {passError}</p>
                             )}
@@ -330,7 +464,7 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
                             </button>
                             <p className="text-[10px] text-center text-text-muted uppercase tracking-widest">
                                 By submitting, you agree to our{' '}
-                                <span className="text-text-primary cursor-pointer hover:underline">Privacy Protocol</span>
+                                <span className="">Privacy Protocol</span>
                             </p>
                         </form>
                     </motion.div>
@@ -487,5 +621,12 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
                 )}
             </AnimatePresence>
         </motion.div>
+        <style dangerouslySetInnerHTML={{ __html: `
+                .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+                .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+                .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+            `}} />
+            </>
     );
 }
