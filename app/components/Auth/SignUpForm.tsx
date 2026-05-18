@@ -11,6 +11,7 @@ import {
     ConfirmationResult,
 } from 'firebase/auth';
 import { auth } from '@/app/config/firebase';
+import { LOGIN_REDIRECT_URL } from './AuthModal';
 
 // Extend window to hold the recaptcha verifier
 declare global {
@@ -77,8 +78,6 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-    const LOGIN_REDIRECT_URL = 'https://web.tradeapp-ex.com/client/';
 
     // ── Auto-detect referral from URL ──────────────────────────
     useEffect(() => {

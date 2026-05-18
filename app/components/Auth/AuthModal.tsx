@@ -9,11 +9,12 @@ import Link from 'next/link';
  * - Fixed to Sign Up form only.
  * - All "Login" buttons now redirect to the external trading client.
  */
+
+// The external URL for existing users
+export const LOGIN_REDIRECT_URL = "https://web.tradeapp-ex.com/browser/index.html";
+
 const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
     const [loading, setLoading] = useState(false);
-
-    // The external URL for existing users
-    const LOGIN_REDIRECT_URL = "https://web.tradeapp-ex.com/client/";
 
     const handleLoginRedirect = () => {
         window.location.href = LOGIN_REDIRECT_URL;
@@ -55,7 +56,7 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                             </div>
 
                             <Link
-                            href={LOGIN_REDIRECT_URL}
+                                href={LOGIN_REDIRECT_URL}
                                 //onClick={handleLoginRedirect}
                                 className="cursor-pointer rounded-2xl group flex items-center gap-4 px-10 py-5 border-2 border-white/30 hover:border-white text-white font-black uppercase tracking-[0.3em] text-xs transition-all bg-white/5 backdrop-blur-sm"
                             >
