@@ -67,12 +67,12 @@ const navLinks = [
         icon: <Layers size={18} />,
         href: "/margin-trading"
       },
-      {
-        label: "Dabba Trading",
-        desc: "Risks, legality & why to avoid it",
-        icon: <AlertTriangle size={18} />,
-        href: "/dabba-trading"
-      }
+      // {
+      //   label: "Dabba Trading",
+      //   desc: "Risks, legality & why to avoid it",
+      //   icon: <AlertTriangle size={18} />,
+      //   href: "/dabba-trading"
+      // }
     ]
   },
   {
