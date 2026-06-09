@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ApexTrade — Precision Trading Platform",
+  title: "ApexTrade - Precision Trading Platform",
   description:
     "Follow automated trading systems built from market trends. Trusted by 4,700+ traders worldwide.",
   keywords: "trading platform, automated trading, market analysis, investment",
