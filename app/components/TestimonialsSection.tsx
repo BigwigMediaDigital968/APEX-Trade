@@ -12,63 +12,63 @@ import ClientCounter from "./Counter/ClientCounter";
 const testimonials = [
   {
     name: "Rahul Sharma",
-    role: "Working with ApexTrade",
+    role: "Intraday Trader · NSE Futures",
     avatar: "RS",
     avatarBg: "var(--color-accent-blue)",
     rating: 5,
-    text: "ApexTrade completely transformed my trading approach. The signals are highly reliable and I’ve seen consistent growth in my performance.",
+    text: "Switching to this platform completely changed how I approach each session. The signals are consistent, the execution is fast, and my confidence in every trade has grown measurably.",
     profit: "+₹18,40,000",
-    period: "Last 90 days",
+    period: "",
   },
   {
     name: "Priya Verma",
-    role: "Working with ApexTrade",
+    role: "Options Trader · MCX",
     avatar: "PV",
     avatarBg: "var(--color-accent-green)",
     rating: 5,
-    text: "I’ve tried multiple platforms before, but ApexTrade stands out. I don’t have to constantly monitor trades — everything runs smoothly.",
+    text: "I tested a handful of platforms before settling here. Nothing else came close on execution speed or support response time. Trading feels noticeably smoother every single day.",
     profit: "+₹14,75,000",
-    period: "Last 60 days",
+    period: "",
   },
   {
     name: "Amit Patel",
-    role: "Working with ApexTrade",
+    role: "Positional Trader · Equities",
     avatar: "AP",
     avatarBg: "var(--color-accent-blue-light)",
     rating: 5,
-    text: "The analytics and insights are extremely powerful. It gives me clarity and confidence while making trading decisions.",
+    text: "The analytics depth here is genuinely rare. Real-time data, clean interface, no lag — it gives me clarity that helps me make better decisions under pressure.",
     profit: "+₹52,10,000",
-    period: "Last 6 months",
+    period: "",
   },
   {
     name: "Sneha Reddy",
-    role: "Working with ApexTrade",
+    role: "Commodity Trader · MCX",
     avatar: "SR",
     avatarBg: "#FF6B8A",
     rating: 5,
-    text: "Execution speed is amazing. The built-in risk management tools have really helped me avoid unnecessary losses.",
+    text: "The built-in risk controls saved me from a costly mistake early on. The platform manages exposure intelligently and the order fills are consistently at the price I expect.",
     profit: "+₹26,30,000",
-    period: "Last 4 months",
+    period: "",
   },
   {
     name: "Vikram Singh",
-    role: "Working with ApexTrade",
+    role: "HNI Trader · Multi-Segment",
     avatar: "VS",
     avatarBg: "#FFB800",
     rating: 5,
-    text: "Managing multiple trades has become effortless. Automation saves a lot of time and improves overall efficiency.",
-    profit: "+₹3.2 Cr",
-    period: "YTD",
+    text: "Managing a portfolio of this scale requires a platform you can trust completely. ApexTrade delivers on uptime, speed, and support every time — no exceptions.",
+    profit: "+₹3.2 Crore",
+    period: "",
   },
   {
     name: "Neha Gupta",
-    role: "Working with ApexTrade",
+    role: "Beginner Trader · NSE Equities",
     avatar: "NG",
     avatarBg: "#00D4FF",
     rating: 5,
-    text: "Even as a beginner, I found it easy to get started. The platform is user-friendly and the strategies are simple to follow.",
+    text: "I was brand new to active trading when I joined. The platform is intuitive, the knowledge resources are genuinely useful, and the support team walked me through everything I needed.",
     profit: "+₹7,90,000",
-    period: "First 6 months",
+    period: "",
   },
 ];
 
@@ -135,7 +135,8 @@ export default function TestimonialsSection() {
             Trusted by <span className="text-transparent bg-clip-text bg-linear-to-r from-accent-blue to-accent-green"><ClientCounter /></span> clients
           </h2>
           <p className="font-sans text-text-secondary text-lg max-w-2xl mx-auto">
-            Experience institutional-grade growth. See why top traders are switching to NeonTrade.
+            Real outcomes from real people - traders who made the switch and never looked back.
+
           </p>
         </motion.div>
 

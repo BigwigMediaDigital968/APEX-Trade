@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Users, Sparkles, TrendingUp } from 'lucide-react';
+import { ArrowRight, Users, Sparkles, TrendingUp, BadgeCheck } from 'lucide-react';
 import Link from 'next/link';
 import ClientCounter from '@/app/components/Counter/ClientCounter';
 
@@ -29,28 +29,32 @@ export default function BecomeAffiliateSection() {
                             <div className="lg:col-span-3 space-y-6 text-center lg:text-left">
                                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-widest">
                                     <Sparkles size={14} />
-                                    Looking for more?
+                                    Affiliate Program
                                 </div>
 
                                 <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-                                    Become an <br />
+                                   Earn While
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-green-400">
-                                        Affiliate Partner
+                                        You Refer
                                     </span>
                                 </h2>
 
                                 <p className="text-gray-400 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                                    Join our elite network of influencers and marketers. Earn industry-leading commissions by referring clients to the world's most advanced brokerage infrastructure.
+Our affiliate network rewards content creators, influencers, and trading community leaders with industry-leading commissions. Share our platform — earn every time someone you refer makes a trade.
                                 </p>
 
-                                <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-4">
+                                <div className="space-y-2 pt-4">
                                     <div className="flex items-center gap-2 text-gray-500 text-sm">
                                         <Users size={18} className="text-purple-500" />
-                                        <span><ClientCounter /> clients</span>
+                                        <span><ClientCounter /> Clients Referred by Affiliates</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-gray-500 text-sm">
                                         <TrendingUp size={18} className="text-blue-500" />
-                                        <span>Fastest Payouts</span>
+                                        <span>Fastest Commission Payouts</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-gray-500 text-sm">
+                                         <BadgeCheck size={18} className="text-blue-500" />
+                                        <span>Approval typically within 24 hours of application</span>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +67,7 @@ export default function BecomeAffiliateSection() {
                                     whileTap={{ scale: 0.98 }}
                                     className="btn-primary relative flex items-center gap-3 "
                                 >
-                                    Apply as Affiliate
+                                    Join the Affiliate Network
                                     <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
                                 </motion.button>
                                 </Link>

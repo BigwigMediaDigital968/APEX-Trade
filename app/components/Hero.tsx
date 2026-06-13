@@ -52,7 +52,7 @@ export default function Hero() {
                     className="mb-8 px-4 py-1.5 rounded-full bg-[#3D6BFF]/10 border border-[#3D6BFF]/20 flex items-center space-x-2"
                 >
                     <span className="w-2 h-2 rounded-full bg-[#00FFA3] animate-pulse" />
-                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#00FFA3]">Trade the Future</span>
+                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#00FFA3]">Live Trading</span>
                 </motion.div>
 
                 <div className="flex flex-col space-y-2">
@@ -180,7 +180,7 @@ export default function Hero() {
                     <button onClick={handleClick} className="cursor-pointer group relative px-5 py-3 bg-[#3D6BFF] text-white rounded-xl font-bold text-base sm:text-lg overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(61,107,255,0.5)] active:scale-95">
                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                         <span className="relative flex items-center">
-                            Open Account <ChevronRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
+                            Open Free Account <ChevronRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                         </span>
                     </button>
 
@@ -198,19 +198,19 @@ export default function Hero() {
                     className="mt-8 mb-8 md:mt-12 md:mb-10 grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/5 pt-4 sm:pt-10 w-full"
                 >
                     <div>
-                        <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">24H Volume</p>
+                        <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">24H Volume Processed</p>
                         <p className="text-white font-mono text-xl md:text-2xl font-bold">$12.4B</p>
                     </div>
                     <div>
-                        <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Active Assets</p>
+                        <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Tradeable Instruments</p>
                         <p className="text-white font-mono text-xl md:text-2xl font-bold">500+</p>
                     </div>
                     <div className="hidden md:block">
-                        <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Global Nodes</p>
-                        <p className="text-white font-mono text-xl md:text-2xl font-bold">14,209</p>
+                        <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Global Network Nodes</p>
+                        <p className="text-white font-mono text-xl md:text-2xl font-bold">14,200+</p>
                     </div>
                     <div className="hidden md:block">
-                        <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Network Speed</p>
+                        <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Average Execution Time</p>
                         <p className="text-[#00FFA3] font-mono text-xl md:text-2xl font-bold">0.8ms</p>
                     </div>
                 </motion.div>

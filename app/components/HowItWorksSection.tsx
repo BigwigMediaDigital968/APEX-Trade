@@ -6,7 +6,7 @@ const steps = [
   {
     number: "01",
     title: "Create Your Account",
-    desc: "Create your trading account in just 5 minutes with a quick and easy signup process.",
+    desc: "Complete a streamlined registration in under five minutes. Provide your basic details, verify your identity, and your account is ready to fund.",
     color: "#00FFA3",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -18,8 +18,8 @@ const steps = [
   },
   {
     number: "02",
-    title: "Add Funds",
-    desc: "Deposit funds securely in under 2 minutes and get ready to start trading instantly.",
+    title: "Fund Your Account",
+    desc: "Deposit securely via your preferred payment method. Funds reflect in your trading wallet within minutes so you never miss a market opportunity.",
     color: "#3D6BFF",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -32,8 +32,8 @@ const steps = [
   },
   {
     number: "03",
-    title: "Withdraw Profits",
-    desc: "Enjoy the fastest withdrawals within 30 minutes with our quick and reliable payout system.",
+    title: "Start Trading",
+    desc: "Access NSE Futures, MCX, Options, Stocks, Commodities, and Indices from a single unified terminal with real-time data and full leverage capability.",
     color: "#00FFA3",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -44,8 +44,8 @@ const steps = [
   },
   {
     number: "04",
-    title: "Enjoy Your Profits",
-    desc: "Trade confidently and watch your profits grow with high leverage and seamless execution.",
+    title: "Withdraw Your Profits",
+    desc: "Raise a withdrawal request and watch your profits arrive in your bank account within 30 minutes - any day, any time, without hidden conditions.",
     color: "#3D6BFF",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -74,14 +74,14 @@ export default function HowItWorksSection() {
         {/* Header */}
         <div className="text-center mb-20">
           <span className="badge-blue mb-4 inline-block">
-            How It Works
+            Getting Started
           </span>
           <h2 className="font-display text-[clamp(2rem,4vw,3rem)] font-extrabold text-white tracking-[-0.03em] leading-[1.1] mb-5">
             Up & Running in{" "}
-            <span className="text-gradient-blue">4 Simple Steps</span>
+            <span className="text-gradient-blue">Four Simple Steps</span>
           </h2>
           <p className="font-sans text-text-secondary text-[1rem] max-w-[480px] mx-auto">
-            No hassle, no delays — start trading and access your funds anytime with our ultra-fast system.
+No paperwork mountains, no week-long waits. Our onboarding is designed to get you from signup to your first trade in minutes.
           </p>
         </div>
 
@@ -131,7 +131,7 @@ export default function HowItWorksSection() {
         {/* CTA */}
         <div className="text-center mt-16">
           <button onClick={handlClick} className="btn-primary text-[1rem] no-underline">
-            Start Trading Now 
+            Open Your Account Now
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>

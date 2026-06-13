@@ -14,6 +14,7 @@ import NewsSection from "./components/NewsSection";
 import BrokerSection from "./components/BrokerSection";
 import BecomeAffiliateSection from "./(pages)/(about)/become-an-affiliate/BecomeAffiliateSection";
 import ComparisonTable from "./components/ComparisonTable";
+import HomeCTA from "./components/HomeCTA";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       {/* <PricingSection /> */}
       <TestimonialsSection />
       <FAQSection />
+      <HomeCTA/>
       <ContactSection />
       <NewsSection />
     </main>
