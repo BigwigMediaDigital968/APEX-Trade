@@ -145,13 +145,8 @@ export default function TestimonialsSection() {
             clients
           </h2>
           <p className="font-sans text-text-secondary text-lg max-w-2xl mx-auto">
-<<<<<<< HEAD
-            Experience institutional-grade growth. See why top traders are
-            switching to ApexTrade.
-=======
-            Real outcomes from real people - traders who made the switch and never looked back.
-
->>>>>>> a3173bbe50bcd8f082ea4f0bbe11981fe056b3af
+            Real outcomes from real people - traders who made the switch and
+            never looked back.
           </p>
         </motion.div>
 
