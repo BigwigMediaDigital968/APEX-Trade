@@ -9,6 +9,10 @@ import {
   Layers,
   LayoutDashboard,
 } from "lucide-react";
+import OptionTrading from "./component/OptionTrading";
+import WhyChoose from "./component/WhyChoose";
+import FAQs from "@/app/components/Faqs";
+import { futuresAndOptionsFaqs } from "@/app/FaqsData";
 
 const valueItems = [
   {
@@ -88,9 +92,16 @@ export default function FeaturesOptions() {
         StatItems={stats}
         buttonText="Start F&O Trading"
       />
-      <div>
-        <TestimonialsSection />
-      </div>
+
+      <OptionTrading />
+      <WhyChoose />
+
+      <FAQs
+        title={futuresAndOptionsFaqs.title}
+        faqs={futuresAndOptionsFaqs.faqs}
+      />
+
+      <TestimonialsSection />
     </>
   );
 }

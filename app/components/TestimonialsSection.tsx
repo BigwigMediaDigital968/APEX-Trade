@@ -119,7 +119,7 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="py-10 md:py-18 relative overflow-hidden bg-bg-main"
+      className="py-10 relative overflow-hidden bg-bg-main"
     >
       {/* Background Glows */}
       <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-accent-blue/5 blur-[120px] pointer-events-none" />
