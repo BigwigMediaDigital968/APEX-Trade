@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ApexTrade — Precision Trading Platform",
+  title: "ApexTrade - Precision Trading Platform",
   description:
     "Follow automated trading systems built from market trends. Trusted by 4,700+ traders worldwide.",
   keywords: "trading platform, automated trading, market analysis, investment",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     description: "Your edge in the market starts here.",
     type: "website",
   },
-    icons: {
-    icon: "/favicon-32x32.png",
-    },
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -50,7 +50,6 @@ export default function RootLayout({
           {children}
           <SocialAndFooter />
         </AuthModalProvider>
-
       </body>
     </html>
   );

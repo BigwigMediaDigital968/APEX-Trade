@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, Loader2, ArrowLeft } from 'lucide-react';
 import { SignUpForm } from './SignUpForm';
+import Link from 'next/link';
 
 /**
  * Updated AuthModal: 
  * - Fixed to Sign Up form only.
  * - All "Login" buttons now redirect to the external trading client.
  */
+
+// The external URL for existing users
+export const LOGIN_REDIRECT_URL = "https://web.tradeapp-ex.com/browser/index.html";
+
 const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
     const [loading, setLoading] = useState(false);
-
-    // The external URL for existing users
-    const LOGIN_REDIRECT_URL = "https://web.tradeapp-ex.com/client/";
 
     const handleLoginRedirect = () => {
         window.location.href = LOGIN_REDIRECT_URL;
@@ -53,15 +55,16 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                                 </p>
                             </div>
 
-                            <button
-                                onClick={handleLoginRedirect}
+                            <Link
+                                href={LOGIN_REDIRECT_URL}
+                                //onClick={handleLoginRedirect}
                                 className="cursor-pointer rounded-2xl group flex items-center gap-4 px-10 py-5 border-2 border-white/30 hover:border-white text-white font-black uppercase tracking-[0.3em] text-xs transition-all bg-white/5 backdrop-blur-sm"
                             >
                                 <span>Go to Login</span>
 
                                 <ArrowLeft size={16} className="rotate-180 group-hover:translate-x-1 transition-transform" />
 
-                            </button>
+                            </Link>
 
                             <div className="absolute bottom-8 left-0 w-full flex justify-center gap-8 opacity-30">
                                 <div className="text-[9px] font-black text-white uppercase tracking-[0.3em]">ISO-27001 SECURE</div>
@@ -86,12 +89,12 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                                 <p className="text-slate-500 text-[12px] uppercase font-black tracking-[0.3em] mb-1">
                                     ALREADY A MEMBER?
                                 </p>
-                                <button
-                                    onClick={handleLoginRedirect}
-                                    className="px-8 py-2 mt-2 border-2 border-white/20 hover:border-blue-500 text-white rounded-xl text-[11px] uppercase font-bold tracking-[0.2em] transition-all"
+                                <Link href={LOGIN_REDIRECT_URL}
+                                    //onClick={handleLoginRedirect}
+                                    className="block px-8 py-2 mt-2 border-2 border-white/20 hover:border-blue-500 text-white rounded-xl text-[11px] uppercase font-bold tracking-[0.2em] transition-all"
                                 >
                                     Login to Dashboard
-                                </button>
+                                </Link>
                             </div>
                         </motion.div>
                     </div>

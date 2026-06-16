@@ -12,63 +12,46 @@ import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
 
 const features = [
   {
-    icon: (
-      <HiOutlineLightningBolt className="w-full h-full"/>
-
-    ),
+    icon: <HiOutlineLightningBolt className="w-full h-full" />,
     color: "var(--color-accent-blue)",
-    title: "High Leverage Intraday",
-    valueProp: "500X Margin in Intraday (MCX & NSE Futures)",
-    desc: "Maximize your trading power with ultra-high leverage for intraday positions in MCX and NSE Futures.",
+    title: "MCX & NSE Futures Ultra-High Intraday Leverage",
+    valueProp: "Control significantly larger positions with up to 500X intraday margin",
+    desc: "Control significantly larger positions with up to 500X intraday margin across MCX and NSE Futures markets. Built for traders who demand maximum capital efficiency within the session.",
   },
   {
-    icon: (
-      <IoRocketOutline className="w-full h-full" />
-    ),
+    icon: <IoRocketOutline className="w-full h-full" />,
     color: "var(--color-accent-green)",
-    title: "Smart Holding Leverage",
-    valueProp: "60X Margin for Holding (MCX & NSE Futures)",
-    desc: "Carry your positions with optimized leverage designed for better control and flexibility.",
+    title: "Positional Trades: 60X Holding Margin",
+    valueProp: "Carry overnight and multi-day positions with 60X leverage",
+    desc: "Carry overnight and multi-day positions with 60X leverage designed to give you flexibility without sacrificing control. Manage risk and exposure across your entire holding portfolio from one screen.",
   },
   {
-    icon: (
-      <BsGraphUpArrow className="w-full h-full" />
-    ),
+    icon: <BsGraphUpArrow className="w-full h-full" />,
     color: "var(--color-accent-blue-light)",
-    title: "Options Trading Power",
-    valueProp: "Up to 10X Intraday & 4X Holding",
-    desc: "Trade options with enhanced leverage for both intraday and positional strategies.",
+    title: "Options Segment Options Trading Power",
+    valueProp: "Trade options with up to 7X intraday and 4X positional leverage",
+    desc: "Trade options with up to 7X intraday and 4X positional leverage. Whether you are writing premium or buying directional exposure, our options desk gives you the firepower you need.",
   },
   {
-    icon: (
-      <LiaMoneyBillWaveAltSolid className="w-full h-full" />
-
-
-    ),
+    icon: <LiaMoneyBillWaveAltSolid className="w-full h-full" />,
     color: "var(--color-accent-green)",
-    title: "Low Brokerage",
-    valueProp: "Cost-Efficient Trading",
-    desc: "Benefit from minimal brokerage charges to maximize your net profits on every trade.",
+    title: "Cost Advantage: Flat, Transparent Brokerage",
+    valueProp: "Flat, minimal fee on every trade",
+    desc: "Variable brokerage structures quietly eat into your P&L. We charge a flat, minimal fee on every trade so you always know exactly what you are paying — and keep more of what you earn.",
   },
   {
-    icon: (
-            <HiOutlineLightningBolt className="w-full h-full"/>
-
-    ),
+    icon: <HiOutlineLightningBolt className="w-full h-full" />,
     color: "var(--color-accent-blue)",
-    title: "Fastest Payout",
-    valueProp: "Quick & Secure Withdrawals",
-    desc: "Experience lightning-fast payout processing with complete reliability and transparency.",
+    title: "Withdrawals: Fastest Payout in the Industry",
+    valueProp: "Profits cleared in under 30 minutes",
+    desc: "Profits cleared in under 30 minutes. No holding periods, no unexplained delays. Withdrawal requests are processed with full transparency, and your money lands exactly where you tell it to.",
   },
   {
-    icon: (
-      <FaRegClock className="w-full h-full" />
-
-    ),
+    icon: <FaRegClock className="w-full h-full" />,
     color: "var(--color-accent-green)",
-    title: "24/7 Support",
-    valueProp: "Always Here for You",
-    desc: "Get round-the-clock assistance from our dedicated support team whenever you need help.",
+    title: "Always Available Round-the-Clock Support",
+    valueProp: "Reach a knowledgeable support specialist any time",
+    desc: "Markets move at all hours, and so does our team. Reach a knowledgeable support specialist any time of day or night via chat, phone, or ticket — no bots, no scripted delays.",
   },
 ];
 
@@ -115,12 +98,12 @@ export default function FeaturesSection() {
             <span>Market Edge</span>
           </div>
           <h2 className="font-display text-[clamp(2.2rem,5vw,3.5rem)] font-extrabold text-[var(--color-text-primary)] tracking-tight leading-[1.1] mb-5">
-            Cutting-Edge Tools for{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)]">Your Success</span>
+            Tools Engineered for
+{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)]">Serious Traders</span>
           </h2>
           <p className="font-sans text-[var(--color-text-secondary)] text-lg max-w-[560px] mx-auto leading-relaxed">
-            Institutional-grade infrastructure engineered for speed, precision, and absolute market dominance.
-          </p>
+Every feature on this platform is purpose-built for speed, precision, and measurable performance - from the order ticket to the withdrawal screen.          </p>
         </motion.div>
 
         {/* Feature grid with staggered entry */}
@@ -168,13 +151,12 @@ export default function FeaturesSection() {
         </h3>
 
         {/* NEW: Specific Value Proposition Line (Extra Line) */}
-        <div className="mb-2">
+        {/* <div className="mb-2">
           <p className="text-[var(--color-accent-blue)] font-black text-base capitalize tracking-wider leading-tight">
             {feature.valueProp}
           </p>
-          {/* Subtle separator line that grows on hover */}
           <div className="h-[1px] w-8 bg-white/10 mt-2 transition-all duration-500 group-hover:w-16 group-hover:bg-[var(--color-accent-blue)]/30" />
-        </div>
+        </div> */}
 
         {/* Detailed Description */}
         <p className="font-sans text-[var(--color-text-secondary)] text-[0.9rem] leading-relaxed group-hover:text-[var(--color-text-primary)]/80 transition-colors duration-300">

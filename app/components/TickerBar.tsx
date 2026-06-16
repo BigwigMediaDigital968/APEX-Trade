@@ -26,9 +26,9 @@ const brands = [
   "SEC Regulated",
   "256-bit Encryption",
   "ISO 27001 Certified",
-  "99.9% Uptime SLA",
+  "99.9% Uptime Guarantee",
   "FINRA Compliant",
-  "SOC 2 Type II",
+  "SOC 2 Type II Audited",
 ];
 
 export default function TickerBar() {

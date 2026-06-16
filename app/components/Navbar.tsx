@@ -67,12 +67,12 @@ const navLinks = [
         icon: <Layers size={18} />,
         href: "/margin-trading"
       },
-      {
-        label: "Dabba Trading",
-        desc: "Risks, legality & why to avoid it",
-        icon: <AlertTriangle size={18} />,
-        href: "/dabba-trading"
-      }
+      // {
+      //   label: "Dabba Trading",
+      //   desc: "Risks, legality & why to avoid it",
+      //   icon: <AlertTriangle size={18} />,
+      //   href: "/dabba-trading"
+      // }
     ]
   },
   {
@@ -151,7 +151,7 @@ export default function Navbar() {
               onMouseEnter={() => setActiveDropdown(index)}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <a
+              <Link
                 href={link.href}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-sans text-[0.92rem] font-medium no-underline transition-all duration-300 ${activeDropdown === index ? "text-white bg-white/5" : "text-white/70 hover:text-white"
                   }`}
@@ -163,7 +163,7 @@ export default function Navbar() {
                     className={`transition-transform duration-300 ${activeDropdown === index ? "rotate-180" : ""}`}
                   />
                 )}
-              </a>
+              </Link>
 
               {/* Glossy Dropdown Menu */}
               <AnimatePresence>
@@ -181,7 +181,7 @@ export default function Navbar() {
 
                     <div className={`relative z-10 grid gap-1 ${link.items.length > 4 ? "grid-cols-2" : "grid-cols-1"}`}>
                       {link.items.map((item) => (
-                        <a
+                        <Link
                           key={item.label}
                           href={item.href}
                           className="flex items-center gap-4 p-3.5 rounded-[16px] no-underline transition-all duration-300 hover:bg-white/5 group/item"
@@ -197,7 +197,7 @@ export default function Navbar() {
                               {item.desc}
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </motion.div>

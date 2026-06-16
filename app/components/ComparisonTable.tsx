@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { X, Check, Zap, Gauge, DollarSign, Headset, ArrowRight } from 'lucide-react';
+import { X, Check, Zap, Gauge, DollarSign, Headset, ArrowRight, TrendingUp, Layers } from 'lucide-react';
 import { useAuthModal } from '../context/AuthModalContext';
 
 /**
@@ -14,35 +14,49 @@ const ComparisonTable = () => {
         authToggle();
       }
   const rows = [
-    {
-      feature: "Payout Speed",
-      others: "24-48 Hours Delay",
-      apex: "Instant Withdrawal",
-      icon: <Zap className="w-5 h-5 text-blue-400" />,
-      description: "Access your capital immediately after closing positions."
-    },
-    {
-      feature: "Brokerage Fees",
-      others: "High & Variable",
-      apex: "Flat Low Charges",
-      icon: <DollarSign className="w-5 h-5 text-blue-400" />,
-      description: "No hidden costs. Institutional rates for retail traders."
-    },
-    {
-      feature: "Execution Speed",
-      others: "500ms+ Latency",
-      apex: "Ultra-Fast Execution",
-      icon: <Gauge className="w-5 h-5 text-blue-400" />,
-      description: "Zero-lag order routing via high-frequency servers."
-    },
-    {
-      feature: "Customer Support",
-      others: "Email/Ticket Only",
-      apex: "24/7 Priority Support",
-      icon: <Headset className="w-5 h-5 text-blue-400" />,
-      description: "Dedicated account managers available around the clock."
-    }
-  ];
+  {
+    feature: "Payout Speed",
+    others: "24–48 hours or longer",
+    apex: "Cleared within 30 minutes",
+    icon: <Zap className="w-5 h-5 text-blue-400" />,
+    description: "Cleared within 30 minutes",
+  },
+  {
+    feature: "Brokerage Structure",
+    others: "High and often variable",
+    apex: "Flat, minimal, fully disclosed",
+    icon: <DollarSign className="w-5 h-5 text-blue-400" />,
+    description: "Flat, minimal, fully disclosed",
+  },
+  {
+    feature: "Order Execution",
+    others: "500ms+ average latency",
+    apex: "Sub-millisecond execution",
+    icon: <Gauge className="w-5 h-5 text-blue-400" />,
+    description: "Sub-millisecond execution",
+  },
+  {
+    feature: "Customer Support",
+    others: "Email tickets only",
+    apex: "24/7 priority human support",
+    icon: <Headset className="w-5 h-5 text-blue-400" />,
+    description: "24/7 priority human support",
+  },
+  {
+    feature: "Intraday Margin",
+    others: "10X–50X typical",
+    apex: "Up to 500X MCX & NSE Futures",
+    icon: <TrendingUp className="w-5 h-5 text-blue-400" />,
+    description: "Up to 500X MCX & NSE Futures",
+  },
+  {
+    feature: "Holding Leverage",
+    others: "5X–20X typical",
+    apex: "Up to 60X positional",
+    icon: <Layers className="w-5 h-5 text-blue-400" />,
+    description: "Up to 60X positional",
+  },
+];
 
   return (
     <section className="py-3 sm:py-6 md:py-12 px-4 sm:px-6 relative overflow-hidden font-sans">
@@ -53,11 +67,14 @@ const ComparisonTable = () => {
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[var(--color-accent-blue)]/10 border border-[var(--color-border-blue)] text-[var(--color-accent-blue)] text-xs font-bold uppercase tracking-widest mb-4">
+            <span>Why Switch</span>
+          </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            Why Traders Switch to <span className="text-blue-500">Apex</span>
+           How  <span className="text-blue-500">ApexTrade</span> Stands Apart 
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            A side-by-side look at how we are redefining the trading infrastructure.
+A transparent comparison of what separates our infrastructure from the average retail trading desk.
           </p>
         </div>
 
@@ -102,7 +119,7 @@ const ComparisonTable = () => {
 
                 {/* Column 3: Apex */}
                 <div className="p-6 md:p-6 flex flex-col items-center justify-center text-center bg-blue-500/[0.02] relative">
-                  <div className="flex items-center gap-2 text-blue-400 font-bold text-sm md:text-lg mb-2">
+                  <div className="flex items-center gap-2 text-blue-400 font-bold text-sm md:text-base mb-2">
                     <Check className="w-5 h-5 text-green-400" />
                     <span>{row.apex}</span>
                   </div>

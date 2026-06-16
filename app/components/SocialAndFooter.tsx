@@ -54,7 +54,7 @@ const footerLinks = [
       { label: "Commodity Trading", href: "/commodity-trading" },
       { label: "Intraday Trading", href: "/intraday-trading" },
       { label: "Margin Trading", href: "/margin-trading" },
-      { label: "Dabba Trading", href: "/dabba-trading" },
+      // { label: "Dabba Trading", href: "/dabba-trading" },
     ],
   },
   {
