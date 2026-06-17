@@ -43,6 +43,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+       <head>
+        <meta
+          name="google-site-verification"
+          content="YP_Y28fJwisRPTSnDD3fr8tTZ4zWa2T2K7f4QDyWx3E"
+        />
+      </head>
       <body className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0B0E14] text-white font-sans`}>
         <AuthModalProvider>
           <SocialProofPopups />
