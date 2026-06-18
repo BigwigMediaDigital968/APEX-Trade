@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function IntradayTradingContent() {
   return (
     <>
@@ -116,7 +118,19 @@ export default function IntradayTradingContent() {
                 },
                 {
                   title: "Asset Liquidity",
-                  desc: "Highly liquid stocks or indices ensure you can enter and exit trades rapidly without significant slippage.",
+                  desc: (
+                    <>
+                      Highly liquid{" "}
+                      <Link
+                        href="/stocks"
+                        className="text-indigo-500 hover:text-white"
+                      >
+                        stocks
+                      </Link>{" "}
+                      or indices ensure you can enter and exit trades rapidly
+                      without significant slippage.
+                    </>
+                  ),
                 },
                 {
                   title: "Trading Volume",

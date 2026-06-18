@@ -187,7 +187,9 @@ export default function CommodityTrading() {
                   Commodity Trading Framework
                 </div>
                 <div className="col-span-5 text-[var(--color-accent-green)]">
-                  Equity Trading Framework
+                  <Link href="/equity-trading" className="hover:text-white">
+                    Equity Trading Framework
+                  </Link>
                 </div>
               </div>
 
@@ -262,7 +264,14 @@ export default function CommodityTrading() {
               <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
                 Whether you are balancing short-term volatility swings inside
                 evening hours or hedging raw asset parameters, ApexTrade gives
-                you structural sub-millisecond execution tools, optimized margin
+                you structural sub-millisecond execution tools, optimized
+                <Link
+                  href="/margin-trading"
+                  className="text-indigo-500 hover:text-white"
+                >
+                  {" "}
+                  margin{" "}
+                </Link>
                 parameters, and real-time MCX tracking telemetry.
               </p>
 

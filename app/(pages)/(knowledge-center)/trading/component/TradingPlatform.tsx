@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function TradingPlatform() {
@@ -32,75 +33,81 @@ export default function TradingPlatform() {
           {/* Interactive Responsive Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-28">
             {/* Card 1: Equity */}
-            <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)] relative group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[rgba(61,107,255,0.1)] border border-[rgba(61,107,255,0.2)] flex items-center justify-center mb-6 text-[var(--color-accent-blue-light)] font-mono font-bold">
-                  EQ
+            <Link href="/equity-trading">
+              <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)] relative group">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-[rgba(61,107,255,0.1)] border border-[rgba(61,107,255,0.2)] flex items-center justify-center mb-6 text-[var(--color-accent-blue-light)] font-mono font-bold">
+                    EQ
+                  </div>
+                  <h3 className="text-xl font-bold text-white font-display mb-3 group-hover:text-[var(--color-accent-blue-light)] transition-colors">
+                    Equity Trading India
+                  </h3>
+                  <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
+                    Access shares of India's largest and fastest-growing listed
+                    companies. Trade intraday or take delivery positions with
+                    real-time data, advanced charts, and fast order execution.
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white font-display mb-3 group-hover:text-[var(--color-accent-blue-light)] transition-colors">
-                  Equity Trading India
-                </h3>
-                <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                  Access shares of India's largest and fastest-growing listed
-                  companies. Trade intraday or take delivery positions with
-                  real-time data, advanced charts, and fast order execution.
-                </p>
+                <div className="mt-8 pt-4 border-t border-[var(--color-border-main)] flex justify-between items-center text-xs font-mono text-[var(--color-text-muted)]">
+                  <span>INTRADAY / DELIVERY</span>
+                  <span className="profit">● Live</span>
+                </div>
               </div>
-              <div className="mt-8 pt-4 border-t border-[var(--color-border-main)] flex justify-between items-center text-xs font-mono text-[var(--color-text-muted)]">
-                <span>INTRADAY / DELIVERY</span>
-                <span className="profit">● Live</span>
-              </div>
-            </div>
+            </Link>
 
             {/* Card 2: Commodity */}
-            <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)] relative group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[rgba(0,255,163,0.1)] border border-[rgba(0,255,163,0.25)] flex items-center justify-center mb-6 text-[var(--color-accent-green)] font-mono font-bold">
-                  MCX
+            <Link href="/commodity-trading">
+              <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)] relative group">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-[rgba(0,255,163,0.1)] border border-[rgba(0,255,163,0.25)] flex items-center justify-center mb-6 text-[var(--color-accent-green)] font-mono font-bold">
+                    MCX
+                  </div>
+                  <h3 className="text-xl font-bold text-white font-display mb-3 group-hover:text-[var(--color-accent-green)] transition-colors">
+                    Commodity Trading India
+                  </h3>
+                  <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
+                    Trade gold, silver, crude oil, natural gas, and agricultural
+                    commodities on MCX. Commodity markets often move
+                    independently of equities, offering diversification and
+                    unique opportunities.
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white font-display mb-3 group-hover:text-[var(--color-accent-green)] transition-colors">
-                  Commodity Trading India
-                </h3>
-                <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                  Trade gold, silver, crude oil, natural gas, and agricultural
-                  commodities on MCX. Commodity markets often move independently
-                  of equities, offering diversification and unique
-                  opportunities.
-                </p>
+                <div className="mt-8 pt-4 border-t border-[var(--color-border-main)] flex justify-between items-center text-xs font-mono text-[var(--color-text-muted)]">
+                  <span>GLOBAL DIVERSIFICATION</span>
+                  <span className="profit">● Live</span>
+                </div>
               </div>
-              <div className="mt-8 pt-4 border-t border-[var(--color-border-main)] flex justify-between items-center text-xs font-mono text-[var(--color-text-muted)]">
-                <span>GLOBAL DIVERSIFICATION</span>
-                <span className="profit">● Live</span>
-              </div>
-            </div>
+            </Link>
 
             {/* Card 3: F&O */}
-            <div className="glass-blue p-8 rounded-2xl flex flex-col justify-between card-hover relative group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[rgba(61,107,255,0.2)] border border-[rgba(61,107,255,0.4)] flex items-center justify-center mb-6 text-white font-mono font-bold">
-                  F&O
+            <Link href="/futures-and-options">
+              <div className="glass-blue p-8 rounded-2xl flex flex-col justify-between card-hover relative group">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-[rgba(61,107,255,0.2)] border border-[rgba(61,107,255,0.4)] flex items-center justify-center mb-6 text-white font-mono font-bold">
+                    F&O
+                  </div>
+                  <h3 className="text-xl font-bold text-white font-display mb-3 text-gradient-blue">
+                    Futures & Options
+                  </h3>
+                  <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
+                    Access NSE's most actively traded F&O contracts: Nifty, Bank
+                    Nifty, and stock futures. ApexTrade's ultra-low margin
+                    requirements (
+                    <span className="text-white font-semibold">
+                      up to 97–99% lower
+                    </span>{" "}
+                    than retail rates) make F&O accessible without tying up
+                    large capital.
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white font-display mb-3 text-gradient-blue">
-                  Futures & Options
-                </h3>
-                <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                  Access NSE's most actively traded F&O contracts: Nifty, Bank
-                  Nifty, and stock futures. ApexTrade's ultra-low margin
-                  requirements (
-                  <span className="text-white font-semibold">
-                    up to 97–99% lower
-                  </span>{" "}
-                  than retail rates) make F&O accessible without tying up large
-                  capital.
-                </p>
+                <div className="mt-8 pt-4 border-t border-[rgba(61,107,255,0.2)] flex justify-between items-center text-xs font-mono text-[var(--color-text-muted)]">
+                  <span>LOW MARGIN FACILITY</span>
+                  <span className="text-[var(--color-accent-blue-light)]">
+                    High Leverage
+                  </span>
+                </div>
               </div>
-              <div className="mt-8 pt-4 border-t border-[rgba(61,107,255,0.2)] flex justify-between items-center text-xs font-mono text-[var(--color-text-muted)]">
-                <span>LOW MARGIN FACILITY</span>
-                <span className="text-[var(--color-accent-blue-light)]">
-                  High Leverage
-                </span>
-              </div>
-            </div>
+            </Link>
           </div>
 
           <hr className="border-t border-[var(--color-border-main)] my-20" />

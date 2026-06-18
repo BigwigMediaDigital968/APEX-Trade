@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function EquityTrading() {
@@ -32,8 +33,15 @@ export default function EquityTrading() {
                 growth (or decline) by trading ownership stakes to profit from
                 changes in share price. Whether your goal is short-term trading
                 on daily price movements or building a long-term portfolio of
-                quality stocks, equity trading forms the absolute foundation of
-                the market journey.
+                quality{" "}
+                <Link
+                  href="/stocks"
+                  className="text-indigo-500 hover:text-white"
+                >
+                  stocks
+                </Link>
+                , equity trading forms the absolute foundation of the market
+                journey.
               </p>
               <div className="pt-2">
                 <button className="btn-primary animate-glow">
@@ -106,7 +114,7 @@ export default function EquityTrading() {
                   <p className="text-[var(--color-text-secondary)] font-sans text-xs leading-relaxed">
                     When you place a buy order for a stock, you are agreeing to
                     purchase shares at a specific price. Selling works in
-                    reverse — you exchange your shares for cash at the
+                    reverse - you exchange your shares for cash at the
                     prevailing market rate. Every single trade is matched
                     cleanly through the exchange to ensure clearing security.
                   </p>
@@ -124,7 +132,7 @@ export default function EquityTrading() {
                   </h3>
                   <p className="text-[var(--color-text-secondary)] font-sans text-xs leading-relaxed">
                     Intraday equity trading means executing trades within a
-                    single session — squaring off completely before the closing
+                    single session - squaring off completely before the closing
                     bell. Delivery trading means holding your shares directly
                     inside your demat account across long horizons for
                     sustainable wealth growth.

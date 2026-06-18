@@ -38,9 +38,15 @@ export default function MarginTradingPage() {
                 raw ledger cash balance, margin configurations allow you to
                 instantly access scaled buying power. In the domestic framework
                 of margin trading in India, traders utilize these optimized
-                leverage parameters across equities, commodities, derivatives,
-                and broad systemic indices to structure highly efficient capital
-                loops.
+                leverage parameters across equities,{" "}
+                <Link
+                  href="/commodity"
+                  className="text-indigo-500 hover:text-white"
+                >
+                  commodities
+                </Link>
+                , derivatives, and broad systemic indices to structure highly
+                efficient capital loops.
               </p>
               <div className="p-4 rounded-xl border border-[rgba(0,255,163,0.15)] bg-[rgba(0,255,163,0.01)] text-xs font-sans text-[var(--color-text-secondary)] max-w-2xl">
                 ⚠️ <strong className="text-white">Risk Warning Node:</strong>{" "}

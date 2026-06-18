@@ -27,10 +27,17 @@ export default function StockContent() {
               <p className="text-[var(--color-text-muted)] text-sm leading-relaxed font-sans">
                 Online stock trading in India has undergone massive structural
                 evolution. At Apex Trade, we eliminate geographical barriers,
-                giving you native trading pipelines into local and cross-border
-                equity channels. Whether your strategy targets micro-duration
-                intraday allocations or structural multi-decade compounding, our
-                node routing engine executes with identical elite stability.
+                giving you native{" "}
+                <Link
+                  href="/trading"
+                  className="text-indigo-600 hover:text-white"
+                >
+                  trading
+                </Link>{" "}
+                pipelines into local and cross-border equity channels. Whether
+                your strategy targets micro-duration intraday allocations or
+                structural multi-decade compounding, our node routing engine
+                executes with identical elite stability.
               </p>
             </div>
 
@@ -123,7 +130,13 @@ export default function StockContent() {
               <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
                 Stock trading is the structured transaction of corporate
                 fractional shares to extract value from dynamic price
-                fluctuations. When you acquire a stock unit, you hold an equity
+                fluctuations. When you acquire a stock unit, you hold an{" "}
+                <Link
+                  href="/equity-trading"
+                  className="text-indigo-600 hover:text-white"
+                >
+                  equity
+                </Link>{" "}
                 stake in that underlying corporate framework, validating your
                 claim on its physical expansion.
               </p>

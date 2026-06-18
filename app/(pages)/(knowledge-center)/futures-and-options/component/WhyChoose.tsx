@@ -34,7 +34,13 @@ export default function WhyChoose() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-28">
             {[
               {
-                title: "Advanced Trading Platform",
+                title: (
+                  <>
+                    <Link href="/trading" className="hover:text-indigo-500">
+                      Advanced Trading Platform
+                    </Link>
+                  </>
+                ),
                 desc: "Access futures and options markets through a fast, intuitive, and feature-rich trading platform built around raw execution throughput.",
               },
               {
@@ -54,7 +60,13 @@ export default function WhyChoose() {
                 desc: "Track margins, analyze structural market movements, and manage active positions entirely from a unified cross-platform interface.",
               },
               {
-                title: "Dedicated Trading Support",
+                title: (
+                  <>
+                    <Link href="/trading" className="hover:text-indigo-500">
+                      Dedicated Trading Support
+                    </Link>
+                  </>
+                ),
                 desc: "Receive rapid specialized assistance whenever needed while navigating the complexities of the domestic derivatives market.",
               },
             ].map((feat, fIdx) => (

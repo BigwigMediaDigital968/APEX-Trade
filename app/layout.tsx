@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
+
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import SocialAndFooter from "./components/SocialAndFooter";
@@ -38,18 +40,43 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className="scroll-smooth">
-       <head>
+      <head>
         <meta
           name="google-site-verification"
           content="YP_Y28fJwisRPTSnDD3fr8tTZ4zWa2T2K7f4QDyWx3E"
         />
       </head>
-      <body className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0B0E14] text-white font-sans`}>
+
+      <body
+        className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0B0E14] text-white font-sans`}
+      >
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-2DJ26Y79RC"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag(){
+              dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-2DJ26Y79RC', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+
         <AuthModalProvider>
           <SocialProofPopups />
           <Navbar />

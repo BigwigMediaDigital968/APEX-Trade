@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function TradingContent() {
@@ -39,9 +40,9 @@ export default function TradingContent() {
                 </span>
               </p>
               <div className="pt-4">
-                <button className="btn-primary animate-glow">
+                <Link href="/contact-us" className="btn-primary animate-glow">
                   Get Started <span className="typing-cursor"></span>
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -98,118 +99,124 @@ export default function TradingContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Card 1: Intraday Trading */}
-            <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)]">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white font-display">
-                    Intraday Trading
-                  </h3>
-                  <span className="text-xs font-mono text-[var(--color-accent-blue-light)] bg-[rgba(61,107,255,0.1)] px-2 py-1 rounded">
-                    High Speed
+            <Link href="/intraday-trading">
+              <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)]">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-bold text-white font-display hover:text-indigo-500">
+                      Intraday Trading
+                    </h3>
+                    <span className="text-xs font-mono text-[var(--color-accent-blue-light)] bg-[rgba(61,107,255,0.1)] px-2 py-1 rounded">
+                      High Speed
+                    </span>
+                  </div>
+                  <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
+                    Intraday trading involves buying and selling positions
+                    within the same trading session, with all trades closed
+                    before market hours end. It's ideal for traders looking to
+                    capitalize on short-term price movements without overnight
+                    risk.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[var(--color-border-main)] text-xs text-[var(--color-text-muted)] font-mono flex items-center justify-between">
+                  <span>
+                    With up to{" "}
+                    <strong className="text-[var(--color-accent-green)]">
+                      500X leverage
+                    </strong>
+                    , fast execution, and low brokerage, ApexTrade helps traders
+                    maximize opportunities.
                   </span>
                 </div>
-                <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                  Intraday trading involves buying and selling positions within
-                  the same trading session, with all trades closed before market
-                  hours end. It's ideal for traders looking to capitalize on
-                  short-term price movements without overnight risk.
-                </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-[var(--color-border-main)] text-xs text-[var(--color-text-muted)] font-mono flex items-center justify-between">
-                <span>
-                  With up to{" "}
-                  <strong className="text-[var(--color-accent-green)]">
-                    500X leverage
-                  </strong>
-                  , fast execution, and low brokerage, ApexTrade helps traders
-                  maximize opportunities.
-                </span>
-              </div>
-            </div>
+            </Link>
 
             {/* Card 2: Options Trading */}
-            <div className="glass-blue p-8 rounded-2xl flex flex-col justify-between card-hover">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white font-display">
-                    Options Trading
-                  </h3>
-                  <span className="text-xs font-mono text-[var(--color-accent-green)] bg-[rgba(0,255,163,0.1)] px-2 py-1 rounded">
-                    F&O Segment
+            <Link href="/futures-and-options">
+              <div className="glass-blue p-8 rounded-2xl flex flex-col justify-between card-hover">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-bold text-white font-display hover:text-indigo-600">
+                      Options Trading
+                    </h3>
+                    <span className="text-xs font-mono text-[var(--color-accent-green)] bg-[rgba(0,255,163,0.1)] px-2 py-1 rounded">
+                      F&O Segment
+                    </span>
+                  </div>
+                  <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
+                    Options trading lets you profit from market movements or
+                    hedge risk without owning the underlying asset. Take
+                    advantage of market volatility with defined strategic risk
+                    frameworks.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[rgba(61,107,255,0.2)] text-xs text-[var(--color-text-muted)] font-mono">
+                  <span>
+                    With <strong className="text-white">ApexTrade</strong>,
+                    enjoy fast execution, advanced tools, and seamless access to
+                    NSE F&O markets for smarter trading.
                   </span>
                 </div>
-                <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                  Options trading lets you profit from market movements or hedge
-                  risk without owning the underlying asset. Take advantage of
-                  market volatility with defined strategic risk frameworks.
-                </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-[rgba(61,107,255,0.2)] text-xs text-[var(--color-text-muted)] font-mono">
-                <span>
-                  With <strong className="text-white">ApexTrade</strong>, enjoy
-                  fast execution, advanced tools, and seamless access to NSE F&O
-                  markets for smarter trading.
-                </span>
-              </div>
-            </div>
+            </Link>
 
             {/* Card 3: Equity Trading */}
-            <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)]">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white font-display">
-                    Equity Trading
-                  </h3>
-                  <span className="text-xs font-mono text-[var(--color-text-secondary)] bg-[rgba(142,150,165,0.1)] px-2 py-1 rounded">
-                    Wealth Build
+            <Link href="/equity-trading">
+              <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)]">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-bold text-white font-display hover:text-indigo-500">
+                      Equity Trading
+                    </h3>
+                    <span className="text-xs font-mono text-[var(--color-text-secondary)] bg-[rgba(142,150,165,0.1)] px-2 py-1 rounded">
+                      Wealth Build
+                    </span>
+                  </div>
+                  <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
+                    Equity trading involves buying and selling shares of listed
+                    companies to build wealth or capitalize on market
+                    opportunities. Long-term assets meet powerful real-time
+                    order matching.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[var(--color-border-main)] text-xs text-[var(--color-text-muted)] font-mono">
+                  <span>
+                    With <strong className="text-white">ApexTrade</strong>,
+                    access stocks, derivatives, and commodities through a single
+                    account, backed by fast execution.
                   </span>
                 </div>
-                <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                  Equity trading involves buying and selling shares of listed
-                  companies to build wealth or capitalize on market
-                  opportunities. Long-term assets meet powerful real-time order
-                  matching.
-                </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-[var(--color-border-main)] text-xs text-[var(--color-text-muted)] font-mono">
-                <span>
-                  With <strong className="text-white">ApexTrade</strong>, access
-                  stocks, derivatives, and commodities through a single account,
-                  backed by fast execution.
-                </span>
-              </div>
-            </div>
+            </Link>
 
             {/* Card 4: Margin Trading */}
-            <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)]">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white font-display">
-                    Margin Trading
-                  </h3>
-                  <span className="text-xs font-mono text-[#FF4B6A] bg-[rgba(255,75,106,0.1)] px-2 py-1 rounded">
-                    Leveraged
+            <Link href="/margin-trading">
+              <div className="glass p-8 rounded-2xl flex flex-col justify-between card-hover border-[var(--color-border-main)]">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-bold text-white font-display hover:text-indigo-500">
+                      Margin Trading
+                    </h3>
+                    <span className="text-xs font-mono text-[#FF4B6A] bg-[rgba(255,75,106,0.1)] px-2 py-1 rounded">
+                      Leveraged
+                    </span>
+                  </div>
+                  <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
+                    Margin trading lets you take larger market positions with
+                    less capital through leverage. Amplifying exposure means
+                    scaling opportunities safely with precise automatic squaring
+                    models.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[var(--color-border-main)] text-xs text-[var(--color-text-muted)] font-mono">
+                  <span>
+                    With <strong className="text-white">ApexTrade</strong>,
+                    benefit from high-margin facilities, advanced risk controls,
+                    and smart trading tools to manage risk effectively.
                   </span>
                 </div>
-                <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                  Margin trading lets you take larger market positions with less
-                  capital through leverage. Amplifying exposure means scaling
-                  opportunities safely with precise automatic squaring models.
-                </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-[var(--color-border-main)] text-xs text-[var(--color-text-muted)] font-mono">
-                <span>
-                  With <strong className="text-white">ApexTrade</strong>,
-                  benefit from high-margin facilities, advanced risk controls,
-                  and smart trading tools to manage risk effectively.
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Optional Action Footer */}
-          <div className="mt-16 text-center">
-            <button className="btn-secondary">View Margin Calculators</button>
+            </Link>
           </div>
         </div>
       </section>
