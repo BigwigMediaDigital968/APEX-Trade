@@ -19,7 +19,7 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "ApexTrade - 500X Intraday Margin | India's Fastest Trading Platform",
+  title: "Best Online Trading Platform | ApexTrade",
   description:
     "Trade NSE Futures, MCX & Options with up to 500X intraday margin, low brokerage, and 30-minute withdrawals. Open your free account today.",
   alternates: {
