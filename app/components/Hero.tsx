@@ -182,7 +182,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className={`text-base md:text-lg lg:text-xl font-medium tracking-tighter leading-[1.1] max-w-3xl text-white/60 mt-2`}
+                    className={`text-base md:text-lg lg:text-xl font-medium tracking-tighter leading-[1.4] max-w-3xl text-white/60 mt-2`}
                 >
                     Open a Free Demat Account in under 5 minutes and start
                     online commission-free trading across NSE, MCX & F&O segments.
