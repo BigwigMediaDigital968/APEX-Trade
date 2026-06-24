@@ -21,7 +21,8 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Best Online Trading Platform | ApexTrade",
   description:
-    "Trade NSE Futures, MCX & Options with up to 500X intraday margin, low brokerage, and 30-minute withdrawals. Open your free account today.",
+    "India's best online trading platform for NSE Futures, MCX & Options",
+  keywords:"trading platform, online trading platform, best trading platform for beginners, free demat account, open demat account, online commission-free trading, NSE futures, MCX trading, automated trading",
   alternates: {
     canonical: "https://www.tradeapp-ex.com/",
   },

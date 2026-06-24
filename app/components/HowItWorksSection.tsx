@@ -6,7 +6,7 @@ const steps = [
   {
     number: "01",
     title: "Create Your Account",
-    desc: "Complete a streamlined registration in under five minutes. Provide your basic details, verify your identity, and your account is ready to fund.",
+    desc: "Open a free demat account in under five minutes. Complete a streamlined registration, verify your identity, and you're ready to start online commission-free trading immediately.",
     color: "#00FFA3",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">

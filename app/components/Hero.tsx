@@ -65,13 +65,21 @@ export default function Hero() {
                     >
                         The Future of Trading.
                     </motion.h1>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className={`text-xl md:text-2xl lg:text-3xl font-medium tracking-tighter leading-[1.1] text-white/60`}
+                    >
+                        India's Best Online Trading Platform - Commission-Free
+                    </motion.h2>
 
                     {/* Typing Subheading (Matched Size) */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className={`${sharedTypographyClass}`}
+                        className={`text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tighter leading-[1.1]`}
                     >
                         <TypewriterText texts={subheadings} />
                     </motion.div>
@@ -169,6 +177,16 @@ export default function Hero() {
                         </div>
                     </motion.div>
                 </div>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className={`text-base md:text-lg lg:text-xl font-medium tracking-tighter leading-[1.1] max-w-3xl text-white/60 mt-2`}
+                >
+                    Open a Free Demat Account in under 5 minutes and start
+                    online commission-free trading across NSE, MCX & F&O segments.
+                </motion.p>
+
 
                 {/* CTA Buttons */}
                 <motion.div
@@ -215,7 +233,7 @@ export default function Hero() {
                     </div>
                 </motion.div>
             </main>
-        </div>
+        </div >
     );
 }
 const TypewriterText = ({ texts }: { texts: any }) => {

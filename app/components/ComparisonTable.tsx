@@ -74,7 +74,9 @@ const ComparisonTable = () => {
            How  <span className="text-blue-500">ApexTrade</span> Stands Apart 
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-A transparent comparison of what separates our infrastructure from the average retail trading desk.
+Most traders switch to a better online trading platform once they
+experience the difference in speed, cost, and support. Here's what
+sets ApexTrade apart:
           </p>
         </div>
 

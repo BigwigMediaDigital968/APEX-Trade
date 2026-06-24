@@ -25,6 +25,22 @@ const faqs: Record<string, { q: string; a: any }[]> = {
       ),
     },
     {
+      q: "How do I open a free demat account on ApexTrade?",
+      a: (
+        <>
+          Opening a free demat account is quick and fully online. Click 'Open Free Account', fill in your basic details, complete KYC verification, and you're ready to trade — all within minutes, with no paperwork required.
+        </>
+      ),
+    },
+    {
+      q: "Is ApexTrade the best trading platform for beginners?",
+      a: (
+        <>
+          ApexTrade is designed to be accessible for new traders while offering institutional-grade tools for experts. The platform offers a guided onboarding flow, 24/7 support, and a clean interface — making it one of the best online trading platforms for beginners in India.
+        </>
+      ),
+    },
+    {
       q: "Is my fund safe?",
       a: (
         <>

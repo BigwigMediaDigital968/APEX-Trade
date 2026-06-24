@@ -156,8 +156,7 @@ export default function SocialAndFooter() {
                 </div>
               </Link>
               <p className="font-sans text-[var(--color-text-secondary)] text-[1rem] leading-[1.8] max-w-[320px] mb-8">
-                Empowering your trading through advanced neural networks and institutional-grade automation.
-              </p>
+ApexTrade is India's online trading platform for NSE, MCX & F&O. Open a free demat account and experience online commission-free trading with institutional-grade speed and support.              </p>
 
               <div className="flex flex-wrap gap-3">
                 <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors cursor-default group">
