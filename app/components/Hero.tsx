@@ -61,25 +61,26 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className={`${sharedTypographyClass} text-white`}
+                        className={`${sharedTypographyClass} text-white drop-shadow-sm`}
                     >
                         The Future of Trading.
                     </motion.h1>
+
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className={`text-xl md:text-2xl lg:text-3xl font-medium tracking-tighter leading-[1.1] text-white/60`}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed text-zinc-400 max-w-3xl"
                     >
                         India's Best Online Trading Platform - Commission-Free
                     </motion.h2>
 
-                    {/* Typing Subheading (Matched Size) */}
+                    {/* Typing Subheading */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className={`text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tighter leading-[1.1]`}
+                        className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight text-blue-400"
                     >
                         <TypewriterText texts={subheadings} />
                     </motion.div>
