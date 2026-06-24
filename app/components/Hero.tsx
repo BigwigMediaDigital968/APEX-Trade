@@ -194,7 +194,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6"
+                    className="mt-8 md:mt-8 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6"
                 >
                     <button onClick={handleClick} className="cursor-pointer group relative px-5 py-3 bg-[#3D6BFF] text-white rounded-xl font-bold text-base sm:text-lg overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(61,107,255,0.5)] active:scale-95">
                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -214,7 +214,7 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1, duration: 1 }}
-                    className="mt-8 mb-8 md:mt-12 md:mb-10 grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/5 pt-4 sm:pt-10 w-full"
+                    className="mt-8 mb-8 md:mt-8 md:mb-8 grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/5 pt-4 sm:pt-8 w-full"
                 >
                     <div>
                         <p className="text-[#8E96A5] text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">24H Volume Processed</p>
