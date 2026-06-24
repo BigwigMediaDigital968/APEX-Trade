@@ -22,7 +22,10 @@ export default function TradingContent() {
               </h1>
               <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed font-sans">
                 Trading is the process of buying and selling financial
-                instruments such as stocks, commodities, futures, and options to
+                instruments such as <Link
+                      href="/stocks"
+                      className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                    >stocks</Link>, commodities, futures, and options to
                 benefit from market price movements. What is trading in
                 practical terms? It means taking a position on whether an
                 asset's price will go up or down and managing that position
@@ -111,7 +114,10 @@ export default function TradingContent() {
                     </span>
                   </div>
                   <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                    Intraday trading involves buying and selling positions
+                    <Link
+                      href="/intraday-trading"
+                      className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                    >Intraday trading </Link>involves buying and selling positions
                     within the same trading session, with all trades closed
                     before market hours end. It's ideal for traders looking to
                     capitalize on short-term price movements without overnight
@@ -173,7 +179,10 @@ export default function TradingContent() {
                     </span>
                   </div>
                   <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                    Equity trading involves buying and selling shares of listed
+                    <Link
+            href="/equity-trading"
+            className="text-cyan-400 hover:text-cyan-300 transition-colors"
+          >Equity trading</Link> involves buying and selling shares of listed
                     companies to build wealth or capitalize on market
                     opportunities. Long-term assets meet powerful real-time
                     order matching.
@@ -182,7 +191,10 @@ export default function TradingContent() {
                 <div className="mt-6 pt-4 border-t border-[var(--color-border-main)] text-xs text-[var(--color-text-muted)] font-mono">
                   <span>
                     With <strong className="text-white">ApexTrade</strong>,
-                    access stocks, derivatives, and commodities through a single
+                    access <Link
+                      href="/stocks"
+                      className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                    >stocks</Link>, derivatives, and commodities through a single
                     account, backed by fast execution.
                   </span>
                 </div>
@@ -202,7 +214,10 @@ export default function TradingContent() {
                     </span>
                   </div>
                   <p className="text-[var(--color-text-secondary)] font-sans text-sm leading-relaxed">
-                    Margin trading lets you take larger market positions with
+                    <Link
+            href="/margin-trading"
+            className="text-cyan-400 hover:text-cyan-300 transition-colors"
+          >Margin trading </Link>lets you take larger market positions with
                     less capital through leverage. Amplifying exposure means
                     scaling opportunities safely with precise automatic squaring
                     models.

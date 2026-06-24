@@ -158,7 +158,7 @@ export default function Home() {
       />
     <main className="bg-bg-main min-h-screen">
       <Hero />
-      <TickerBar />
+      {/* <TickerBar /> */}
       <FeaturesSection />
       <ComparisonTable />
       <BrokerSection/>

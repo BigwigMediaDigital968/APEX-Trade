@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 export interface FAQItem {
   question: string;
-  answer: string;
+  answer: React.ReactNode | string;
 }
 
 export interface FAQSectionData {
@@ -17,12 +19,18 @@ export const tradingFaqs: FAQSectionData = {
     {
       question: "What is trading?",
       answer:
-        "Trading is the process of buying and selling financial instruments such as stocks, commodities, futures, and options to benefit from market price movements.",
+        (<>Trading is the process of buying and selling financial instruments such as Some useful intraday trading tips include using stop losses, trading liquid Futures and Options Trading involves derivative contracts whose value is derived from an underlying asset such as <Link
+          href="/stocks"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >stocks</Link>, indices, commodities, or currencies., following a trading plan, and managing risk carefully., commodities, futures, and options to benefit from market price movements.</>),
     },
     {
       question: "What is intraday trading?",
       answer:
-        "Intraday trading involves opening and closing all positions within the same trading day, without carrying trades overnight.",
+        (<><Link
+          href="/intraday-trading"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >Intraday trading</Link> involves opening and closing all positions within the same trading day, without carrying trades overnight.</>),
     },
     {
       question: "What is option trading?",
@@ -31,13 +39,23 @@ export const tradingFaqs: FAQSectionData = {
     },
     {
       question: "What is equity trading?",
-      answer:
-        "Equity trading refers to buying and selling shares of publicly listed companies on stock exchanges such as NSE and BSE.",
+      answer: (<>
+        <Link
+          href="/equity-trading"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >
+          Equity trading
+        </Link>{" "}
+        refers to buying and selling shares of publicly listed companies on stock exchanges such as NSE and BSE.
+      </>),
     },
     {
       question: "What is margin trading?",
       answer:
-        "Margin trading allows traders to use leverage to take larger positions than their available account balance. ApexTrade offers 500X intraday and 60X holding leverage.",
+        (<><Link
+          href="/margin-trading"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >Margin trading </Link> allows traders to use leverage to take larger positions than their available account balance. ApexTrade offers 500X intraday and 60X holding leverage.</>),
     },
     {
       question: "Which markets can I trade on ApexTrade?",
@@ -73,7 +91,10 @@ export const futuresAndOptionsFaqs: FAQSectionData = {
     {
       question: "What is Futures and Options Trading?",
       answer:
-        "Futures and Options Trading involves derivative contracts whose value is derived from an underlying asset such as stocks, indices, commodities, or currencies.",
+        (<>Futures and Options Trading involves derivative contracts whose value is derived from an underlying asset such as <Link
+          href="/stocks"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >stocks</Link>, indices, commodities, or currencies.</>),
     },
     {
       question: "How does F&O trading work?",
@@ -116,7 +137,10 @@ export const intradayTradingFaqs: FAQSectionData = {
     {
       question: "What are the best intraday trading tips?",
       answer:
-        "Some useful intraday trading tips include using stop losses, trading liquid stocks, following a trading plan, and managing risk carefully.",
+        (<>Some useful intraday trading tips include using stop losses, trading liquid Futures and Options Trading involves derivative contracts whose value is derived from an underlying asset such as <Link
+          href="/stocks"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >stocks</Link>, indices, commodities, or currencies., following a trading plan, and managing risk carefully.</>),
     },
     {
       question: "Is intraday trading suitable for beginners?",
@@ -265,7 +289,10 @@ export const marginTradingFaqs: FAQSectionData = {
     {
       question: "What financial instruments can I trade using margin in India?",
       answer:
-        "Margin trading can be used across a range of asset classes including stocks, commodities, and indices, giving traders the flexibility to respond to opportunities across different markets and conditions.",
+        (<>Margin trading can be used across a range of asset classes including <Link
+          href="/stocks"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >stocks</Link>, commodities, and indices, giving traders the flexibility to respond to opportunities across different markets and conditions.</>),
     },
     {
       question: "What are the main advantages of margin trading?",
@@ -328,7 +355,10 @@ export const stockTradingFaqs: FAQSectionData = {
     {
       question: "What are the different types of stocks I can invest in?",
       answer:
-        "The market offers various categories of stocks. Blue chip and large-cap stocks belong to well-established companies, while mid-cap and small-cap stocks may offer higher growth potential with varying levels of risk. Investors can also choose growth stocks, value stocks, and dividend-paying stocks depending on their objectives.",
+        (<>The market offers various categories of <Link
+          href="/stocks"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >stocks</Link>. Blue chip and large-cap stocks belong to well-established companies, while mid-cap and small-cap stocks may offer higher growth potential with varying levels of risk. Investors can also choose growth stocks, value stocks, and dividend-paying stocks depending on their objectives.</>),
     },
     {
       question: "What causes stock prices to move?",
@@ -343,7 +373,10 @@ export const stockTradingFaqs: FAQSectionData = {
     {
       question: "What is the difference between NSE and BSE?",
       answer:
-        "The National Stock Exchange (NSE) and the Bombay Stock Exchange (BSE) are India's two primary stock exchanges. Both provide access to listed companies, and most major stocks are available on both exchanges.",
+        (<>The National Stock Exchange (NSE) and the Bombay Stock Exchange (BSE) are India's two primary stock exchanges. Both provide access to listed companies, and most major <Link
+          href="/stocks"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >stocks</Link> are available on both exchanges.</>),
     },
     {
       question: "What is a stop-loss order?",
