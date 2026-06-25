@@ -106,7 +106,7 @@ const WithdrawalCard = ({
         exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
         whileHover={{ scale: 1.02 }}
         onClick={onDismiss}
-        className="relative w-fit max-w-[450px] cursor-pointer group overflow-hidden select-none backdrop-blur-2xl bg-white/10 px-5 py-4"
+        className="relative w-fit max-w-[450px] cursor-pointer group overflow-hidden select-none backdrop-blur-2xl bg-[#0B0E14] px-5 py-4"
         style={{
             borderRadius: "20px",
             boxShadow: `

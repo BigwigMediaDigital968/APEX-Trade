@@ -4,36 +4,9 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Calendar, User, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { blogData } from "../blogData";
 
-const blogPosts = [
-    {
-        image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800",
-        category: "Technology",
-        categoryColor: "#FF6B2C", // Matching the orange badge in your image
-        date: "April 12, 2024",
-        author: "Admin",
-        title: "The Future of AI in Digital Marketing Strategies",
-        desc: "Explore how machine learning is reshaping audience targeting and personalized content delivery in 2024.",
-    },
-    {
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073",
-        category: "Trading",
-        categoryColor: "var(--color-accent-blue)",
-        date: "April 10, 2024",
-        author: "Strategy Team",
-        title: "Arbitrage Opportunities in Volatile Crypto Markets",
-        desc: "A deep dive into how neural networks identify price discrepancies across global exchanges in milliseconds.",
-    },
-    {
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-        category: "Analytics",
-        categoryColor: "var(--color-accent-green)",
-        date: "April 08, 2024",
-        author: "Data Lab",
-        title: "Risk Management: The Silent Pillar of Success",
-        desc: "Why automated position sizing and intelligent drawdown controls are more important than the signal itself.",
-    }
-];
+const blogPosts = blogData.slice(0,3)
 
 export default function NewsSection() {
     const containerVariants: Variants = {
@@ -87,8 +60,9 @@ export default function NewsSection() {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {blogPosts.map((post, i) => (
+                        <Link href={post.href} key={i}>
                         <motion.div
-                            key={i}
+                            
                             variants={itemVariants}
                             whileHover={{ y: -10 }}
                             className="group flex flex-col bg-[#1A1C1E]/40 border border-[var(--color-border-main)] rounded-[20px] overflow-hidden transition-all duration-500 hover:border-[var(--color-accent-blue)]/30 hover:bg-[#1A1C1E]/60 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)]"
@@ -102,13 +76,6 @@ export default function NewsSection() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#1A1C1E] via-transparent to-transparent opacity-60" />
 
-                                {/* Category Badge - Matching image_aa0e59.jpg */}
-                                <div
-                                    className="absolute top-5 left-5 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-white shadow-lg"
-                                    style={{ backgroundColor: post.categoryColor }}
-                                >
-                                    {post.category}
-                                </div>
                             </div>
 
                             {/* Content Section */}
@@ -125,16 +92,16 @@ export default function NewsSection() {
                                     </div>
                                 </div>
 
-                                <h3 className="font-display text-xl font-bold text-[var(--color-text-primary)] mb-4 leading-tight group-hover:text-accent-blue transition-colors duration-300">
+                                <h3 className="font-display text-xl line-clamp-2 font-bold text-[var(--color-text-primary)] mb-4 leading-tight group-hover:text-accent-blue transition-colors duration-300">
                                     {post.title}
                                 </h3>
 
-                                <p className="font-sans text-[var(--color-text-secondary)] text-[0.95rem] leading-relaxed mb-8 flex-grow">
-                                    {post.desc}
+                                <p className="font-sans line-clamp-3 text-[var(--color-text-secondary)] text-[0.95rem] leading-relaxed mb-8 flex-grow">
+                                    {post.description}
                                 </p>
 
                                 {/* Read Article Action - Matching image_aa0e59.jpg */}
-                                <Link href={`/blogs/${post.title.split(" ").join("-")}`} className="flex items-center text-white font-bold text-xs uppercase tracking-widest mt-auto cursor-pointer group/link">
+                                <Link href={post.href} className="flex items-center text-white font-bold text-xs uppercase tracking-widest mt-auto cursor-pointer group/link">
                                     <span className="mr-3">Read Article</span>
                                     <div className="w-8 h-8 rounded-full bg-white/10 border border-white/5 flex items-center justify-center transition-all duration-300 group-hover/link:bg-[var(--color-accent-blue)] group-hover/link:border-[var(--color-accent-blue)] group-hover/link:translate-x-1">
                                         <ArrowUpRight size={14} />
@@ -142,6 +109,7 @@ export default function NewsSection() {
                                 </Link>
                             </div>
                         </motion.div>
+                        </Link>
                     ))}
                 </motion.div>
             </div>

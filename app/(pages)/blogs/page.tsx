@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, ChevronDown, Clock, ArrowUpRight, Filter, Bookmark } from 'lucide-react';
 import Link from 'next/link';
+import { Blog, blogData } from '@/app/blogData';
 
 /**
  * THEME: Midnight Neon
@@ -13,80 +14,12 @@ const BlogPage = () => {
     const [activeFilter, setActiveFilter] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
 
-    const featuredPost = {
-        title: "Transforming B2B Marketing in the Face of AI",
-        category: "AI & Innovation",
-        author: "Mike Allton",
-        date: "Sep 19, 2024",
-        image: "https://images.unsplash.com/photo-1642104704074-907c0698cbd9?q=80&w=1932&auto=format&fit=crop",
-        excerpt: "Discover how artificial intelligence is reshaping the landscape of modern trading and marketing strategies..."
-    };
+    const featuredPost = blogData[0]
 
-    const editorsPicks = [
-        {
-            title: "How Was Your Last Campaign Received? Measuring Metrics",
-            author: "Lisa Kalner Williams",
-            date: "Aug 20, 2024",
-            image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073",
-        },
-        {
-            title: "How to Stop Guessing and Start Winning With Social Listening",
-            author: "Erica Pollock",
-            date: "Jun 18, 2024",
-            image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070",
-        },
-        {
-            title: "How Bulk Publishing Can Transform Your Workday for Better",
-            author: "Anna Sonnenberg",
-            date: "May 31, 2024",
-            image: "https://images.unsplash.com/photo-1634704784915-aacf363b021f?q=80&w=1170&auto=format&fit=crop",
-        },
-        {
-            title: "How Bulk Publishing Can Transform Your Workday for Better",
-            author: "Anna Sonnenberg",
-            date: "May 31, 2024",
-            image: "https://images.unsplash.com/photo-1508138221679-760a23a2285b?q=80&w=1074&auto=format&fit=crop",
-        }
+    const editorsPicks: Blog[] = [
     ];
 
-    const allPosts = [
-        {
-            title: "Elevate Your Hotel and Travel Biz With Social Media",
-            author: "Anna Sonnenberg",
-            date: "Sep 19, 2024",
-            image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070",
-        },
-        {
-            title: "Overcoming Complacency: How Challenges Can Drive Innovation",
-            author: "Mike Allton",
-            date: "Sep 17, 2024",
-            image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070",
-        },
-        {
-            title: "Surviving Tough Times: The Case Against Marketing Budgets",
-            author: "Mike Allton",
-            date: "Sep 12, 2024",
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015",
-        },
-        {
-            title: "Future-Proof Your Brand: The Shift to Decentralized Assets",
-            author: "Erica Pollock",
-            date: "Sep 05, 2024",
-            image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2232",
-        },
-        {
-            title: "Tourism Marketing Unplugged: Reaching Global Audiences",
-            author: "Lisa Kalner",
-            date: "Aug 28, 2024",
-            image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073",
-        },
-        {
-            title: "The Reality of Market Volatility in High-Frequency Trading",
-            author: "Tradex Team",
-            date: "Aug 22, 2024",
-            image: "https://images.unsplash.com/photo-1634704784915-aacf363b021f?q=80&w=1170&auto=format&fit=crop",
-        }
-    ];
+    const allPosts:Blog[] = [];
 
     return (
         <div className="bg-[#0B0E14] text-white min-h-screen font-sans">
@@ -104,10 +37,12 @@ const BlogPage = () => {
                 <section className="grid lg:grid-cols-12 gap-12 mb-24">
 
                     {/* Main Featured Card (Left) */}
+                    <Link href={featuredPost.href}
+                    className="block lg:col-span-7 group cursor-pointer">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="lg:col-span-7 group cursor-pointer"
+                        
                     >
                         <div className="mb-6 overflow-hidden">
                             <img
@@ -126,16 +61,17 @@ const BlogPage = () => {
                                 {featuredPost.title}
                             </h2>
                             <p className="text-white/40 text-sm leading-relaxed max-w-xl">
-                                {featuredPost.excerpt}
+                                {featuredPost.description}
                             </p>
                             <div className="flex items-center justify-between pt-4 border-t border-white/5">
                                 <div className="text-[10px] uppercase font-bold tracking-widest text-white/60">
-                                    By <span className="text-white">{featuredPost.author}</span> • {featuredPost.date}
+                                    By <span className="text-white">{featuredPost.author || "ApexTrade Team"}</span> • {featuredPost.date}
                                 </div>
                                 <ArrowUpRight size={20} className="text-[#3D6BFF] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </div>
                         </div>
                     </motion.div>
+                    </Link>
 
                     {/* Editor's Picks (Right) */}
                     <div className="lg:col-span-5 flex flex-col gap-8">
@@ -170,7 +106,7 @@ const BlogPage = () => {
 
                 {/* SEARCH & FILTERS BAR */}
                 <section className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 py-6 border-y border-white/5">
-                    <div className="flex items-center gap-8 overflow-x-auto w-full md:w-auto no-scrollbar">
+                    {/* <div className="flex items-center gap-8 overflow-x-auto w-full md:w-auto no-scrollbar">
                         {['All', 'Trading', 'Marketing', 'AI', 'Protocol', 'Insights'].map((filter) => (
                             <button
                                 key={filter}
@@ -190,7 +126,7 @@ const BlogPage = () => {
                             placeholder="SEARCH ARCHIVE..."
                             className="w-full bg-[#16191E] border border-white/5 p-4 pl-12 text-[10px] font-bold uppercase tracking-widest text-white outline-none focus:border-[#3D6BFF] transition-all"
                         />
-                    </div>
+                    </div> */}
                 </section>
 
                 {/* ALL POSTS GRID */}
