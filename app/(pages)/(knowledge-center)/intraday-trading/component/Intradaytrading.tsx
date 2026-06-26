@@ -188,7 +188,10 @@ export default function IntradayTradingContent() {
                 },
                 {
                   title: "Focus on Liquidity",
-                  desc: "Highly traded stocks offer vastly superior order execution and tighter spreads.",
+                  desc: (<>Highly traded<Link
+                        href="/stocks"
+                        className="text-indigo-500 hover:text-white"
+                      > stocks</Link> offer vastly superior order execution and tighter spreads.</>),
                 },
                 {
                   title: "Avoid Overtrading",

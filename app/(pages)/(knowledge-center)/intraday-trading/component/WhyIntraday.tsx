@@ -115,9 +115,15 @@ export default function WhyIntraday() {
                 * Note: Before trading active intraday setups, it is heavily
                 recommended to systematically review core definitions across{" "}
                 <strong className="text-white">What is Trading</strong>,{" "}
-                <strong className="text-white">Equity Trading India</strong>,
+                 <Link
+                      href="/equity-trading"
+                      className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                    >Equity Trading India</Link>,
                 and foundational{" "}
-                <strong className="text-white">Margin Trading</strong>.
+                <Link
+                      href="/margin-trading"
+                      className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                    >Margin Trading</Link>.
               </p>
             </div>
 
