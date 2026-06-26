@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function CommodityPage() {
   return (
     <>
@@ -19,7 +21,10 @@ export default function CommodityPage() {
                 <span className="text-gradient-blue">Commodity Trading</span>?
               </h1>
               <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed font-sans">
-                Commodity trading is the structured exchange of standardized
+                <Link
+                        href="/commodity-trading"
+                        className="text-indigo-500 hover:text-white"
+                      >Commodity trading</Link> is the structured exchange of standardized
                 physical raw assets and primary resources executed through
                 centralized clearing networks.
               </p>

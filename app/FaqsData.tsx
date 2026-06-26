@@ -416,7 +416,10 @@ export const commodityBasicsFaqs: FAQSectionData = {
     {
       question: "What is Commodity Trading?",
       answer:
-        "Commodity trading involves buying and selling raw materials such as gold, silver, crude oil, and agricultural products to benefit from price movements in the market.",
+        (<><Link
+                        href="/commodity-trading"
+                        className="text-indigo-500 hover:text-white"
+                      >Commodity trading</Link> involves buying and selling raw materials such as gold, silver, crude oil, and agricultural products to benefit from price movements in the market.</>),
     },
     {
       question: "Is Commodity Trading Legal in India?",

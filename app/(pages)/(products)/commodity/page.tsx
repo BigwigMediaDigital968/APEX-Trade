@@ -12,6 +12,7 @@ import CommodityPage from "./component/Commodity";
 import StockTable from "./component/StockTable";
 import FAQs from "@/app/components/Faqs";
 import { commodityBasicsFaqs } from "@/app/FaqsData";
+import Link from "next/link";
 
 const valueItems = [
   {
@@ -71,7 +72,10 @@ export default function Commodity() {
             with Confidence
           </>
         }
-        description="Trade precious metals, energy resources, and agricultural products to diversify your portfolio. We offer easy commodity trading"
+        description={<>Trade precious metals, energy resources, and agricultural products to diversify your portfolio. We offer easy <Link
+                        href="/commodity-trading"
+                        className="text-indigo-500 hover:text-white"
+                      >commodity trading</Link>.</>}
         items={valueItems}
         image="/images/side-image.png"
       />
