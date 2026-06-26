@@ -129,7 +129,10 @@ export default function CommodityHours() {
                 {
                   title: "MCX Crude Oil / Crude Mini",
                   spec: "India's Most Active Contract",
-                  desc: "Provides heavy intraday trading channels. Highly responsive to immediate OPEC supply adjustments and weekly US EIA inventory data loops. Crude Mini (10 barrels) serves as the primary instrument for retail sizing.",
+                  desc: (<>Provides heavy <Link
+                      href="/intraday-trading"
+                      className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                    >intraday trading</Link> channels. Highly responsive to immediate OPEC supply adjustments and weekly US EIA inventory data loops. Crude Mini (10 barrels) serves as the primary instrument for retail sizing.</>),
                 },
                 {
                   title: "MCX Natural Gas",
