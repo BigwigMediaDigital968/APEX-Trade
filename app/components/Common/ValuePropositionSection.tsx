@@ -16,7 +16,7 @@ export interface ValueItem {
 
 export interface ValuePropositionSectionProps {
   heading?: React.ReactNode; // accepts JSX so callers can colour spans
-  description?: string;
+  description?: React.ReactNode;
   image?: string; // src path e.g. "/images/side-image.png"
   imageAlt?: string;
   items?: ValueItem[];

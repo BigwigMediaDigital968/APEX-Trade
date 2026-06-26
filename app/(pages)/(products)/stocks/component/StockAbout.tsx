@@ -166,7 +166,10 @@ export default function StockAbout() {
                 <p className="text-[var(--color-text-muted)] font-sans text-xs leading-relaxed">
                   Decouples asset pricing from speculative noise by deep-diving
                   into structural balance sheets, cash generation velocity, and
-                  underlying microeconomic stability indices.
+                  underlying microeconomic stability <Link
+                        href="/indexes"
+                        className="text-indigo-500 hover:text-white"
+                      >indices</Link>.
                 </p>
               </div>
               <div className="space-y-3 font-sans text-xs">

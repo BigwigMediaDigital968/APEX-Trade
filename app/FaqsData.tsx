@@ -349,8 +349,10 @@ export const stockTradingFaqs: FAQSectionData = {
     },
     {
       question: "What types of stock trading are available?",
-      answer:
-        "Traders can participate in markets in several ways, including intraday trading (buying and selling within the same day), swing trading (holding positions for days or weeks), positional trading (holding for weeks or months), and long-term investing (holding investments over extended periods).",
+      answer:(<>Traders can participate in markets in several ways, including <Link
+                        href="/intraday-trading"
+                        className="text-indigo-500 hover:text-white"
+                      > intraday trading </Link> (buying and selling within the same day), swing trading (holding positions for days or weeks), positional trading (holding for weeks or months), and long-term investing (holding investments over extended periods).</>),
     },
     {
       question: "What are the different types of stocks I can invest in?",

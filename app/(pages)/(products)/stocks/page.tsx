@@ -14,6 +14,7 @@ import StockAbout from "./component/StockAbout";
 import FAQs from "@/app/components/Faqs";
 import { stockTradingFaqs } from "@/app/FaqsData";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
@@ -107,7 +108,10 @@ export default function Stocks() {
             </span>
           </>
         }
-        description="Access powerful equity trading tools with real-time market data, fast execution, and advanced analytics designed to help you make smarter investment decisions."
+        description={(<>Access powerful <Link
+                        href="/equity-trading"
+                        className="text-indigo-500 hover:text-white"
+                      > equity trading</Link> tools with real-time market data, fast execution, and advanced analytics designed to help you make smarter investment decisions.</>)}
         items={valueItems}
         image="/images/side-image.png"
       />
