@@ -37,7 +37,7 @@ export const blogData: Blog[] = [
       "What is a margin trading facility? Learn how MTF works, its risks, benefits, and expert trading tips to use leverage wisely. Read the full guide on Apex Trade.",
     author: "ApexTrade Team",
     date: "15 July, 2026",
-    image: "/blog-images/blog3/5.png",
+    image: "/blog-images/blog3/7.png",
     href: "/blogs/margin-trading-facility-explained",
   },
 ];
