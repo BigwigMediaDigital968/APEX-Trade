@@ -562,13 +562,15 @@ export function SignUpForm({ toggleForm }: { toggleForm?: () => void }) {
                             </div>
                             {/* Referral section */}
                             {autoReferral ? (
-                                <div className="flex items-center gap-3 px-4 py-3 bg-accent-green/10 border border-accent-green/25 rounded-2xl">
-                                    <CheckCircle2 size={20} className="text-accent-green shrink-0" />
-                                    <div>
-                                        <p className="text-sm font-medium capitalize tracking-widest text-accent-green">Referral Detected</p>
-                                        <p className="text-sm text-text-muted mt-0.5">Master: {referralMaster} · Broker: {referralBroker}</p>
-                                    </div>
-                                </div>
+                                <>
+                                 {/* <div className="flex items-center gap-3 px-4 py-3 bg-accent-green/10 border border-accent-green/25 rounded-2xl">
+                                     <CheckCircle2 size={20} className="text-accent-green shrink-0" />
+                                     <div>
+                                         <p className="text-sm font-medium capitalize tracking-widest text-accent-green">Referral Detected</p>
+                                         <p className="text-sm text-text-muted mt-0.5">Master: {referralMaster} · Broker: {referralBroker}</p>
+                                     </div>
+                                </div> */}
+                                </>
                             ) : (
                                 <div className="space-y-3">
                                     <label className="flex items-center gap-2 cursor-pointer text-text-muted hover:text-text-primary transition-colors text-[10px] font-black uppercase tracking-widest px-2">
